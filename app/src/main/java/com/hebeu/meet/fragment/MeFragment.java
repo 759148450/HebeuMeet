@@ -71,7 +71,7 @@ public class MeFragment extends Fragment {
                 @Override
                 public void run() {
                     textView = getActivity().findViewById(R.id.textView);
-                    String res = HttpUtil.get("http://112.74.194.121:8888/user/getUserById?userId=160210405");
+                    String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=160210405");
                     final User user = JSONUtil.toBean(res,User.class);
 
                     System.out.println(user.toString());

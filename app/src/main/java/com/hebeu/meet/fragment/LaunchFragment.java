@@ -1,6 +1,7 @@
 package com.hebeu.meet.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,11 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hebeu.meet.R;
+import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.JSONResult;
+import com.hebeu.meet.domain.User;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
+import java.util.Date;
+import java.util.Map;
+
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.http.HttpUtil;
+import cn.hutool.json.JSONUtil;
 
 
 /**
@@ -22,6 +37,26 @@ import java.io.File;
  */
 public class LaunchFragment extends Fragment {
 
+    private TextView launch_message = null;
+    private TextView title_message = null;
+    //活动名称
+    private EditText title = null;
+    //活动分类
+    private EditText type_id = null;
+    //限制参加性别
+    private EditText sex_limit = null;
+    //限制人数
+    private EditText people_limit = null;
+    //活动时间
+    private EditText activity_date = null;
+    //活动地点
+    private EditText activity_place = null;
+    //活动内容
+    private EditText add_content = null;
+    //发布活动按钮
+    private Button launch_activity= null;
+
+    private Handler handler = null;
 
     public LaunchFragment(){
 
@@ -33,4 +68,69 @@ public class LaunchFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_launch, container, false);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+
+        //活动名称
+        title = getActivity().findViewById(R.id.title);;
+        //活动分类
+        type_id = getActivity().findViewById(R.id.type_id);;
+        //限制参加性别
+        sex_limit = getActivity().findViewById(R.id.sex_limit);;
+        //限制人数
+        people_limit = getActivity().findViewById(R.id.people_limit);;
+        //活动时间
+        activity_date = getActivity().findViewById(R.id.activity_date);;
+        //活动地点
+        activity_place = getActivity().findViewById(R.id.activity_place);;
+        //活动内容
+        add_content = getActivity().findViewById(R.id.add_content);;
+        //发布活动按钮
+        launch_activity = (Button) getActivity().findViewById(R.id.launch_activity);
+
+        launch_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MyThread thread=new MyThread();
+                thread.start();
+            }
+
+            class MyThread extends Thread{
+                @Override
+                public void run() {
+                    Activity newActivity = new Activity();
+                    newActivity.setUserId("160210405");
+                    newActivity.setTitle(String.valueOf(title.getText()));
+                    newActivity.setTypeId(Integer.parseInt(String.valueOf(type_id.getText())));
+                    newActivity.setSexLimit(Integer.parseInt(String.valueOf(sex_limit.getText())));
+                    newActivity.setPeopleLimit(Integer.parseInt(String.valueOf(people_limit.getText())));
+                    newActivity.setActivityContent(String.valueOf(add_content.getText()));
+                    newActivity.setApplyState("1");
+                    newActivity.setActivityPlace(String.valueOf(activity_place.getText()));
+
+                    Map<String,Object> paramMap = BeanUtil.beanToMap(newActivity);
+                    String res = HttpUtil.post("http://112.74.194.121:8889/activity/insertActivity",paramMap);
+                    final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
+
+                    System.out.println(jsonResult);
+
+
+//                    handler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            if (jsonResult.getCode() == 0){
+//                                Toast.makeText(getActivity(),"添加成功", Toast.LENGTH_LONG).show();
+//                            }else {
+//                                Toast.makeText(getActivity(),"添加失败",Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+//                    });
+                }
+            }
+        });
+    }
 }
