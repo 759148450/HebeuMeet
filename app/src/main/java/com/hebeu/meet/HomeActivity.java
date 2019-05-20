@@ -17,6 +17,10 @@ import com.hebeu.meet.adapter.MainFragmentAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * zyp  2019-5-19
+ */
+
 public class HomeActivity extends AppCompatActivity {
 
     /**

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#33CC99</color>
-    <color name="colorPrimaryDark">#33CC99</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#00A5ED</color>
+    <color name="colorPrimaryDark">#00A5ED</color>
+    <color name="colorAccent">#000000</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
@@ -14,12 +14,13 @@
     <color name="gray_text_light">#979797</color>
     <color name="window_half_transparent">#90000000</color>
     <color name="blue_white">#0eabe5</color>
+    <color name="launch">#CEE8FF</color>
 
     <!-- 主页 -->
     <color name="menu_gray">#8a8a8a</color>
-    <color name="menu_green">#33CC99</color>
+    <color name="menu_green">#00A5ED</color>
 
     <!-- 微信 -->
-    <color name="wx_head_selected">#33CC99</color>
+    <color name="wx_head_selected">#00A5ED</color>
     <color name="wx_head_default">#5b666f</color>
 </resources>

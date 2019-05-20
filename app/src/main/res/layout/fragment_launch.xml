@@ -1,14 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
     tools:context=".fragment.LaunchFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical">
+
     <TextView
+        android:id="@+id/launch_message"
+        android:layout_width="160dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="12dp"
+        android:text="请填写以下内容"
+        android:textColor="#42425B"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/title_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="创建活动" />
-</RelativeLayout>
+        android:layout_marginTop="10dp"
+        android:text="活动名称"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/type_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="活动分类"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/type_id"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/sex_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="限制参加性别"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/sex_limit"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/people_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="限制人数"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/people_limit"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+    <TextView
+        android:id="@+id/date_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="活动时间"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/activity_date"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/place_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="活动地点"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/activity_place"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/launch_text"
+        android:inputType="text"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="17sp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/content_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="活动内容"
+        android:textColor="#9F9FAC"
+        android:textSize="14sp"/>
+
+
+    <EditText
+        android:id="@+id/add_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:minLines="8"
+        android:maxLines="10"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/launch_text"
+        android:scrollbars="vertical">
+    </EditText>
+
+        <Button
+            android:id="@+id/launch_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_style"
+            android:text="发布活动"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+</ScrollView>

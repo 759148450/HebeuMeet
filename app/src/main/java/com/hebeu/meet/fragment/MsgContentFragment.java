@@ -14,7 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * zyp
  * 消息内容页
+ * 2019-5-19
  */
 public class MsgContentFragment extends Fragment {
     @BindView(R.id.txt_content)

@@ -19,8 +19,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * zyp
  * 消息
  * <p>在这个界面中实现头部tab</p>
+ * 2019-5-19
  */
 public class MsgFragment extends Fragment {
     @BindView(R.id.tab_layout)
