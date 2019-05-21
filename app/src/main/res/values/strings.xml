@@ -9,4 +9,11 @@
     <string name="menu_contact">添加</string>
     <!--<string name="menu_find">发现</string>-->
     <string name="menu_me">我</string>
+    <string name="user_name">姓名</string>
+    <string name="user_sex">性别</string>
+    <string name="user_college">学院</string>
+    <string name="user_classname">班级</string>
+    <string name="user_qq">qq</string>
+    <string name="user_phone">手机</string>
+    <string name="user_email">email</string>
 </resources>
