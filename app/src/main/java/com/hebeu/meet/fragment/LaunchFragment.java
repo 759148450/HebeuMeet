@@ -1,7 +1,10 @@
 package com.hebeu.meet.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -117,19 +120,42 @@ public class LaunchFragment extends Fragment {
                     final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
 
                     System.out.println(jsonResult);
+                    Looper.prepare();
+
+                    if (jsonResult.getCode() == 0){
+                        //弹出对话框
+                        showDialog();
+                    }else {
+                        Toast.makeText(getActivity(),"活动添加失败",Toast.LENGTH_SHORT).show();
+                    }
 
 
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            if (jsonResult.getCode() == 0){
-//                                Toast.makeText(getActivity(),"添加成功", Toast.LENGTH_LONG).show();
-//                            }else {
-//                                Toast.makeText(getActivity(),"添加失败",Toast.LENGTH_LONG).show();
-//                            }
-//                        }
-//                    });
+                    Looper.loop();
+
                 }
+            }
+            private void showDialog(){
+                final AlertDialog.Builder normalDialog =
+                        new AlertDialog.Builder(getActivity());
+//                            normalDialog.setIcon(R.drawable.icon_dialog);
+                normalDialog.setTitle("活动添加成功");
+                normalDialog.setMessage("请选择将要前往的页面");
+                normalDialog.setPositiveButton("首页",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("您点击了【首页】");
+                            }
+                        });
+                normalDialog.setNegativeButton("活动详情",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                System.out.println("您点击了 【活动详情】");
+                            }
+                        });
+                // 显示
+                normalDialog.show();
             }
         });
     }
