@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,20 +13,15 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="335dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="511dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/user"
+                android:id="@+id/update_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="查看个人信息"
-                android:textColor="@color/gray_text"
-                android:textSize="18sp"
-                app:fontFamily="cursive" />
+                android:text="修改个人信息"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/user_id_mess"
@@ -46,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/user_name" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +55,7 @@
                 android:lineSpacingExtra="18sp"
                 android:text="@string/user_sex" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +69,7 @@
                 android:lineSpacingExtra="18sp"
                 android:text="@string/user_college" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_college"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/user_classname" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_classname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/user_qq" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_qq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/user_phone" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/user_email" />
 
-            <TextView
+            <EditText
                 android:id="@+id/user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -132,11 +127,8 @@
         </LinearLayout>
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:layout_marginTop="46dp"
-            android:layout_marginBottom="113dp"
+            android:layout_height="56dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,16 +141,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
                 android:background="@drawable/button_style"
                 android:text="修改"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintVertical_bias="1.0" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
-</LinearLayout>
+</ScrollView>
