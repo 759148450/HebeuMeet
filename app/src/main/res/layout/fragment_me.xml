@@ -1,45 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
     tools:context=".fragment.MeFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#00A5ED">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="我" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/my_img"/>
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="418dp"
-        android:text="查看个人信息" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="80dp"
+                android:text="张银萍"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="175dp"
-        android:layout_marginRight="175dp"
-        android:layout_marginBottom="196dp"
-        android:text="TextView" />
 
-    <Button
-        android:id="@+id/toMyPublish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我发布的活动"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="300dp"/>
+        </RelativeLayout>
 
+        <com.hebeu.meet.UI.DynamicWave
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#00A5ED"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/my_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/my_style"
+                android:drawableLeft="@drawable/my_xinxi"
+                android:drawablePadding="20dip"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="个人信息"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/toMyPublish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/my_style"
+                android:drawableLeft="@drawable/launch"
+                android:drawablePadding="20dip"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="我发布的活动"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/toOtherApply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/my_style"
+                android:drawableLeft="@drawable/join"
+                android:drawablePadding="20dip"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="我参加的活动"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/my_style"
+                android:drawableLeft="@drawable/join"
+                android:drawablePadding="20dip"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="注册"
+                android:textSize="18sp"
+                android:textStyle="bold" />
     <Button
         android:id="@+id/toMyApply"
         android:layout_width="wrap_content"
@@ -47,4 +121,8 @@
         android:layout_marginTop="600dp"
         android:text="我申请的活动" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView >
