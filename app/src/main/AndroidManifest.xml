@@ -22,7 +22,10 @@
             android:name="com.hebeu.meet.My_Information">
         </activity>
         <activity
-            android:name="com.hebeu.meet.Update_My_Information">
+            android:name="com.hebeu.meet.My_Publish_Activity">
+        </activity>
+        <activity
+            android:name="com.hebeu.meet.Others_Apply_Activity">
         </activity>
     </application>
 

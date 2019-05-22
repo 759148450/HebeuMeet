@@ -5,27 +5,19 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hebeu.meet.R;
 import com.hebeu.meet.domain.Activity;
 import com.hebeu.meet.domain.JSONResult;
-import com.hebeu.meet.domain.User;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.util.Date;
 import java.util.Map;
 
 import cn.hutool.core.bean.BeanUtil;
@@ -88,7 +80,7 @@ public class LaunchFragment extends Fragment {
         //活动时间
         activity_date = getActivity().findViewById(R.id.activity_date);;
         //活动地点
-        activity_place = getActivity().findViewById(R.id.activity_place);;
+        activity_place = getActivity().findViewById(R.id.activityPlace);;
         //活动内容
         add_content = getActivity().findViewById(R.id.add_content);;
         //发布活动按钮

@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hebeu.meet.My_Information;
+import com.hebeu.meet.My_Publish_Activity;
+import com.hebeu.meet.Others_Apply_Activity;
 import com.hebeu.meet.R;
 import com.hebeu.meet.domain.User;
 
@@ -33,8 +35,9 @@ public class MeFragment extends Fragment {
 
     private Button button = null;
     /* private TextView textView =null;
-
      private Handler handler = null;*/
+    private Button button_toMyPublish = null;
+    private Button button_toOtherApply = null;
     public MeFragment() {
     }
 
@@ -50,6 +53,8 @@ public class MeFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         button = (Button) getActivity().findViewById(R.id.testButton);
+        button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
+        button_toOtherApply = getActivity().findViewById(R.id.toOtherApply);
 //        textView = getActivity().findViewById(R.id.textView);
 //        handler = new Handler();
 
@@ -94,7 +99,21 @@ public class MeFragment extends Fragment {
 //                }
 //            };
         });
+        button_toMyPublish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), My_Publish_Activity.class);
+                startActivity(intent);
+            }
+        });
 
+        button_toOtherApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), Others_Apply_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
