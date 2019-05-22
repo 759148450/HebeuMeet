@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.My_Information;
 import com.hebeu.meet.My_Publish_Activity;
 import com.hebeu.meet.Others_Apply_Activity;
@@ -54,7 +55,7 @@ public class MeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         button = (Button) getActivity().findViewById(R.id.testButton);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
-        button_toOtherApply = getActivity().findViewById(R.id.toOtherApply);
+        button_toOtherApply = getActivity().findViewById(R.id.toMyApply);
 //        textView = getActivity().findViewById(R.id.textView);
 //        handler = new Handler();
 
@@ -110,7 +111,7 @@ public class MeFragment extends Fragment {
         button_toOtherApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), Others_Apply_Activity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
                 startActivity(intent);
             }
         });

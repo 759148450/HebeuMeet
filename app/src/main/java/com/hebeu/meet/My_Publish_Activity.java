@@ -21,6 +21,11 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
 
+/**
+ * 2019.5.21
+ * 我发布的活动列表
+ * 李航
+ */
 public class My_Publish_Activity extends AppCompatActivity {
 
     private List<Activity> activityList = new ArrayList<>();

@@ -9,6 +9,11 @@ import android.widget.TextView;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 
+/**
+ * 2019.5.21
+ * 别人申请我的活动的列表
+ * 李航
+ */
 public class Others_Apply_Activity extends AppCompatActivity {
     Handler handler = null;
     TextView textView = null;

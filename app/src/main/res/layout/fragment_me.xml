@@ -41,10 +41,10 @@
         android:layout_marginLeft="300dp"/>
 
     <Button
-        android:id="@+id/toOtherApply"
+        android:id="@+id/toMyApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="谁申请了我的活动"
-        android:layout_marginTop="600dp"/>
+        android:layout_marginTop="600dp"
+        android:text="我申请的活动" />
 
 </RelativeLayout>

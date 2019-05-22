@@ -27,6 +27,9 @@
         <activity
             android:name="com.hebeu.meet.Others_Apply_Activity">
         </activity>
+        <activity
+            android:name="com.hebeu.meet.MyApplyActivity">
+        </activity>
     </application>
 
 </manifest>
