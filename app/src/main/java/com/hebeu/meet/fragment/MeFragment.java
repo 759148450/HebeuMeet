@@ -40,7 +40,7 @@ public class MeFragment extends Fragment {
     /* private TextView textView =null;
      private Handler handler = null;*/
     private Button button_toMyPublish = null;
-    private Button button_toOtherApply = null;
+    private Button button_toMyApply = null;
     private Button btn_register=null;
     public MeFragment() {
     }
@@ -58,14 +58,14 @@ public class MeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         my_information = (Button) getActivity().findViewById(R.id.my_information);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
-        button_toOtherApply = getActivity().findViewById(R.id.toOtherApply);
+        button_toMyApply = getActivity().findViewById(R.id.toOtherApply);
         btn_register = getActivity().findViewById(R.id.btn_register);
-        button_toOtherApply = getActivity().findViewById(R.id.toMyApply);
+        button_toMyApply = getActivity().findViewById(R.id.toMyApply);
 //        textView = getActivity().findViewById(R.id.textView);
 //        handler = new Handler();
         //zyp 设置图标大小2019-5-22上午
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
-        button_toOtherApply = getActivity().findViewById(R.id.toOtherApply);
+        button_toMyApply = getActivity().findViewById(R.id.toOtherApply);
         Drawable my_xinxi = getResources().getDrawable(R.drawable.my_xinxi);
         Drawable launch = getResources().getDrawable(R.drawable.launch);
         Drawable join = getResources().getDrawable(R.drawable.join);
@@ -76,7 +76,7 @@ public class MeFragment extends Fragment {
         right.setBounds(0,0,40,40);
         my_information.setCompoundDrawables(my_xinxi,null,right,null);
         button_toMyPublish.setCompoundDrawables(launch,null,right,null);
-        button_toOtherApply.setCompoundDrawables(join,null,right,null);
+        button_toMyApply.setCompoundDrawables(join,null,right,null);
         //------------------------------------
 
         /*Vanilla 5-21*/
@@ -127,7 +127,7 @@ public class MeFragment extends Fragment {
             }
         });
 
-        button_toOtherApply.setOnClickListener(new View.OnClickListener() {
+        button_toMyApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
