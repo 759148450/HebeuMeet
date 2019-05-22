@@ -21,7 +21,10 @@ import java.util.Map;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-
+/*修改个人信息
+* Vanilla
+* 5-21
+* */
 public class Update_My_Information extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_name =null;
@@ -74,12 +77,12 @@ public class Update_My_Information extends AppCompatActivity {
                     Looper.prepare();
 
                     if (jsonResult.getCode() == 0){
-                        showDialog();
+                        Toast.makeText(Update_My_Information.this,"修改信息成功",Toast.LENGTH_SHORT).show();
                         //弹出对话框
                         Intent intent = new Intent(Update_My_Information.this, My_Information.class);
                         startActivity(intent);
                     }else {
-                        Toast.makeText(Update_My_Information.this,"活动添加失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Update_My_Information.this,"修改信息失败",Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -87,29 +90,7 @@ public class Update_My_Information extends AppCompatActivity {
 
                 }
             }
-            private void showDialog(){
-                final AlertDialog.Builder normalDialog =
-                        new AlertDialog.Builder(Update_My_Information.this);
- //                           normalDialog.setIcon(R.drawable.icon_dialog);
-                normalDialog.setTitle("更改信息成功");
-//                normalDialog.setMessage("请选择将要前往的页面");
-//                normalDialog.setPositiveButton("个人中心",
-//                        new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                System.out.println("您点击了【个人中心】");
-//                            }
-//                        });
-//                normalDialog.setNegativeButton("活动详情",
-//                        new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                System.out.println("您点击了 【活动详情】");
-//                            }
-//                        });
-//                // 显示
-                normalDialog.show();
-            }
+
         });
 
     }

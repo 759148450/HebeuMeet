@@ -16,6 +16,7 @@ import com.hebeu.meet.My_Information;
 import com.hebeu.meet.My_Publish_Activity;
 import com.hebeu.meet.Others_Apply_Activity;
 import com.hebeu.meet.R;
+import com.hebeu.meet.Register;
 import com.hebeu.meet.domain.User;
 
 import java.util.Map;
@@ -38,6 +39,7 @@ public class MeFragment extends Fragment {
      private Handler handler = null;*/
     private Button button_toMyPublish = null;
     private Button button_toOtherApply = null;
+    private Button btn_register=null;
     public MeFragment() {
     }
 
@@ -55,9 +57,9 @@ public class MeFragment extends Fragment {
         button = (Button) getActivity().findViewById(R.id.testButton);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
         button_toOtherApply = getActivity().findViewById(R.id.toOtherApply);
+        btn_register = getActivity().findViewById(R.id.btn_register);
 //        textView = getActivity().findViewById(R.id.textView);
 //        handler = new Handler();
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +116,13 @@ public class MeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), Register.class);
+                startActivity(intent);
+            }
+        });
     }
-
 
 }

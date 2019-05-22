@@ -13,6 +13,11 @@ import com.hebeu.meet.domain.User;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 
+/*查看个人信息
+* Vanilla
+* 5-21
+*
+* */
 public class My_Information extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_name =null;
@@ -56,7 +61,7 @@ public class My_Information extends AppCompatActivity {
             user_qq = findViewById(R.id.user_qq);
             user_phone = findViewById(R.id.user_phone);
             user_email = findViewById(R.id.user_email);
-            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=160210405");
+            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=3");
             final User user = JSONUtil.toBean(res, User.class);
 
             System.out.println(user.toString());
