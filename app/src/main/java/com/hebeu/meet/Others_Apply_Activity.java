@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.hebeu.meet.domain.Activity;
 import com.hebeu.meet.domain.JSONResult;
 import com.hebeu.meet.domain.User;
 import com.hebeu.meet.domain.UserActivity;
