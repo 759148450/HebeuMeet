@@ -50,6 +50,16 @@ public class UserActivityView {
 
     private byte[] img;
 
+    private Integer userActivityId;
+
+    public Integer getUserActivityId() {
+        return userActivityId;
+    }
+
+    public void setUserActivityId(Integer userActivityId) {
+        this.userActivityId = userActivityId;
+    }
+
     public Integer getActivityId() {
         return activityId;
     }

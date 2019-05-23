@@ -46,6 +46,7 @@ public class MyApplyActivity extends AppCompatActivity {
         handler = new Handler();
         userActivityList = new ArrayList<>();
         userActivityViewList = new ArrayList<>();
+
         MyThread thread = new MyThread();
         thread.start();
     }
@@ -65,7 +66,6 @@ public class MyApplyActivity extends AppCompatActivity {
                 paramMap.put("activityId",activityId);
                 String res2 = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityById",paramMap);//根据activityId从activity表中查出关于本条活动的所有信息
                 final Activity activity = JSONUtil.toBean(res2, Activity.class);
-//                System.out.println("1111111111"+activity.getActivityDate());
                 UserActivityView userActivityView = new UserActivityView();
                 userActivityView.setActivityContent(activity.getActivityContent());//活动内容
 //                userActivityView.setActivityDate(activity.getActivityDate());//活动日期
