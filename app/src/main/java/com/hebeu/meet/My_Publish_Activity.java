@@ -1,5 +1,6 @@
 package com.hebeu.meet;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -31,6 +32,12 @@ public class My_Publish_Activity extends AppCompatActivity {
     private List<Activity> activityList = new ArrayList<>();
     private Handler handler = null;
     ListView listView = null;
+
+    //zyp 修改图标大小 2019-5-22
+    private TextView activityPlace =null;
+    private TextView activityTime =null;
+    private TextView activitySexLimit =null;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,6 +97,24 @@ public class My_Publish_Activity extends AppCompatActivity {
             TextView title = view.findViewById(R.id.activityTitle);
              title.setText(u.getTitle());
             content.setText(u.getActivityContent());
+
+            //zyp 设置图标大小2019-5-22 晚
+            //此处李航上面写的content，如要修改，需统一
+            activityPlace = view.findViewById(R.id.activityPlace);
+            activityTime = view.findViewById(R.id.activityTime);
+            activitySexLimit = view.findViewById(R.id.activitySexLimit);
+
+            Drawable place = getResources().getDrawable(R.drawable.place);
+            Drawable time = getResources().getDrawable(R.drawable.time);
+            Drawable sex = getResources().getDrawable(R.drawable.sex);
+
+            place.setBounds(0,0,32,35);
+            time.setBounds(0,0,32,32);
+            sex.setBounds(0,0,32,32);
+            activityPlace.setCompoundDrawables(place,null,null,null);
+            activityTime.setCompoundDrawables(time,null,null,null);
+            activitySexLimit.setCompoundDrawables(sex,null,null,null);
+            //------------over------------------
             return view;
         }
 

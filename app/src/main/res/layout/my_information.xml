@@ -22,8 +22,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,8 +53,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,11 +83,10 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+        <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,8 +117,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,8 +151,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -185,8 +184,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -217,8 +216,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -249,8 +248,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -281,8 +280,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
 
         <LinearLayout
