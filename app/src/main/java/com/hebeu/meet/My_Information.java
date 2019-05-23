@@ -1,6 +1,7 @@
 package com.hebeu.meet;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,9 @@ public class My_Information extends AppCompatActivity {
     private TextView user_phone_mess =null;
     private TextView user_email_mess =null;
     //-------------
+    /*读取的文件的字段SharedPreferences */
+    private String userId;
+    private String password;
 
     private Handler handler = null;
     @Override
@@ -48,6 +52,7 @@ public class My_Information extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.my_information);
+        /*组件名*/
         user_name = findViewById(R.id.user_name);
         handler = new Handler();
         MyThread thread = new MyThread();
@@ -111,8 +116,16 @@ public class My_Information extends AppCompatActivity {
             user_qq = findViewById(R.id.user_qq);
             user_phone = findViewById(R.id.user_phone);
             user_email = findViewById(R.id.user_email);
-            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=3");
-            final User user = JSONUtil.toBean(res, User.class);
+            /*获取用户信息*/
+            SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
+
+                userId=sharedPre.getString("userId", "");
+                password=sharedPre.getString("password", "");
+                System.out.println("用户id:"+userId+"用户密码"+password);
+
+            /*---------------------------------------------------------------------------------*/
+            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
+            final   User user = JSONUtil.toBean(res, User.class);
 
             System.out.println(user.toString());
 

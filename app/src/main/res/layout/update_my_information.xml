@@ -32,8 +32,7 @@
             <TextView
                 android:id="@+id/user_id"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="user_id" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/user_name_mess"
@@ -45,8 +44,7 @@
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp"
-                android:text="user_name" />
+                android:lineSpacingExtra="12sp" />
 
             <TextView
                 android:id="@+id/user_sex_mess"
@@ -59,8 +57,7 @@
                 android:id="@+id/user_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp"
-                android:text="user_sex" />
+                android:lineSpacingExtra="12sp" />
 
             <TextView
                 android:id="@+id/user_college_mess"
@@ -73,8 +70,7 @@
                 android:id="@+id/user_college"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp"
-                android:text="user_college" />
+                android:lineSpacingExtra="12sp" />
 
             <TextView
                 android:id="@+id/user_classname_mess"
@@ -85,8 +81,7 @@
             <EditText
                 android:id="@+id/user_classname"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="user_classname" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/user_qq_mess"
@@ -97,8 +92,7 @@
             <EditText
                 android:id="@+id/user_qq"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="user_qq" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/user_phone_mess"
@@ -109,8 +103,7 @@
             <EditText
                 android:id="@+id/user_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="user_phone" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/user_email_mess"
@@ -121,8 +114,7 @@
             <EditText
                 android:id="@+id/user_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="user_email" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

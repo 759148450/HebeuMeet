@@ -1,6 +1,7 @@
 package com.hebeu.meet.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,8 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * zyp
  * 个人中心
@@ -39,9 +42,14 @@ public class MeFragment extends Fragment {
     private Button my_information = null;
     /* private TextView textView =null;
      private Handler handler = null;*/
+    private TextView user_name=null;
     private Button button_toMyPublish = null;
     private Button button_toMyApply = null;
     private Button btn_register=null;
+
+    /*读取的文件的字段SharedPreferences */
+    private String username;
+
     public MeFragment() {
     }
 
@@ -51,11 +59,17 @@ public class MeFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_me, container, false);
+
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+
+
+        /*---------------------------------------------------------------------------------*/
         my_information = (Button) getActivity().findViewById(R.id.my_information);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
         button_toMyApply = getActivity().findViewById(R.id.toOtherApply);
@@ -78,47 +92,13 @@ public class MeFragment extends Fragment {
         button_toMyPublish.setCompoundDrawables(launch,null,right,null);
         button_toMyApply.setCompoundDrawables(join,null,right,null);
         //------------------------------------
+        /*获取用户信息*/
+        user_name=getActivity().findViewById(R.id.user_name);
+        SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
+        username=sharedPre.getString("username", "");
+        System.out.println("username"+username);
+        user_name.setText(username);
 
-        /*Vanilla 5-21*/
-        my_information.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), My_Information.class);
-                startActivity(intent);
-//                textView.setText("正在加载。。。");
-//
-//                MyThread thread=new MyThread();
-//                thread.start();
-
-            }
-
-//            class MyThread extends Thread{
-//                @Override
-//                public void run() {
-//                    textView = getActivity().findViewById(R.id.textView);
-//                    String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=160210405");
-//                    final User user = JSONUtil.toBean(res,User.class);
-//
-//                    System.out.println(user.toString());
-//
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            textView.setText(user.getUserName());
-//                        }
-//                    });
-//                }
-//            }
-
-//            Runnable runnableUi = new Runnable() {
-//                @Override
-//                public void run() {
-//                    textView.setText("测试");
-//                }
-//            };
-        });
         button_toMyPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +121,16 @@ public class MeFragment extends Fragment {
                 Intent intent = new Intent(getActivity().getApplicationContext(), Register.class);
                 startActivity(intent);
             }
+        });
+        /*Vanilla 5-21*/
+        my_information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), My_Information.class);
+                startActivity(intent);
+
+            }
+
         });
     }
 

@@ -2,6 +2,7 @@ package com.hebeu.meet;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -36,6 +37,9 @@ public class Update_My_Information extends AppCompatActivity {
     private TextView user_email =null;
     private Button btn_update_user = null;
 
+
+
+    /*---------------------------------------------------------------------------------*/
     private Handler handler = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class Update_My_Information extends AppCompatActivity {
 
         setContentView(R.layout.update_my_information);
         user_name = findViewById(R.id.user_name);
+
         handler = new Handler();
         MyThread thread=new MyThread();
         thread.start();
@@ -59,7 +64,10 @@ public class Update_My_Information extends AppCompatActivity {
                 @Override
                 public void run() {
                     User update_user = new User();
-                    update_user.setUserId("160210405");
+                    /*获取用户信息*/
+                    SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
+                    String userId=sharedPre.getString("userId", "");
+                    update_user.setUserId(userId);
                     update_user.setUserName(String.valueOf(user_name.getText()));
                     update_user.setSex(Integer.parseInt(String.valueOf(user_sex.getText())));
                     update_user.setCollege(String.valueOf(user_college.getText()));
@@ -104,7 +112,9 @@ public class Update_My_Information extends AppCompatActivity {
             user_qq = findViewById(R.id.user_qq);
             user_phone = findViewById(R.id.user_phone);
             user_email = findViewById(R.id.user_email);
-            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId=160210405");
+            SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
+            String userId=sharedPre.getString("userId", "");
+            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
             final User user = JSONUtil.toBean(res, User.class);
 
             System.out.println(user.toString());
