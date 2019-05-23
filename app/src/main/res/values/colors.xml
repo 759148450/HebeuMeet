@@ -23,4 +23,7 @@
     <!-- 微信 -->
     <color name="wx_head_selected">#00A5ED</color>
     <color name="wx_head_default">#5b666f</color>
+
+    <!--活动信息 zyp-2019-5-22-->
+    <color name="hd_message">#42425B</color>
 </resources>

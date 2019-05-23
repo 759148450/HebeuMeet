@@ -22,8 +22,8 @@
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,14 +47,13 @@
                 android:id="@+id/user_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="user_id"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,15 +78,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="12sp"
-                android:text="user_name"
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+        <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,14 +109,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="12sp"
-                android:text="user_sex"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,15 +141,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="12sp"
-                android:text="user_college"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,15 +173,14 @@
                 android:id="@+id/user_classname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="user_classname"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -210,15 +204,14 @@
                 android:id="@+id/user_qq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="user_qq"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -242,15 +235,14 @@
                 android:id="@+id/user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="user_phone"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -274,15 +266,14 @@
                 android:id="@+id/user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="user_email"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="0.5dp"
-            android:background="#aa000000" />
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
 
         <LinearLayout
