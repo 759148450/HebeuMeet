@@ -15,10 +15,12 @@
     <color name="window_half_transparent">#90000000</color>
     <color name="blue_white">#0eabe5</color>
     <color name="launch">#CEE8FF</color>
-
+    <color name="success">#FF2076</color>
+    <color name="fail">#00A5ED</color>
     <!-- 主页 -->
     <color name="menu_gray">#8a8a8a</color>
     <color name="menu_green">#00A5ED</color>
+
 
     <!-- 微信 -->
     <color name="wx_head_selected">#00A5ED</color>

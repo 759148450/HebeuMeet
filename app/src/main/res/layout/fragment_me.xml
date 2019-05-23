@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/my_style"
+                android:background="@drawable/my_button_state"
                 android:drawableLeft="@drawable/my_xinxi"
                 android:drawablePadding="20dip"
                 android:gravity="center_vertical"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/my_style"
+                android:background="@drawable/my_button_state"
                 android:drawableLeft="@drawable/launch"
                 android:drawablePadding="20dip"
                 android:gravity="center_vertical"
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/my_style"
+                android:background="@drawable/my_button_state"
                 android:drawableLeft="@drawable/join"
                 android:drawablePadding="20dip"
                 android:gravity="center_vertical"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/my_style"
+                android:background="@drawable/my_button_state"
                 android:drawableLeft="@drawable/join"
                 android:drawablePadding="20dip"
                 android:gravity="center_vertical"
@@ -114,12 +114,7 @@
                 android:text="注册"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-    <!--<Button-->
-        <!--android:id="@+id/toOthersApply"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="200dp"-->
-        <!--android:text="别人申请的活动" />-->
+
 
         </LinearLayout>
 

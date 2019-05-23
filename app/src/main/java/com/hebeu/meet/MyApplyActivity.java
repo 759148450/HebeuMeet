@@ -1,5 +1,6 @@
 package com.hebeu.meet;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -123,7 +124,7 @@ public class MyApplyActivity extends AppCompatActivity {
             TextView Slimit = view.findViewById(R.id.acSexLimit);
             TextView place = view.findViewById(R.id.acPlace);
             TextView state = view.findViewById(R.id.acState);
-//            TextView time = view.findViewById(R.id.acTime);
+            TextView time = view.findViewById(R.id.acTime);
             TextView title = view.findViewById(R.id.acTitle);
             TextView words = view.findViewById(R.id.acWords);
             TextView status = view.findViewById(R.id.applyStatus);
@@ -151,6 +152,23 @@ public class MyApplyActivity extends AppCompatActivity {
                 case "2":u.setJoinState("申请通过");break;
             }
             status.setText("申请状态："+u.getJoinState());
+
+            // zyp 设置图标大小  2019-5-23上午----------------
+
+            Drawable place_img = getResources().getDrawable(R.drawable.place);
+            Drawable time_img = getResources().getDrawable(R.drawable.time);
+            Drawable sex_img = getResources().getDrawable(R.drawable.sex);
+
+            place_img.setBounds(0,0,32,35);
+            time_img.setBounds(0,0,32,32);
+            sex_img.setBounds(0,0,32,32);
+
+            place.setCompoundDrawables(place_img,null,null,null);
+            time.setCompoundDrawables(time_img,null,null,null);
+            Slimit.setCompoundDrawables(sex_img,null,null,null);
+
+            //-------------end--------------------------------
+
             return view;
         }
 

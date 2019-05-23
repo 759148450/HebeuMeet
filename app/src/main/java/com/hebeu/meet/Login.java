@@ -36,7 +36,9 @@ public class Login extends AppCompatActivity {
     private TextView user_password=null;
     private Button btn_login=null;
     private Handler handler = null;
-
+    /*读取的文件的字段SharedPreferences */
+    private String userId;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,10 +53,18 @@ public class Login extends AppCompatActivity {
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MyThread thread = new MyThread();
-                    thread.start();
-                    Intent intent = new Intent(Login.this, HomeActivity.class);
-                    startActivity(intent);
+//                    SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
+//                    if(sharedPre!=null) {
+//                        userId = sharedPre.getString("userId", "");
+//                        password = sharedPre.getString("password", "");
+//                        System.out.println("用户id:"+userId+"用户密码"+password);
+//                    }
+//                    else {
+                        MyThread thread = new MyThread();
+                        thread.start();
+//                        Intent intent = new Intent(Login.this, HomeActivity.class);
+//                        startActivity(intent);
+//                    }
                 }
                 class MyThread extends Thread{
                     @Override
@@ -87,7 +97,10 @@ public class Login extends AppCompatActivity {
                             startActivity(intent);
 
                         }else {
+
                             Toast.makeText(Login.this,"登录失败！",Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
+//                            startActivity(intent);
                         }
                         System.out.println("jsonResult"+jsonResult);
 

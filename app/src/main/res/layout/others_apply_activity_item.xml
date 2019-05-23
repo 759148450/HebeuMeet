@@ -1,49 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    android:layout_height="match_parent">
+    <!--zyp 2019-5-23  界面  下午-->
 
-    <TextView
-        android:id="@+id/mc"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="名称" />
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@color/white">
 
-    <TextView
-        android:id="@+id/bj"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="班级"
-        />
+        <!--活动申请人信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/apply_style"
+            android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/bz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="备注" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
 
-    <Button
-        android:id="@+id/jjsq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="拒绝" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/my_img"/>
 
-    <Button
-        android:id="@+id/tysq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="同意" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/othersRes"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="已同意"
-        android:visibility="invisible" />
+                    <TextView
+                        android:id="@+id/mc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="活动发起人"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/hd_message"
+                        tools:layout_editor_absoluteY="387dp" />
+                    <!--zyp添加活动发起人信息，数据需后台获取-->
+                    <TextView
+                        android:id="@+id/bj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="计算机1604张三"
+                        android:textColor="@color/hd_message"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteY="387dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--zyp添加发起人性别图片，数据需后台获取判断-->
+            <ImageView
+                android:id="@+id/sex"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/man"/>
+
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="“"
+                android:textColor="#9F9FAC"
+                android:textSize="30dp"/>
+            <TextView
+                android:id="@+id/bz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注"
+                android:textSize="20dp"
+                android:textColor="#9F9FAC"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="”"
+                android:gravity="right"
+                android:textColor="#9F9FAC"
+                android:textSize="30dp"/>
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
 
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/jjsq"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="0dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_state"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="拒绝"
+                android:textSize="20sp"
+                android:textColor="@color/success"/>
+            <View
+                android:layout_width="0.2dp"
+                android:layout_height="match_parent"
+                android:background="#cdcdcd"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/tysq"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_state"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="同意"
+                android:textSize="20sp"
+                android:textColor="@color/fail"/>
+
+        </LinearLayout>
+
+        <!--zyp以下样式需要判断状态来显示-->
+        <TextView
+            android:id="@+id/othersRes"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="已同意"
+            android:visibility="invisible" />
+    </LinearLayout>
+</ScrollView>

@@ -72,14 +72,14 @@ public class MeFragment extends Fragment {
         /*---------------------------------------------------------------------------------*/
         my_information = (Button) getActivity().findViewById(R.id.my_information);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
-        button_toMyApply = getActivity().findViewById(R.id.toOtherApply);
+        button_toMyApply = getActivity().findViewById(R.id.toMyApply);
         btn_register = getActivity().findViewById(R.id.btn_register);
         button_toMyApply = getActivity().findViewById(R.id.toMyApply);
 //        textView = getActivity().findViewById(R.id.textView);
 //        handler = new Handler();
         //zyp 设置图标大小2019-5-22上午
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
-        button_toMyApply = getActivity().findViewById(R.id.toOtherApply);
+        button_toMyApply = getActivity().findViewById(R.id.toMyApply);
         Drawable my_xinxi = getResources().getDrawable(R.drawable.my_xinxi);
         Drawable launch = getResources().getDrawable(R.drawable.launch);
         Drawable join = getResources().getDrawable(R.drawable.join);
