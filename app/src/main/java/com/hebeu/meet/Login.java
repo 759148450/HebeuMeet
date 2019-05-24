@@ -42,6 +42,7 @@ public class Login extends AppCompatActivity {
     /*读取的文件的字段SharedPreferences */
     private String userId;
     private String password;
+    private Intent a,b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -51,28 +52,40 @@ public class Login extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        handler = new Handler();
-        System.out.println("login>>>>>");
+        btn_register=findViewById(R.id.btn_register);
+        btn_login=findViewById(R.id.btn_login);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Login.this,Register.class);
+                startActivityForResult(intent,1);
+            }
+        });
+//        handler = new Handler();
+//        System.out.println("login>>>>>");
         user_id=findViewById(R.id.user_id);
         user_password=findViewById(R.id.user_password);
-            btn_login=findViewById(R.id.btn_login);
-            System.out.println("btn_login>>>>>>");
+//            System.out.println("btn_login>>>>>>");
+
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        MyThread thread = new MyThread();
-                        thread.start();
-                }
-                class MyThread extends Thread{
-                    @Override
-                    public void run() {
+                    System.out.println("111111111111111111111111111111");
+//                     MyThread thread = new MyThread();
+//                       thread.start();
+//                    Intent intent=new Intent(Login.this,Register.class);
+//                     startActivity(intent);
+
+//                class MyThread extends Thread{
+//                    @Override
+//                    public void run(){
 
                         System.out.println(123333333);
                         System.out.println(String.valueOf(user_id.getText()));
                         String my_user_id=String.valueOf(user_id.getText());
                         String my_user_password=String.valueOf(user_password.getText());
 
-                        Looper.prepare();
+//                        Looper.prepare();
 
                         System.out.println("try");
                         Map<String,Object> paramMap = new HashMap<>();
@@ -94,32 +107,46 @@ public class Login extends AppCompatActivity {
                         }else {
 
                             Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
-//                            startActivity(intent);
+                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
+
+                           startActivity(intent);
                         }
                         System.out.println("jsonResult"+jsonResult);
 
                         Looper.loop();
 
                     }
-                }
+
 
             });
-        /*转跳用户注册
-         * */
-        setContentView(R.layout.login);//跳转用户注册界面
-        Button btn_register=findViewById(R.id.btn_register);
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Login.this,Register.class);
-                startActivity(intent);
+       /*转跳用户注册
+        * */
+//        setContentView(R.layout.login);//跳转用户注册界面
+//        Button btn_register=findViewById(R.id.btn_register);
+//        btn_register.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(Login.this,Register.class);
+//               startActivity(intent);
+//           }
+//       });
+       }
+       private class ButtonListener implements View.OnClickListener{
+        public void onClick(View v){
+            switch (v.getId()){
+                case R.id.btn_login:
+                    a=new Intent(Login.this.getApplicationContext(), Login.class);
+                    startActivity(a);
+                    break;
+                case R.id.btn_register:
+                    b=new Intent(Login.this,Register.class);
+                    startActivity(b);
+                    break;
             }
-        });
         }
+       }
 
 
-    //}
     /*保存用户登录信息*/
     public static void saveLoginInfo(Context context, User user) {
         // 获取SharedPreferences对象
