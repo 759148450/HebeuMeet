@@ -128,8 +128,9 @@ public class LaunchFragment extends Fragment {
             }
             private void showDialog(){
                 final AlertDialog.Builder normalDialog =
-                        new AlertDialog.Builder(getActivity());
+                        new AlertDialog.Builder(getActivity() ,R.style.MyDialogStyle);
 //                            normalDialog.setIcon(R.drawable.icon_dialog);
+                normalDialog.setIcon(R.drawable.success);
                 normalDialog.setTitle("活动添加成功");
                 normalDialog.setMessage("请选择将要前往的页面");
                 normalDialog.setPositiveButton("首页",

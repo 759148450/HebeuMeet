@@ -16,12 +16,16 @@ import android.widget.Toast;
 
 import com.hebeu.meet.domain.JSONResult;
 import com.hebeu.meet.domain.User;
+import com.hebeu.meet.fragment.MeFragment;
 
 import java.util.Map;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+
+import static com.hebeu.meet.Login.saveLoginInfo;
+
 /*修改个人信息
 * Vanilla
 * 5-21
@@ -47,8 +51,15 @@ public class Update_My_Information extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.update_my_information);
-        user_name = findViewById(R.id.user_name);
 
+        user_id =findViewById(R.id.user_id);
+        user_name = findViewById(R.id.user_name);
+        user_sex = findViewById(R.id.user_sex);
+        user_college = findViewById(R.id.user_college);
+        user_classname = findViewById(R.id.user_classname);
+        user_qq = findViewById(R.id.user_qq);
+        user_phone = findViewById(R.id.user_phone);
+        user_email = findViewById(R.id.user_email);
         handler = new Handler();
         MyThread thread=new MyThread();
         thread.start();
@@ -85,8 +96,14 @@ public class Update_My_Information extends AppCompatActivity {
                     Looper.prepare();
 
                     if (jsonResult.getCode() == 0){
-                        Toast.makeText(Update_My_Information.this,"修改信息成功",Toast.LENGTH_SHORT).show();
                         //弹出对话框
+                        Toast.makeText(Update_My_Information.this,"修改信息成功",Toast.LENGTH_SHORT).show();
+                        /*重新保存用户信息到Sharedpreference*/
+                        String res_id = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
+                        final User my_user = JSONUtil.toBean(res_id, User.class);
+                        System.out.println("my_user"+my_user.toString());
+                        saveLoginInfo(Update_My_Information.this, my_user);
+                        /*跳转到个人中心*/
                         Intent intent = new Intent(Update_My_Information.this, My_Information.class);
                         startActivity(intent);
                     }else {
@@ -104,21 +121,13 @@ public class Update_My_Information extends AppCompatActivity {
     }
     class MyThread extends Thread {
         public void run() {
-            user_id =findViewById(R.id.user_id);
-            user_name = findViewById(R.id.user_name);
-            user_sex = findViewById(R.id.user_sex);
-            user_college = findViewById(R.id.user_college);
-            user_classname = findViewById(R.id.user_classname);
-            user_qq = findViewById(R.id.user_qq);
-            user_phone = findViewById(R.id.user_phone);
-            user_email = findViewById(R.id.user_email);
+
             SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
             String userId=sharedPre.getString("userId", "");
             String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
             final User user = JSONUtil.toBean(res, User.class);
 
             System.out.println(user.toString());
-
             handler.post(new Runnable() {
                 @Override
                 public void run() {

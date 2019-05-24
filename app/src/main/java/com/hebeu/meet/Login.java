@@ -53,18 +53,8 @@ public class Login extends AppCompatActivity {
             btn_login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
-//                    if(sharedPre!=null) {
-//                        userId = sharedPre.getString("userId", "");
-//                        password = sharedPre.getString("password", "");
-//                        System.out.println("用户id:"+userId+"用户密码"+password);
-//                    }
-//                    else {
                         MyThread thread = new MyThread();
                         thread.start();
-//                        Intent intent = new Intent(Login.this, HomeActivity.class);
-//                        startActivity(intent);
-//                    }
                 }
                 class MyThread extends Thread{
                     @Override
@@ -91,14 +81,12 @@ public class Login extends AppCompatActivity {
                             final User user = JSONUtil.toBean(res_id, User.class);
                             System.out.println("User"+user.toString());
                             saveLoginInfo(Login.this, user);
-
                             Toast.makeText(Login.this,"登录成功！",Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Login.this.getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
-
                         }else {
 
-                            Toast.makeText(Login.this,"登录失败！",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
 //                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
 //                            startActivity(intent);
                         }
@@ -111,7 +99,6 @@ public class Login extends AppCompatActivity {
 
             });
         }
-
     //}
     /*保存用户登录信息*/
     public static void saveLoginInfo(Context context, User user) {

@@ -201,7 +201,6 @@ public class Others_Apply_Activity extends AppCompatActivity {
                 }
             });
 
-
             return view;
         }
 

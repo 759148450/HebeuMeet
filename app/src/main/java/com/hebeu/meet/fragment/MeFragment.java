@@ -52,7 +52,15 @@ public class MeFragment extends Fragment {
 
     public MeFragment() {
     }
+    /*自动刷新*/
+    @Override
+    public void onResume() {
 
+        super.onResume();
+
+        onActivityCreated(null);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -17,10 +17,12 @@
         android:layout_margin="20dp"
         android:background="@color/white">
 
+        <!--正在申请-->
         <LinearLayout
+            android:id="@+id/applying"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/state_style">
+            android:background="@drawable/state_applying">
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -30,6 +32,38 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:id="@+id/applyStatus" />
+        </LinearLayout>
+        <!--申请通过-->
+        <LinearLayout
+            android:id="@+id/apply_success"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_success">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/applyStatus2" />
+        </LinearLayout>
+        <!--申请失败-->
+        <LinearLayout
+            android:id="@+id/apply_fail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_fail">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/applyStatus3" />
         </LinearLayout>
         <!--图片为zyp自行写死，后续修改-->
         <ImageView
