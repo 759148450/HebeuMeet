@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.hebeu.meet.adapter.ActivityAdapter;
 import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.ActivityCreateUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ import cn.hutool.json.JSONUtil;
  */
 public class My_Publish_Activity extends AppCompatActivity {
 
-    private List<Activity> activityList = new ArrayList<>();
+    private List<ActivityCreateUser> activityCreateUserList = new ArrayList<>();
     private Handler handler = null;
     ListView listView = null;
 
@@ -48,16 +49,16 @@ public class My_Publish_Activity extends AppCompatActivity {
     }
     class MyThread extends Thread {
         public void run() {
-            String res = HttpUtil.get("http://112.74.194.121:8889/activity/selectActivityByUserId?userId=160210405");
+            String res = HttpUtil.get("http://112.74.194.121:8889/activity/selectActivityCreateUserByUserId?userId=160210405");
             JSONArray array = JSONUtil.parseArray(res);
-            activityList = JSONUtil.toList(array, Activity.class);
-            System.out.println(activityList.get(0).getActivityContent());
+            activityCreateUserList = JSONUtil.toList(array, ActivityCreateUser.class);
+            System.out.println(activityCreateUserList.get(0).getActivityContent());
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
 
-                    ActivityAdapter activityAdapter = new ActivityAdapter(My_Publish_Activity.this, activityList);
+                    ActivityAdapter activityAdapter = new ActivityAdapter(My_Publish_Activity.this, activityCreateUserList);
 
                     listView.setAdapter(activityAdapter);
                 }

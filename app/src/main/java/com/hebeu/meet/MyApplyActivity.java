@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.ActivityCreateUser;
+import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.User;
 import com.hebeu.meet.domain.UserActivity;
 import com.hebeu.meet.domain.UserActivityView;
@@ -37,7 +39,7 @@ public class MyApplyActivity extends AppCompatActivity {
 
     private ListView listView = null;
     private Handler handler = null;
-    private List<UserActivity> userActivityList = null;
+    private List<ActivityJoinUser> userActivityList = null;
     private List<UserActivityView> userActivityViewList= null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,17 +58,17 @@ public class MyApplyActivity extends AppCompatActivity {
 
         public void run(){
             String userId = "160210405";
-            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectUserActivityByUserId?userId="+userId);//根据userId从activity-user表中查出关于user的所有信息
+            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByUserId?userId="+userId);//根据userId从activity-user表中查出关于user的所有信息
             JSONArray array = JSONUtil.parseArray(res);
-            userActivityList = JSONUtil.toList(array, UserActivity.class);
+            userActivityList = JSONUtil.toList(array, ActivityJoinUser.class);
             System.out.println(userActivityList.toString());
             int activityId;
-            for(UserActivity item : userActivityList){
+            for(ActivityJoinUser item : userActivityList){
                 activityId = item.getActivityId();
                 Map<String,Object> paramMap = new HashMap<>();
                 paramMap.put("activityId",activityId);
-                String res2 = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityById",paramMap);//根据activityId从activity表中查出关于本条活动的所有信息
-                final Activity activity = JSONUtil.toBean(res2, Activity.class);
+                String res2 = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityCreateUserById",paramMap);//根据activityId从activity表中查出关于本条活动的所有信息
+                final ActivityCreateUser activity = JSONUtil.toBean(res2, ActivityCreateUser.class);
                 UserActivityView userActivityView = new UserActivityView();
                 userActivityView.setActivityContent(activity.getActivityContent());//活动内容
 //                userActivityView.setActivityDate(activity.getActivityDate());//活动日期

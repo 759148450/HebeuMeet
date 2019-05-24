@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.hebeu.meet.R;
 import com.hebeu.meet.adapter.ActivityAdapter;
 import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.ActivityCreateUser;
 import com.hebeu.meet.domain.JSONResult;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class MsgContentFragment extends Fragment {
 
     private Handler handler = null;
     // 模拟数据
-    private List<Activity> activityList = new ArrayList<>();
+    private List<ActivityCreateUser> activityCreateUserList = new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,17 +96,17 @@ public class MsgContentFragment extends Fragment {
                     break;
             }
             paramMap.put("typeId",typeId);
-            String res = HttpUtil.get("112.74.194.121:8889/activity/selectActivityByTypeId",paramMap);
+            String res = HttpUtil.get("112.74.194.121:8889/activity/selectActivityCreateUserByTypeId",paramMap);
             JSONArray jsonArray = JSONUtil.parseArray(res);
-            activityList = JSONUtil.toList(jsonArray,Activity.class);
+            activityCreateUserList = JSONUtil.toList(jsonArray, ActivityCreateUser.class);
 
-            System.out.println(activityList);
+            System.out.println(activityCreateUserList);
 
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    ActivityAdapter activityAdapter = new ActivityAdapter(getActivity(), activityList);
+                    ActivityAdapter activityAdapter = new ActivityAdapter(getActivity(), activityCreateUserList);
 
                     listView.setAdapter(activityAdapter);
                 }

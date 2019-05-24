@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.JSONResult;
 import com.hebeu.meet.domain.User;
 import com.hebeu.meet.domain.UserActivity;
@@ -36,7 +37,7 @@ import cn.hutool.json.JSONUtil;
 public class Others_Apply_Activity extends AppCompatActivity {
     private Handler handler = null;
     private ListView listView = null;
-    private List<UserActivity> userActivityList = null;
+    private List<ActivityJoinUser> activityJoinUserList = null;
     private List<UserActivityView> userActivityViewList = null;
     private Button accptBtn = null;
     private Button refuseBtn = null;
@@ -48,7 +49,7 @@ public class Others_Apply_Activity extends AppCompatActivity {
         setContentView(R.layout.others_apply_activity);
         listView = findViewById(R.id.OthersApply);
         handler = new Handler();
-        userActivityList = new ArrayList<>();
+        activityJoinUserList = new ArrayList<>();
         userActivityViewList = new ArrayList<>();
         jsonResult = new JSONResult();
         MyThread myThread = new MyThread();
@@ -62,11 +63,11 @@ public class Others_Apply_Activity extends AppCompatActivity {
             Map<String,Object> paramMap = new HashMap<>();
             paramMap.put("activityId",activityId);
             //根据activityId从activity-user表中查出关于本活动的信息
-            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectUserActivityByActivityId",paramMap);
+            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
 
             JSONArray array = JSONUtil.parseArray(res);
-            userActivityList = JSONUtil.toList(array, UserActivity.class);
-            for(UserActivity item : userActivityList){
+            activityJoinUserList = JSONUtil.toList(array, ActivityJoinUser.class);
+            for(ActivityJoinUser item : activityJoinUserList){
                 Map<String,Object> paramMap2 = new HashMap<>();
                 paramMap2.put("userId",item.getUserId());
                 String res2 = HttpUtil.get("http://112.74.194.121:8889/user/getUserById",paramMap2);
