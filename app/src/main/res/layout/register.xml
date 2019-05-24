@@ -1,171 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--注册界面-->
+<!--这里的布局是放置 1 个 ImageView 控件，用于显示用户头像；3 个 EditText 控件，用于输入用户名、密码、再次输入密码；1 个 Button 控件作为注册按钮-->
+<!--修改 activity_register.xml 为 LinearLayout 布局-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ScrollView"-->
+        <!--android:layout_width="416dp"-->
+        <!--android:layout_height="736dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:orientation="vertical"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="1.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.6">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="394dp"
+        android:layout_height="303dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="注册个人信息"
-                android:textSize="24sp" />
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="292dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/default_icon" />
 
-            <TextView
-                android:id="@+id/user_id_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_id"
-                android:textSize="24sp" />
+        <ImageView
+            android:layout_width="165dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/meet" />
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/user_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="383dp"
+        android:layout_height="277dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.655">
 
-            <TextView
-                android:id="@+id/user_password_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_password"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_id"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:gravity="center_vertical"
+            android:hint="请输入用户名"
+            android:paddingLeft="50dp"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp" />
 
-            <EditText
-                android:id="@+id/user_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/user_password_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入密码"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_password_mess"
+            app:layout_constraintStart_toStartOf="@+id/user_password_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_password_mess" />
 
-            <TextView
-                android:id="@+id/user_name_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_name_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入姓名"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_name_mess"
+            app:layout_constraintStart_toStartOf="@+id/user_name_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_name_mess" />
 
-            <EditText
-                android:id="@+id/user_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/user_sex_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_sex"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_college_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
 
-            <EditText
-                android:id="@+id/user_sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入学院"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_college_mess"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/user_college_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_college_mess" />
 
-            <TextView
-                android:id="@+id/user_college_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_college"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_classname_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
 
-            <EditText
-                android:id="@+id/user_college"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入班级"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_classname_mess"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/user_classname_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_classname_mess" />
 
-            <TextView
-                android:id="@+id/user_classname_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_classname"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_qq_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
 
-            <EditText
-                android:id="@+id/user_classname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入QQ号码"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_qq_mess"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/user_qq_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_qq_mess" />
 
-            <TextView
-                android:id="@+id/user_qq_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_qq"
-                android:textSize="24sp" />
+        <EditText
+            android:id="@+id/user_phone_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入手机号码"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_phone_mess"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/user_phone_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_phone_mess" />
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/user_qq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/shape"
+        android:text="立即注册"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.87" />
 
-            <TextView
-                android:id="@+id/user_phone_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_phone"
-                android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/user_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/user_email_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_email"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/user_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_style"
-                android:text="注册" />
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </android.support.constraint.ConstraintLayout>
-        </LinearLayout>
-
-    </android.support.constraint.ConstraintLayout>
-
-</ScrollView>
+</android.support.constraint.ConstraintLayout>

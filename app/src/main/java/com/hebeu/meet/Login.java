@@ -12,6 +12,8 @@ import android.os.Looper;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,12 +37,17 @@ public class Login extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_password=null;
     private Button btn_login=null;
+    private Button btn_register=null;
     private Handler handler = null;
     /*读取的文件的字段SharedPreferences */
     private String userId;
     private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);//remove title bar  即隐藏标题栏
+        getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//remove notification bar  即全屏
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -98,7 +105,20 @@ public class Login extends AppCompatActivity {
                 }
 
             });
+        /*转跳用户注册
+         * */
+        setContentView(R.layout.login);//跳转用户注册界面
+        Button btn_register=findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Login.this,Register.class);
+                startActivity(intent);
+            }
+        });
         }
+
+
     //}
     /*保存用户登录信息*/
     public static void saveLoginInfo(Context context, User user) {
