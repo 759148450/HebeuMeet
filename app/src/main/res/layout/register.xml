@@ -4,6 +4,7 @@
 <!--修改 activity_register.xml 为 LinearLayout 布局-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,6 +21,20 @@
         <!--app:layout_constraintStart_toStartOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent"-->
         <!--app:layout_constraintVertical_bias="0.6">-->
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="49dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -66,10 +81,31 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.655">
+        app:layout_constraintVertical_bias="0.59">
+
+        <EditText
+            android:id="@+id/user_classname_mess"
+            android:layout_width="200dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/shape1"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入班级"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/user_classname_mess"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/user_classname_mess"
+            app:layout_constraintTop_toBottomOf="@+id/user_classname_mess" />
 
         <EditText
             android:id="@+id/user_id"
@@ -124,13 +160,17 @@
             app:layout_constraintStart_toStartOf="@+id/user_name_mess"
             app:layout_constraintTop_toBottomOf="@+id/user_name_mess" />
 
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" />
 
         <EditText
             android:id="@+id/user_college_mess"
             android:layout_width="200dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"
-
             android:layout_marginLeft="2dp"
             android:background="@drawable/shape1"
             android:drawablePadding="10dp"
@@ -145,27 +185,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/user_college_mess"
             app:layout_constraintTop_toBottomOf="@+id/user_college_mess" />
-
-        <EditText
-            android:id="@+id/user_classname_mess"
-            android:layout_width="200dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center_horizontal"
-
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/shape1"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:hint="请输入班级"
-            android:paddingLeft="50dp"
-            android:singleLine="true"
-            android:textColor="#000000"
-            android:textColorHint="#a3a3a3"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/user_classname_mess"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/user_classname_mess"
-            app:layout_constraintTop_toBottomOf="@+id/user_classname_mess" />
 
         <EditText
             android:id="@+id/user_qq_mess"
@@ -213,8 +232,8 @@
         android:id="@+id/btn_register"
         android:layout_width="150dp"
         android:layout_height="40dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/shape"
@@ -223,7 +242,53 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.87" />
+        app:layout_constraintVertical_bias="0.917" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="51dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/male" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="54dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="132dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:srcCompat="@drawable/falme" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="45dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView11"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
