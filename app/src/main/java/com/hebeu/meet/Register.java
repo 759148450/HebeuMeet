@@ -29,7 +29,7 @@ import cn.hutool.json.JSONUtil;
 public class Register extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_name =null;
-    private TextView user_sex =null;
+    private Integer user_sex =null;
     private TextView user_college =null;
     private TextView user_classname =null;
     private TextView user_qq =null;
@@ -49,26 +49,36 @@ public class Register extends AppCompatActivity {
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//remove notification bar  即全屏
 
+
+
         setContentView(R.layout.register);
         handler = new Handler();
         System.out.println("register>>>>>");
         user_id=findViewById(R.id.user_id);
         user_password=findViewById(R.id.user_password);
         user_name=findViewById(R.id.user_name);
-        user_sex=findViewById(R.id.user_sex);
+//        user_sex=findViewById(R.id.user_sex);
         user_college=findViewById(R.id.user_college);
         user_classname=findViewById(R.id.user_classname);
         user_qq=findViewById(R.id.user_qq);
         user_phone=findViewById(R.id.user_phone);
         user_email=findViewById(R.id.user_email);
         btn_register=findViewById(R.id.btn_register);
+        Button imagefalme=findViewById(R.id.imagefamle);
+        imagefalme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user_sex=1;
+                System.out.println(user_sex);
+            }
+        });
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyThread thread = new MyThread();
                 thread.start();
-
             }
+
             class MyThread extends Thread{
                 @Override
                 public void run() {
@@ -78,7 +88,8 @@ public class Register extends AppCompatActivity {
                     new_user.setUserId(String.valueOf(user_id.getText()));
                     new_user.setPassword(String.valueOf(user_password.getText()));
                     new_user.setUserName(String.valueOf(user_name.getText()));
-                    new_user.setSex(Integer.parseInt(String.valueOf(user_sex.getText())));
+                    new_user.setSex(user_sex);
+//                    new_user.setSex(Integer.parseInt(String.valueOf(user_sex.getText())));
                     new_user.setCollege(String.valueOf(user_college.getText()));
                     new_user.setClassName(String.valueOf(user_classname.getText()));
                     new_user.setQq(String.valueOf(user_qq.getText()));
