@@ -23,15 +23,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/state_applying">
+
             <TextView
-                android:layout_height="match_parent"
+                android:id="@+id/applyStatus"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="正在申请"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:id="@+id/applyStatus" />
+                android:textStyle="bold" />
         </LinearLayout>
         <!--申请通过-->
         <LinearLayout
@@ -39,15 +41,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/state_apply_success">
+
             <TextView
-                android:layout_height="match_parent"
+                android:id="@+id/applyStatus2"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="申请成功"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:id="@+id/applyStatus2" />
+                android:textStyle="bold" />
         </LinearLayout>
         <!--申请失败-->
         <LinearLayout
@@ -55,15 +59,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/state_apply_fail">
+
             <TextView
-                android:layout_height="match_parent"
+                android:id="@+id/applyStatus3"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="申请失败"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:id="@+id/applyStatus3" />
+                android:textStyle="bold" />
         </LinearLayout>
         <!--图片为zyp自行写死，后续修改-->
         <ImageView

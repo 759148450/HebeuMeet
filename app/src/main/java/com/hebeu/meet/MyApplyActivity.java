@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -129,7 +130,16 @@ public class MyApplyActivity extends AppCompatActivity {
             TextView time = view.findViewById(R.id.acTime);
             TextView title = view.findViewById(R.id.acTitle);
             TextView words = view.findViewById(R.id.acWords);
-            TextView status = view.findViewById(R.id.applyStatus);
+
+//            TextView status = view.findViewById(R.id.applyStatus);
+//            TextView status2 = view.findViewById(R.id.applyStatus2);
+//            TextView status3 = view.findViewById(R.id.applyStatus3);
+
+            LinearLayout applying = view.findViewById(R.id.applying);
+            LinearLayout apply_success = view.findViewById(R.id.apply_success);
+            LinearLayout apply_fail = view.findViewById(R.id.apply_fail);
+
+
             title.setText("活动标题："+u.getTitle());
             Plimit.setText("活动人数限制："+u.getPeopleLimit().toString());
             if(u.getSexLimit().equals("0")){
@@ -138,22 +148,51 @@ public class MyApplyActivity extends AppCompatActivity {
                 Slimit.setText("活动性别限制：女");
             }
             place.setText("活动地点："+u.getActivityPlace());
+
+
+
             switch (u.getApplyState()){
-                case "0":u.setApplyState("正在进行");break;
-                case "1":u.setApplyState("活动结束");break;
-                case "2":u.setApplyState("活动取消");break;
+                case "0":{
+                    u.setApplyState("正在进行");break;
+
+                }
+                case "1":{
+                    u.setApplyState("活动结束");break;
+                }
+                case "2":{
+                    u.setApplyState("活动取消");break;
+                }
             }
             state.setText("活动进展："+u.getApplyState());
 //            DateFormat bf = new SimpleDateFormat("yyyy-MM-dd E a HH:mm:ss");//创建格式化工具
 //            String format = bf.format(u.getActivityDate());//格式化 bf.format(date);
 //            time.setText(format);
             words.setText("留言： "+u.getWords());
-            switch (u.getJoinState()){
-                case "1":u.setJoinState("正在申请");break;
-                case "3":u.setJoinState("拒绝申请");break;
-                case "2":u.setJoinState("申请通过");break;
+//            switch (u.getJoinState()){
+//                case "1":u.setJoinState("正在申请");break;
+//                case "3":u.setJoinState("拒绝申请");break;
+//                case "2":u.setJoinState("申请通过");break;
+//            }
+
+            if (u.getJoinState().equals("0")){
+                //正在申请
+
+                apply_fail.setVisibility(View.GONE);
+                apply_success.setVisibility(View.GONE);
+
+            }else if (u.getJoinState().equals("1")){
+                //申请成功
+
+                apply_fail.setVisibility(View.GONE);
+                applying.setVisibility(View.GONE);
+
+            }else if (u.getJoinState().equals("2")){
+                //申请失败
+
+                applying.setVisibility(View.GONE);
+                apply_success.setVisibility(View.GONE);
+
             }
-            status.setText("申请状态："+u.getJoinState());
 
             // zyp 设置图标大小  2019-5-23上午----------------
 
