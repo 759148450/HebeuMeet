@@ -91,8 +91,11 @@ public class MsgContentFragment extends Fragment {
                 case "约逛街":
                     typeId = 4;
                     break;
-                case "约其他":
+                case "约游戏":
                     typeId = 5;
+                    break;
+                case "约其他":
+                    typeId = 6;
                     break;
             }
             paramMap.put("typeId",typeId);

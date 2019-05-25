@@ -107,6 +107,7 @@ public class ActivityAdapter extends ArrayAdapter {
               b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
               b.putString("join_state",activityCreateUser.getJoinState());
               b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+              b.putInt("user_sex",activityCreateUser.getSex());
               intent.putExtras(b);
               getContext().startActivity(intent);
 
@@ -142,15 +143,26 @@ public class ActivityAdapter extends ArrayAdapter {
 
         activityTitle.setText(activityCreateUser.getTitle());
         activityPlace.setText(activityCreateUser.getActivityPlace());
+
         if(activityCreateUser.getActivityDate() != null){
             activityTime.setText(activityCreateUser.getActivityDate().toString());
         }else {
             activityTime.setText("2019-6-1");
         }
+        //活动性别要求
         switch (activityCreateUser.getSexLimit()){
             case 0 :activitySexLimit.setText("男"); break;
             case 1 :activitySexLimit.setText("女"); break;
             case 2 :activitySexLimit.setText("不限男女"); break;
+        }
+
+        switch (activityCreateUser.getSex()){
+            case 0:
+                sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
+                break;
+            case 1:
+                sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
+                break;
         }
 
         activityUser2.setText(activityCreateUser.getUserName());

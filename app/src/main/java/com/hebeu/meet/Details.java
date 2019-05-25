@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class Details extends AppCompatActivity {
     private LinearLayout apply_fail = null;
     private LinearLayout create_user = null;
     private LinearLayout apply_join = null;
+
+    private ImageView sexImage = null;
     private Handler handler = null;
    private Button apply_join_btn=null;
 
@@ -58,6 +61,7 @@ public class Details extends AppCompatActivity {
         /*button*/
 //        apply_join_btn=findViewById(R.id.apply_join_btn);
         handler = new Handler();
+        sexImage = findViewById(R.id.sex);
 
         /*--------*/
 
@@ -82,6 +86,7 @@ public class Details extends AppCompatActivity {
             final String activity_user_id1=b.getString("activity_user_id");
             final String activity_user_name1=b.getString("activity_user_name");
             final String activity_user_class1=b.getString("activity_user_class");
+            final Integer user_sex=b.getInt("user_sex");
             final String join_state1=b.getString("join_state");
             final String join_id1=b.getString("join_id");
 
@@ -103,6 +108,16 @@ public class Details extends AppCompatActivity {
                     }else{
                         activity_sexLimit.setText("活动性别限制：女");
                     }
+
+                    switch (user_sex){
+                        case 0:
+                            sexImage.setImageDrawable(getResources().getDrawable(R.drawable.man));
+                            break;
+                        case 1:
+                            sexImage.setImageDrawable(getResources().getDrawable(R.drawable.woman));
+                            break;
+                    }
+
                     activity_PeopleLimit.setText(activity_PeopleLimit1);
 
 

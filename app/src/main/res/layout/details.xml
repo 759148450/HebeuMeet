@@ -269,14 +269,13 @@
             <!--zyp添加发起人性别图片，数据需后台获取判断-->
             <ImageView
                 android:id="@+id/sex"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_gravity="right"
                 android:layout_marginRight="2dp"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/man"/>
+                android:paddingBottom="10dp" />
 
         </LinearLayout>
         <!--活动发布者-->
