@@ -79,7 +79,6 @@ public class Others_Apply_Activity extends AppCompatActivity {
                 userActivityView.setClassName(user.getClassName());
                 userActivityView.setWords(item.getWords());
                 userActivityView.setUserId(user.getUserId());
-
                 userActivityView.setUserActivityId(item.getId());
                 userActivityView.setJoinState(item.getJoinState());
                 userActivityViewList.add(userActivityView);

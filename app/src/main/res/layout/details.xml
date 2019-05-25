@@ -1,9 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Details">
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/img_test"
+            tools:ignore="MissingConstraints" />
+
+        <!--活动基本信息-->
+        <LinearLayout
+            android:layout_width="344dp"
+            android:layout_height="268dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/activity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="活动标题"
+                android:textColor="@color/hd_message"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/activity_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/place"
+                android:drawablePadding="5dip"
+                android:text="农林路与光明南大街交叉口东行100米路北"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/activity_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/time"
+                android:drawablePadding="5dip"
+                android:text="2019.5.1 10:00"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/activity_sexLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/sex"
+                android:drawablePadding="5dip"
+                android:text="不限男女"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/activity_PeopleLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="人数限制"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp" />
+            <!--vanilla-->
+            <TextView
+                android:id="@+id/activity_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="qq"
+                android:textColor="@color/hd_message"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/activity_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/place"
+                android:drawablePadding="5dip"
+                android:text="手机"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/activity_content_mess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="内容"
+                android:textColor="@color/hd_message"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/activity_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/place"
+                android:drawablePadding="5dip"
+                android:text="哈哈哈哈"
+                android:textColor="@color/hd_message"
+                android:textSize="15sp"
+                tools:ignore="MissingConstraints" />
+
+            <!--end-->
+        </LinearLayout>
+
+        <!--参与者头像-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--参与者头像根据数目循环显示-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <!--多张图片是测试使用-->
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/my_img" />
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="0dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+        </LinearLayout>
+
+        <!--活动发起人信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/my_img"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/activity_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="活动发起人"
+                        android:textColor="@color/hd_message"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteY="387dp" />
+                    <!--zyp添加活动发起人信息，数据需后台获取-->
+                    <TextView
+                        android:id="@+id/activity_user_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="计算机1604张三"
+                        android:textColor="@color/hd_message"
+                        android:textSize="15sp"
+                        tools:layout_editor_absoluteY="387dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--zyp添加发起人性别图片，数据需后台获取判断-->
+            <ImageView
+                android:id="@+id/sex"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/man"/>
+
+        </LinearLayout>
+        <!--活动发布者-->
+         <LinearLayout
+             android:id="@+id/create_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+             >
+
+
+             <Button
+                 android:id="@+id/show_contact"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="查看组员联系方式" />
+
+             <Button
+                 android:id="@+id/show_apply"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="查看申请信息" />
+         </LinearLayout>
+        <!--申请状态判断参加者-->
+        <!--正在申请-->
+        <LinearLayout
+            android:id="@+id/applying"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_fail"
+            >
+
+            <TextView
+                android:id="@+id/applyStatus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="正在申请"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--申请通过-->
+        <LinearLayout
+            android:id="@+id/apply_success"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_fail"
+            >
+
+            <TextView
+                android:id="@+id/applyStatus1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="申请成功"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--申请失败-->
+        <LinearLayout
+            android:id="@+id/apply_fail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_fail"
+            >
+
+            <TextView
+                android:id="@+id/applyStatus2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="申请失败"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--申请参加-->
+        <LinearLayout
+            android:id="@+id/apply_join"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/state_apply_fail"
+            >
+
+            <Button
+                android:id="@+id/apply_join_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="申请参加" />
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

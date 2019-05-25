@@ -1,7 +1,9 @@
 package com.hebeu.meet.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +11,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hebeu.meet.Details;
+import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.R;
-import com.hebeu.meet.domain.Activity;
+
 import com.hebeu.meet.domain.ActivityCreateUser;
-import com.hebeu.meet.domain.User;
-import com.hebeu.meet.domain.UserActivity;
+
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONUtil;
+import java.util.List;
+
 
 /**
  * yuechunpeng
@@ -51,6 +49,7 @@ public class ActivityAdapter extends ArrayAdapter {
     private final int resourceId;
     public ActivityAdapter(Context context, List<ActivityCreateUser> activityCreateUserList){
         super(context,R.layout.my_publish_activity_item,activityCreateUserList);
+
         this.resourceId = R.layout.my_publish_activity_item;
         this.activityCreateUserList = activityCreateUserList;
     }
@@ -60,7 +59,60 @@ public class ActivityAdapter extends ArrayAdapter {
         final ActivityCreateUser activityCreateUser =(ActivityCreateUser) getItem(position);
         View view = LayoutInflater.from(getContext()).inflate(resourceId,null);
 
+//      Button btn_details=view.findViewById(R.id.btn_details);//详情按钮
+        /*Vanilla 5-25*/
+        Button btn_details=view.findViewById(R.id.btn_details);//详情按钮
+        LinearLayout details_ly=view.findViewById(R.id.details_ly);//整个布局
+        details_ly.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent = new Intent(getContext(), Details.class);
+              Bundle b = new Bundle();
 
+              b.putInt("activity_id", activityCreateUser.getActivityId());
+              b.putString("activity_title", activityCreateUser.getTitle());
+              b.putString("activity_place",activityCreateUser.getActivityPlace());
+              /*b.putString("activity_time",activityCreateUser.);*///时间
+              b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
+              b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
+              b.putString("activity_qq",activityCreateUser.getQq());
+              b.putString("activity_phone",activityCreateUser.getPhone());
+              b.putString("activity_content",activityCreateUser.getActivityContent());
+              b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
+              b.putString("activity_user_name",activityCreateUser.getUserName());
+              b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
+              b.putString("join_state",activityCreateUser.getJoinState());
+              b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+              intent.putExtras(b);
+              getContext().startActivity(intent);
+          }
+      });
+      btn_details.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent = new Intent(getContext(), Details.class);
+              Bundle b = new Bundle();
+
+              b.putInt("activity_id", activityCreateUser.getActivityId());
+              b.putString("activity_title", activityCreateUser.getTitle());
+              b.putString("activity_place",activityCreateUser.getActivityPlace());
+              /*b.putString("activity_time",activityCreateUser.);*///时间
+              b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
+              b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
+              b.putString("activity_qq",activityCreateUser.getQq());
+              b.putString("activity_phone",activityCreateUser.getPhone());
+              b.putString("activity_content",activityCreateUser.getActivityContent());
+              b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
+              b.putString("activity_user_name",activityCreateUser.getUserName());
+              b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
+              b.putString("join_state",activityCreateUser.getJoinState());
+              b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+              intent.putExtras(b);
+              getContext().startActivity(intent);
+
+          }
+      });
+       /*-----------------*/
 
         //zyp 设置图标大小2019-5-22 晚
         //此处李航上面写的content，如要修改，需统一
@@ -85,7 +137,7 @@ public class ActivityAdapter extends ArrayAdapter {
 
         activityTitle = view.findViewById(R.id.activityTitle);
         activityUser2 = view.findViewById(R.id.activityUser2);
-        button = view.findViewById(R.id.button);
+        btn_details = view.findViewById(R.id.btn_details);
         sexImage = view.findViewById(R.id.sex);
 
         activityTitle.setText(activityCreateUser.getTitle());

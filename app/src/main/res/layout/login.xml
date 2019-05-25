@@ -1,58 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--用户登陆界面-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <!--双图标的水平线性布局-->
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="394dp"
+        android:layout_height="376dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="360dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="575dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/default_icon" />
+
+        <ImageView
+            android:layout_width="179dp"
+            android:layout_height="625dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/meet" />
+    </LinearLayout>
+    <!--输入框的垂直布局-->
     <LinearLayout
         android:layout_width="299dp"
-        android:layout_height="298dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="155dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <TextView
-            android:id="@+id/user_id_mess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_id"
-            android:textSize="24sp" />
-
+        <!--<TextView-->
+        <!--android:id="@+id/user_id_mess"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/user_id"-->
+        <!--android:textSize="24sp" />-->
+        <!--<TextView-->
+        <!--android:id="@+id/user_password_mess"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/user_password"-->
+        <!--android:textSize="24sp" />-->
         <EditText
             android:id="@+id/user_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/user_password_mess"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_password"
-            android:textSize="24sp" />
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="35dp"
+            android:autofillHints="@string/user_id"
+            android:background="@drawable/shape2"
+            android:drawablePadding="10dp"
+            android:paddingLeft="70dp"
+            android:hint="请输入用户名"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/user_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="35dp"
+            android:autofillHints="@string/user_password"
+            android:background="@drawable/shape2"
+            android:drawablePadding="10dp"
+            android:paddingLeft="70dp"
+            android:hint="  请输入密码"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#a3a3a3"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_login"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="45dp"
+            android:background="@drawable/button_login"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_style"
-            android:text="登录" />
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:text="忘记密码"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="27dp"
+                android:text="|"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:text="用户注册"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="70dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="44dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="30dp"
+                android:text="登录即代表阅读并同意"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btn_show"
+                android:layout_width="70dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="-12.6dp"
+                android:layout_marginTop="30.5dp"
+                android:background="@android:color/transparent"
+                android:text="服务条款"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

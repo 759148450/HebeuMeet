@@ -28,9 +28,9 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 
 /*用户登陆
-* Vanilla
-* 5-22晚
-* */
+ * Vanilla
+ * 5-22晚
+ * */
 public class Login extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_password=null;
@@ -48,57 +48,65 @@ public class Login extends AppCompatActivity {
         System.out.println("login>>>>>");
         user_id=findViewById(R.id.user_id);
         user_password=findViewById(R.id.user_password);
-            btn_login=findViewById(R.id.btn_login);
-            System.out.println("btn_login>>>>>>");
-            btn_login.setOnClickListener(new View.OnClickListener() {
+        btn_login=findViewById(R.id.btn_login);
+        System.out.println("btn_login>>>>>>");
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyThread thread = new MyThread();
+                thread.start();
+            }
+            class MyThread extends Thread{
                 @Override
-                public void onClick(View v) {
-                        MyThread thread = new MyThread();
-                        thread.start();
-                }
-                class MyThread extends Thread{
-                    @Override
-                    public void run() {
+                public void run() {
 
-                        System.out.println(123333333);
-                        System.out.println(String.valueOf(user_id.getText()));
-                        String my_user_id=String.valueOf(user_id.getText());
-                        String my_user_password=String.valueOf(user_password.getText());
+                    System.out.println(123333333);
+                    System.out.println(String.valueOf(user_id.getText()));
+                    String my_user_id=String.valueOf(user_id.getText());
+                    String my_user_password=String.valueOf(user_password.getText());
 
-                        Looper.prepare();
+                    Looper.prepare();
 
-                        System.out.println("try");
-                        Map<String,Object> paramMap = new HashMap<>();
-                        paramMap.put("userId",my_user_id);
-                        paramMap.put("password",my_user_password);
-                        String res = HttpUtil.post("http://112.74.194.121:8889/user/login",paramMap);
-                        System.out.println("res"+res);
-                        final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
-                        System.out.println("jsonResult.getCode()"+jsonResult.getCode());
+                    System.out.println("try");
+                    Map<String,Object> paramMap = new HashMap<>();
+                    paramMap.put("userId",my_user_id);
+                    paramMap.put("password",my_user_password);
+                    String res = HttpUtil.post("http://112.74.194.121:8889/user/login",paramMap);
+                    System.out.println("res"+res);
+                    final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
+                    System.out.println("jsonResult.getCode()"+jsonResult.getCode());
 
-                        if (jsonResult.getCode() == 0){
-                            String res_id = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+my_user_id);
-                            final User user = JSONUtil.toBean(res_id, User.class);
-                            System.out.println("User"+user.toString());
-                            saveLoginInfo(Login.this, user);
-                            Toast.makeText(Login.this,"登录成功！",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Login.this.getApplicationContext(), HomeActivity.class);
-                            startActivity(intent);
-                        }else {
+                    if (jsonResult.getCode() == 0){
+                        String res_id = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+my_user_id);
+                        final User user = JSONUtil.toBean(res_id, User.class);
+                        System.out.println("User"+user.toString());
+                        saveLoginInfo(Login.this, user);
+                        Toast.makeText(Login.this,"登录成功！",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login.this.getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    }else {
 
-                            Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
 //                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
 //                            startActivity(intent);
-                        }
-                        System.out.println("jsonResult"+jsonResult);
-
-                        Looper.loop();
-
                     }
-                }
+                    System.out.println("jsonResult"+jsonResult);
 
-            });
-        }
+                    Looper.loop();
+
+                }
+            }
+
+        });
+                Button btn_register=findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Login.this,Register.class);
+               startActivity(intent);
+           }
+       });
+    }
     //}
     /*保存用户登录信息*/
     public static void saveLoginInfo(Context context, User user) {

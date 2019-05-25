@@ -6,7 +6,11 @@ import java.util.Date;
 public class UserActivityView {
     private Integer activityId;
 
-    private String userId;
+
+    private String userId;//活动发布人id
+
+    /*Vanilla*/
+    private String join_id;//参加者id
 
     private String title;
 
@@ -74,6 +78,13 @@ public class UserActivityView {
 
     public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
+    }
+
+    public String getJoin_id() {
+        return join_id;
+    }
+    public void setJoin_id(String join_id) {
+        this.join_id= join_id;
     }
 
     public String getTitle() {

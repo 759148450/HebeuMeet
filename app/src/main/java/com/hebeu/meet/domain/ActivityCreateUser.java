@@ -8,6 +8,8 @@ public class ActivityCreateUser {
 
     private String userId;
 
+
+
     private String title;
 
     private Integer typeId;
@@ -43,6 +45,13 @@ public class ActivityCreateUser {
     private String phone;
 
     private String email;
+
+    /*Vanilla5-25*/
+    private String join_id;
+
+    private String joinState;
+
+    private String words;
 
     private byte[] img;
 
@@ -239,5 +248,29 @@ public class ActivityCreateUser {
                 ", email='" + email + '\'' +
                 ", img=" + Arrays.toString(img) +
                 '}';
+    }
+
+    public void setJoin_id(String join_id) {
+        this.join_id = join_id;
+    }
+
+    public String getJoin_id() {
+        return join_id;
+    }
+
+    public String getJoinState() {
+        return joinState;
+    }
+
+    public void setJoinState(String joinState) {
+        this.joinState = joinState;
+    }
+
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
     }
 }

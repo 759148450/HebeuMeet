@@ -99,7 +99,6 @@ public class MsgContentFragment extends Fragment {
             String res = HttpUtil.get("112.74.194.121:8889/activity/selectActivityCreateUserByTypeId",paramMap);
             JSONArray jsonArray = JSONUtil.parseArray(res);
             activityCreateUserList = JSONUtil.toList(jsonArray, ActivityCreateUser.class);
-
             System.out.println(activityCreateUserList);
 
 
@@ -107,7 +106,6 @@ public class MsgContentFragment extends Fragment {
                 @Override
                 public void run() {
                     ActivityAdapter activityAdapter = new ActivityAdapter(getActivity(), activityCreateUserList);
-
                     listView.setAdapter(activityAdapter);
                 }
             });
