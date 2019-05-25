@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent">
 
     <!--<LinearLayout-->
@@ -27,11 +28,11 @@
         android:layout_width="49dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginRight="128dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginRight="84dp"
         android:layout_marginBottom="8dp"
         android:text="女"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imagemale"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         app:layout_constraintVertical_bias="0.0" />
@@ -56,7 +57,7 @@
 
         <ImageView
             android:layout_width="72dp"
-            android:layout_height="292dp"
+            android:layout_height="132dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="100dp"
@@ -64,7 +65,7 @@
 
         <ImageView
             android:layout_width="165dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/meet" />
     </LinearLayout>
 
@@ -84,10 +85,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.59">
+        app:layout_constraintVertical_bias="0.49">
 
         <EditText
-            android:id="@+id/user_classname_mess"
+            android:id="@+id/user_id"
+
             android:layout_width="200dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"
@@ -96,7 +98,7 @@
             android:background="@drawable/shape1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
-            android:hint="请输入班级"
+            android:hint="请输入用户名"
             android:paddingLeft="50dp"
             android:singleLine="true"
             android:textColor="#000000"
@@ -108,21 +110,23 @@
             app:layout_constraintTop_toBottomOf="@+id/user_classname_mess" />
 
         <EditText
-            android:id="@+id/user_id"
+            android:id="@+id/user_password_mess"
+
             android:layout_width="200dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="2dp"
             android:background="@drawable/shape1"
             android:gravity="center_vertical"
-            android:hint="请输入用户名"
+            android:hint="请输入密码"
             android:paddingLeft="50dp"
             android:textColor="#000000"
             android:textColorHint="#a3a3a3"
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/user_password_mess"
+            android:id="@+id/user_name_mess"
+
             android:layout_width="200dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"
@@ -130,7 +134,7 @@
             android:background="@drawable/shape1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
-            android:hint="请输入密码"
+            android:hint="请输入姓名"
             android:paddingLeft="50dp"
             android:singleLine="true"
             android:textColor="#000000"
@@ -141,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@+id/user_password_mess" />
 
         <EditText
-            android:id="@+id/user_name_mess"
+            android:id="@+id/user_classname_mess"
             android:layout_width="200dp"
             android:layout_height="38dp"
             android:layout_gravity="center_horizontal"
@@ -150,7 +154,7 @@
             android:background="@drawable/shape1"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
-            android:hint="请输入姓名"
+            android:hint="请输入班级"
             android:paddingLeft="50dp"
             android:singleLine="true"
             android:textColor="#000000"
@@ -160,11 +164,6 @@
             app:layout_constraintStart_toStartOf="@+id/user_name_mess"
             app:layout_constraintTop_toBottomOf="@+id/user_name_mess" />
 
-        <LinearLayout
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal" />
 
         <EditText
             android:id="@+id/user_college_mess"
@@ -253,13 +252,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/male"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/male" />
 
     <Button
@@ -268,29 +267,31 @@
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="124dp"
         android:background="@drawable/falme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/falme" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="45dp"
         android:layout_height="49dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginLeft="180dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="男"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.806" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
