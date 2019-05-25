@@ -64,6 +64,14 @@ public class Register extends AppCompatActivity {
         user_phone=findViewById(R.id.user_phone);
         user_email=findViewById(R.id.user_email);
         btn_register=findViewById(R.id.btn_register);
+        Button imagemale=findViewById(R.id.imagemale);
+        imagemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user_sex=1;
+                System.out.println(user_sex);
+            }
+        });
         Button imagefalme=findViewById(R.id.imagefamle);
         imagefalme.setOnClickListener(new View.OnClickListener() {
             @Override
