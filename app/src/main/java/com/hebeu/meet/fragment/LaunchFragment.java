@@ -1,7 +1,9 @@
 package com.hebeu.meet.fragment;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -147,7 +149,10 @@ public class LaunchFragment extends Fragment {
                 @Override
                 public void run() {
                     Activity newActivity = new Activity();
-                    newActivity.setUserId("160210405");
+                    /*获取登录的用户信息*/
+                    SharedPreferences sharedPre = getActivity().getSharedPreferences("config", Context.MODE_PRIVATE);
+                    String userId=sharedPre.getString("userId", "");
+                    newActivity.setUserId(userId);
                     newActivity.setTitle(String.valueOf(title.getText()));
                     newActivity.setTypeId(Integer.parseInt(String.valueOf(type_id.getText())));
                     newActivity.setSexLimit(Integer.parseInt(String.valueOf(sex_limit.getText())));
