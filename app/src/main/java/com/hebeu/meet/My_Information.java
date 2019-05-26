@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hebeu.meet.domain.User;
@@ -15,11 +16,15 @@ import com.hebeu.meet.domain.User;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 
+import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
+
 /*查看个人信息
 * Vanilla
 * 5-21
-*
+*lihang
+* 追加个人头像
 * */
+
 public class My_Information extends AppCompatActivity {
     private TextView user_id =null;
     private TextView user_name =null;
@@ -40,6 +45,7 @@ public class My_Information extends AppCompatActivity {
     private TextView user_qq_mess =null;
     private TextView user_phone_mess =null;
     private TextView user_email_mess =null;
+    private ImageView user_head = null;//头像
     //-------------
     /*读取的文件的字段SharedPreferences */
     private String userId;
@@ -54,6 +60,7 @@ public class My_Information extends AppCompatActivity {
         setContentView(R.layout.my_information);
         /*组件名*/
         user_name = findViewById(R.id.user_name);
+        user_head = findViewById(R.id.personalHead2);
         handler = new Handler();
         MyThread thread = new MyThread();
         thread.start();
@@ -140,6 +147,7 @@ public class My_Information extends AppCompatActivity {
                     user_qq.setText(user.getQq());
                     user_phone.setText(user.getPhone());
                     user_email.setText(user.getEmail());
+                    user_head.setImageBitmap(stringToBitmap(user.getHead()));
                 }
             });
         }

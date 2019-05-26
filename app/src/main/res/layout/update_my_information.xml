@@ -14,8 +14,14 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="539dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
+            <com.hebeu.meet.UI.CircleImageView
+                android:id="@+id/personalHead"
+                android:layout_height="120dp"
+                android:layout_width="120dp"
+                android:src="@drawable/my_img" />
             <TextView
                 android:id="@+id/update_user"
                 android:layout_width="match_parent"

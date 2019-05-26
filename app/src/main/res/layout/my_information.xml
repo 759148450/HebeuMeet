@@ -19,6 +19,12 @@
         <!--android:textColor="@color/gray_text"-->
         <!--android:textSize="18sp"-->
         <!--app:fontFamily="cursive" />-->
+        <com.hebeu.meet.UI.CircleImageView
+            android:layout_height="150dp"
+            android:layout_width="150dp"
+            android:id="@+id/personalHead2"
+            android:src="@drawable/my_img"
+            android:layout_marginLeft="90dp"/>
 
         <View android:layout_width="match_parent"
             android:layout_marginTop="5dp"
