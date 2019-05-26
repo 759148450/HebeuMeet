@@ -33,6 +33,12 @@
         <item name="android:windowBackground">@drawable/apply_style</item>
     </style>
 
+    <!--时间选择框样式-->
+    <style name="Animation_CustomPopup" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+
 
 
 </resources>

@@ -2,7 +2,6 @@ package com.hebeu.meet.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +24,6 @@ import java.util.Map;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -40,19 +38,25 @@ public class LaunchFragment extends Fragment {
     //活动名称
     private EditText title = null;
     //活动分类
-    private EditText type_id = null;
+    private TextView type_id = null;
     //限制参加性别
-    private EditText sex_limit = null;
+    private TextView sex_limit = null;
     //限制人数
     private EditText people_limit = null;
     //活动时间
-    private EditText activity_date = null;
+    private TextView activity_date = null;
     //活动地点
     private EditText activity_place = null;
     //活动内容
     private EditText add_content = null;
     //发布活动按钮
     private Button launch_activity= null;
+
+    // 时间、类型、性别选择按钮
+    private ImageView date_Btn;
+    private ImageView type_Btn;
+    private ImageView sex_Btn;
+
 
     private Handler handler = null;
 
@@ -69,8 +73,6 @@ public class LaunchFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
 
         //活动名称
         title = getActivity().findViewById(R.id.title);;
@@ -89,6 +91,50 @@ public class LaunchFragment extends Fragment {
         //发布活动按钮
         launch_activity = (Button) getActivity().findViewById(R.id.launch_activity);
 
+        //-------zyp 选择时间picker---2019-5-25-----------
+
+        date_Btn = getActivity().findViewById(R.id.date_btn);
+        type_Btn = getActivity().findViewById(R.id.type_btn);
+        sex_Btn = getActivity().findViewById(R.id.sex_btn);
+        //---------年月日------------
+        date_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.setYearDate(getActivity(), new DateListener() {
+                    @Override
+                    public void setYearDate(String year, String month, String day) {
+                        activity_date.setText(year + "-" + month + "-" + day );
+                    }
+                });
+            }
+        });
+        //   分类选择
+        type_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.setTypeName(getActivity(), new TypeListener() {
+                    @Override
+                    public void setTypeName(String typename) {
+                        type_id.setText(typename);
+                    }
+                });
+            }
+        });
+
+        //选择性别
+        sex_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.setSexName(getActivity(), new SexListener() {
+                    @Override
+                    public void setSexName(String sexname) {
+                        sex_limit.setText(sexname);
+                    }
+                });
+            }
+        });
+        //---end--------------
+
         launch_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,10 +147,7 @@ public class LaunchFragment extends Fragment {
                 @Override
                 public void run() {
                     Activity newActivity = new Activity();
-                    /*获取登录的用户信息*/
-                    SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
-                    String userId=sharedPre.getString("userId", "");
-                    newActivity.setUserId(userId);
+                    newActivity.setUserId("160210405");
                     newActivity.setTitle(String.valueOf(title.getText()));
                     newActivity.setTypeId(Integer.parseInt(String.valueOf(type_id.getText())));
                     newActivity.setSexLimit(Integer.parseInt(String.valueOf(sex_limit.getText())));
