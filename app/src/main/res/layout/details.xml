@@ -6,14 +6,13 @@
     android:layout_width="match_parent"
     android:scrollbars="vertical"
     android:fadingEdge="vertical"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:background="@color/white">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/item_img"
@@ -27,9 +26,10 @@
 
         <!--活动基本信息-->
         <LinearLayout
-            android:layout_width="344dp"
-            android:layout_height="268dp"
-            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical">
 
 
@@ -83,7 +83,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/personnum"
                 android:text="人数限制"
+                android:drawablePadding="5dip"
                 android:textColor="@color/hd_message"
                 android:textSize="15sp" />
             <!--vanilla-->
@@ -92,10 +94,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/details_qq"
                 android:text="qq"
+                android:drawablePadding="5dip"
                 android:textColor="@color/hd_message"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="15sp"
                 tools:ignore="MissingConstraints" />
 
             <TextView
@@ -103,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:drawableLeft="@drawable/place"
+                android:drawableLeft="@drawable/phone"
                 android:drawablePadding="5dip"
                 android:text="手机"
                 android:textColor="@color/hd_message"
@@ -114,10 +117,10 @@
                 android:id="@+id/activity_content_mess"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="内容"
+                android:layout_marginTop="15dp"
+                android:text="活动详情"
                 android:textColor="@color/hd_message"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints" />
 
@@ -126,11 +129,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:drawableLeft="@drawable/place"
                 android:drawablePadding="5dip"
                 android:text="哈哈哈哈"
-                android:textColor="@color/hd_message"
-                android:textSize="15sp"
+                android:textColor="#9F9FAC"
+                android:textSize="14sp"
                 tools:ignore="MissingConstraints" />
 
             <!--end-->
@@ -141,19 +143,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <View android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_height="0.2dp"
-                android:background="#cdcdcd" />
+            <TextView
+                android:id="@+id/joiner_img_mess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已加入的同学"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/hd_message"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
 
             <!--参与者头像根据数目循环显示-->
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
 
                 <!--多张图片是测试使用-->
                 <ImageView
@@ -161,6 +171,7 @@
                     android:layout_width="43dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
+                    android:layout_marginLeft="0dp"
                     app:srcCompat="@drawable/my_img" />
                 <ImageView
                     android:id="@+id/imageView3"
@@ -207,11 +218,6 @@
 
             </LinearLayout>
 
-            <View android:layout_width="match_parent"
-                android:layout_marginTop="0dp"
-                android:layout_height="0.2dp"
-                android:background="#cdcdcd" />
-
         </LinearLayout>
 
         <!--活动发起人信息-->
@@ -220,11 +226,15 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:background="@color/title">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1">
 
                 <ImageView
@@ -250,8 +260,7 @@
                         android:text="活动发起人"
                         android:textColor="@color/hd_message"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteY="387dp" />
+                        android:textStyle="bold" />
                     <!--zyp添加活动发起人信息，数据需后台获取-->
                     <TextView
                         android:id="@+id/activity_user_class"
@@ -260,8 +269,7 @@
                         android:layout_marginLeft="10dp"
                         android:text="计算机1604张三"
                         android:textColor="@color/hd_message"
-                        android:textSize="15sp"
-                        tools:layout_editor_absoluteY="387dp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -272,8 +280,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
-                android:layout_gravity="right"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp" />
 
@@ -283,22 +290,33 @@
              android:id="@+id/create_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp"
-            android:background="@color/white"
-             >
-
+            android:orientation="vertical">
 
              <Button
                  android:id="@+id/show_contact"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
+                 android:textSize="20sp"
+                 android:textColor="@color/hd_message"
+                 android:layout_marginTop="30dp"
+                 android:layout_marginRight="60dp"
+                 android:layout_marginLeft="60dp"
+                 android:background="@drawable/button_find_message"
+                 style="?android:attr/borderlessButtonStyle"
                  android:text="查看组员联系方式" />
 
              <Button
                  android:id="@+id/show_apply"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
+                 android:background="@drawable/button_style"
+                 android:textColor="@color/white"
+                 android:textSize="20sp"
+                 style="?android:attr/borderlessButtonStyle"
+                 android:layout_marginRight="60dp"
+                 android:layout_marginLeft="60dp"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginBottom="30dp"
                  android:text="查看申请信息" />
          </LinearLayout>
         <!--申请状态判断参加者-->
@@ -307,18 +325,18 @@
             android:id="@+id/applying"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/state_apply_fail"
-            >
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:background="@color/title">
 
             <TextView
                 android:id="@+id/applyStatus"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
-                android:text="正在申请"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="等待申请人同意"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
         </LinearLayout>
         <!--申请通过-->
@@ -326,18 +344,18 @@
             android:id="@+id/apply_success"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/state_apply_fail"
-            >
+            android:gravity="center"
+            android:layout_marginBottom="0dp"
+            android:background="@color/title">
 
             <TextView
                 android:id="@+id/applyStatus1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="申请成功"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
         </LinearLayout>
         <!--申请失败-->
@@ -345,18 +363,18 @@
             android:id="@+id/apply_fail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/state_apply_fail"
-            >
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:background="@color/title">
 
             <TextView
                 android:id="@+id/applyStatus2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
                 android:text="申请失败"
+                android:gravity="center_horizontal"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
         </LinearLayout>
         <!--申请参加-->
@@ -364,15 +382,20 @@
             android:id="@+id/apply_join"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/state_apply_fail"
-            >
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:background="@color/colorPrimary">
 
             <Button
                 android:id="@+id/apply_join_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 android:text="申请参加" />
-                />
+
         </LinearLayout>
 
 

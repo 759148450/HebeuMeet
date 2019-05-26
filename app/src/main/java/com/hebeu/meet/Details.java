@@ -1,6 +1,7 @@
 package com.hebeu.meet;
 
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +63,31 @@ public class Details extends AppCompatActivity {
 //        apply_join_btn=findViewById(R.id.apply_join_btn);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
+
+        //-------------zyp-设置图标大小----------------------
+        Drawable place = getResources().getDrawable(R.drawable.place);
+        Drawable time = getResources().getDrawable(R.drawable.time);
+        Drawable sex = getResources().getDrawable(R.drawable.sex);
+        Drawable personnum = getResources().getDrawable(R.drawable.personnum);
+        Drawable details_qq = getResources().getDrawable(R.drawable.details_qq);
+        Drawable phone = getResources().getDrawable(R.drawable.phone);
+
+        place.setBounds(0,0,32,35);
+        time.setBounds(0,0,32,32);
+        sex.setBounds(0,0,32,32);
+        personnum.setBounds(0,0,32,32);
+        details_qq.setBounds(0,0,32,32);
+        phone.setBounds(0,0,32,32);
+
+        activity_place.setCompoundDrawables(place,null,null,null);
+        activity_time.setCompoundDrawables(time,null,null,null);
+        activity_sexLimit.setCompoundDrawables(sex,null,null,null);
+        activity_PeopleLimit.setCompoundDrawables(personnum,null,null,null);
+        activity_qq.setCompoundDrawables(details_qq,null,null,null);
+        activity_phone.setCompoundDrawables(phone,null,null,null);
+
+
+        // ---------------end---------------------------------
 
         /*--------*/
 
