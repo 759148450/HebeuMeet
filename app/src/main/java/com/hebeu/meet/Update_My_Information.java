@@ -77,6 +77,18 @@ public class Update_My_Information extends AppCompatActivity {
     private Button btn_update_user = null;
     private ImageView user_head = null;
 
+    //zyp 修改图标大小
+    private TextView user_img_mess = null;
+    private TextView user_id_mess =null;
+    private TextView user_name_mess =null;
+    private TextView user_sex_mess =null;
+    private TextView user_college_mess =null;
+    private TextView user_classname_mess =null;
+    private TextView user_qq_mess =null;
+    private TextView user_phone_mess =null;
+    private TextView user_email_mess =null;
+     //---------end--------------------
+
     //修改头像用的一些常量变量
     //调用系统相册-选择图片
     private static final int IMAGE = 1;
@@ -112,6 +124,45 @@ public class Update_My_Information extends AppCompatActivity {
         user_qq = findViewById(R.id.user_qq);
         user_phone = findViewById(R.id.user_phone);
         user_email = findViewById(R.id.user_email);
+
+        //zyp 设置图标大小2019-5-22上午
+        user_img_mess = findViewById(R.id.user_img_mess);
+        user_id_mess = findViewById(R.id.user_id_mess);
+        user_name_mess = findViewById(R.id.user_name_mess);
+        user_sex_mess = findViewById(R.id.user_sex_mess);
+        user_college_mess = findViewById(R.id.user_college_mess);
+        user_classname_mess = findViewById(R.id.user_classname_mess);
+        user_qq_mess = findViewById(R.id.user_qq_mess);
+        user_phone_mess = findViewById(R.id.user_phone_mess);
+        user_email_mess = findViewById(R.id.user_email_mess);
+        Drawable user_img_img = getResources().getDrawable(R.drawable.user_img);
+        Drawable user_id_img = getResources().getDrawable(R.drawable.user_id);
+        Drawable user_name_img = getResources().getDrawable(R.drawable.user_name);
+        Drawable user_sex_img = getResources().getDrawable(R.drawable.user_sex);
+        Drawable user_college_img = getResources().getDrawable(R.drawable.user_college);
+        Drawable user_classname_img = getResources().getDrawable(R.drawable.user_classname);
+        Drawable user_qq_img = getResources().getDrawable(R.drawable.user_qq);
+        Drawable user_phone_img = getResources().getDrawable(R.drawable.user_phone);
+        Drawable user_email_img = getResources().getDrawable(R.drawable.user_email);
+        user_img_img.setBounds(0,0,40,40);
+        user_id_img.setBounds(0,0,50,50);
+        user_name_img.setBounds(0,0,40,40);
+        user_sex_img.setBounds(0,0,40,40);
+        user_college_img.setBounds(0,0,40,40);
+        user_classname_img.setBounds(0,0,40,40);
+        user_qq_img.setBounds(0,0,40,40);
+        user_phone_img.setBounds(0,0,40,40);
+        user_email_img.setBounds(0,0,40,40);
+        user_img_mess.setCompoundDrawables(user_img_img,null,null,null);
+        user_id_mess.setCompoundDrawables(user_id_img,null,null,null);
+        user_name_mess.setCompoundDrawables(user_name_img,null,null,null);
+        user_sex_mess.setCompoundDrawables(user_sex_img,null,null,null);
+        user_college_mess.setCompoundDrawables(user_college_img,null,null,null);
+        user_classname_mess.setCompoundDrawables(user_classname_img,null,null,null);
+        user_qq_mess.setCompoundDrawables(user_qq_img,null,null,null);
+        user_phone_mess.setCompoundDrawables(user_phone_img,null,null,null);
+        user_email_mess.setCompoundDrawables(user_email_img,null,null,null);
+        //----------------------------
         handler = new Handler();
         MyThread thread=new MyThread();
         thread.start();

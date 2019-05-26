@@ -3,25 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical">
 
-
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="539dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
-            <com.hebeu.meet.UI.CircleImageView
-                android:id="@+id/personalHead"
-                android:layout_height="120dp"
-                android:layout_width="120dp"
-                android:src="@drawable/my_img" />
             <TextView
                 android:id="@+id/update_user"
                 android:layout_width="match_parent"
@@ -29,129 +26,308 @@
                 android:text="修改个人信息"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/user_id_mess"
+            <!--头像-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_id" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/user_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/user_img_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dip"
+                    android:layout_marginTop="13dp"
+                    android:text="头像" />
 
-            <TextView
-                android:id="@+id/user_name_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name" />
+                    <com.hebeu.meet.UI.CircleImageView
+                        android:id="@+id/personalHead"
+                        android:layout_height="45dp"
+                        android:layout_width="45dp"
+                        android:src="@drawable/my_img" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/right2"/>
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/user_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp" />
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
 
-            <TextView
-                android:id="@+id/user_sex_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="18sp"
-                android:text="@string/user_sex" />
-
-            <EditText
-                android:id="@+id/user_sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp" />
-
-            <TextView
-                android:id="@+id/user_college_mess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="18sp"
-                android:text="@string/user_college" />
-
-            <EditText
-                android:id="@+id/user_college"
+            <!--学号，不可修改-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="12sp" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/user_classname_mess"
+                <TextView
+                    android:id="@+id/user_id_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:textSize="18sp"
+                    android:text="@string/user_id" />
+
+                <TextView
+                    android:id="@+id/user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+           <!--姓名-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_classname" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/user_classname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/user_name_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="10dip"
+                    android:text="@string/user_name"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/user_qq_mess"
+                <EditText
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:lineSpacingExtra="18sp" />
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--性别-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_qq" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/user_qq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/user_sex_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="18sp"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dip"
+                    android:text="@string/user_sex" />
 
-            <TextView
-                android:id="@+id/user_phone_mess"
+                <EditText
+                    android:id="@+id/user_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@null"
+                    android:lineSpacingExtra="12sp" />
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--学院-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_phone" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/user_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/user_college_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="18sp"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dip"
+                    android:text="@string/user_college" />
 
-            <TextView
-                android:id="@+id/user_email_mess"
+                <EditText
+                    android:id="@+id/user_college"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@null"
+                    android:lineSpacingExtra="12sp" />
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--班级-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/user_email" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/user_email"
+                <TextView
+                    android:id="@+id/user_classname_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:drawablePadding="10dip"
+                    android:text="@string/user_classname" />
+
+                <EditText
+                    android:id="@+id/user_classname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--qq-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/user_qq_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_qq"
+                    android:drawablePadding="10dip"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/user_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--手机-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/user_phone_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_phone"
+                    android:drawablePadding="10dip"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
+
+            <!--email-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/user_email_mess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_email"
+                    android:drawablePadding="10dip"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
 
         </LinearLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <Button
+            android:id="@+id/btn_update_user"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.0">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/button_style"
+            android:text="修改" />
 
-            <Button
-                android:id="@+id/btn_update_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginRight="3dp"
-                android:background="@drawable/button_style"
-                android:text="修改"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.491"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
