@@ -16,14 +16,13 @@
             android:layout_height="80dp"
             android:background="#00A5ED">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <com.hebeu.meet.UI.CircleImageView
+                android:id="@+id/personalHead3"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="20dp"
-                android:scaleType="fitXY"
                 android:background="@drawable/my_img"/>
 
             <TextView

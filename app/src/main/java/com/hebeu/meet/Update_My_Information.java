@@ -256,8 +256,8 @@ public class Update_My_Information extends AppCompatActivity {
     private void showImage(String imaePath){
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
         Bitmap bms =  compressScale(bm);//压缩
-        userHead = bitmapToString(bms);
-        user_head.setImageBitmap(bms);
+        userHead = bitmapToString(bms);//图片转成string
+        user_head.setImageBitmap(bms);//渲染头像（还没上传之前，刚选好图片的时候）
     }
 
 
@@ -282,7 +282,7 @@ public class Update_My_Information extends AppCompatActivity {
                     user_qq.setText(user.getQq());
                     user_phone.setText(user.getPhone());
                     user_email.setText(user.getEmail());
-                    user_head.setImageBitmap( stringToBitmap(user.getHead()));
+                    user_head.setImageBitmap( stringToBitmap(user.getHead()));//加载信息的时候把头像渲染上去
                 }
             });
         }

@@ -5,37 +5,38 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.My_Information;
 import com.hebeu.meet.My_Publish_Activity;
-import com.hebeu.meet.Others_Apply_Activity;
 import com.hebeu.meet.R;
 import com.hebeu.meet.Register;
 import com.hebeu.meet.domain.User;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
 
 /**
  * zyp
  * 个人中心
  * 2019-5-19
+ *
+ * lihang
+ * 绑定用户头像
+ * 2019-5-27
  */
 public class MeFragment extends Fragment {
 
@@ -46,7 +47,8 @@ public class MeFragment extends Fragment {
     private Button button_toMyPublish = null;
     private Button button_toMyApply = null;
     private Button btn_register=null;
-
+    private ImageView user_head = null;
+    private Handler handler = null;
     /*读取的文件的字段SharedPreferences */
     private String username;
 
@@ -66,6 +68,8 @@ public class MeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         return inflater.inflate(R.layout.fragment_me, container, false);
 
     }
@@ -74,10 +78,12 @@ public class MeFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
-
-
+        user_head = getActivity().findViewById(R.id.personalHead3);
+        handler = new Handler();
+        MyTread myTread = new MyTread();
+        myTread.start();
         /*---------------------------------------------------------------------------------*/
+
         my_information = (Button) getActivity().findViewById(R.id.my_information);
         button_toMyPublish = getActivity().findViewById(R.id.toMyPublish);
         button_toMyApply = getActivity().findViewById(R.id.toMyApply);
@@ -140,6 +146,25 @@ public class MeFragment extends Fragment {
             }
 
         });
+    }
+
+    private class MyTread extends Thread{
+        public void run(){
+
+            String userId = "163";
+            Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("userId",userId);
+            String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById",paramMap);
+            final User user = JSONUtil.toBean(res,User.class);
+
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    user_head.setImageBitmap(stringToBitmap(user.getHead()));
+                }
+            });
+        }
+
     }
 
 }

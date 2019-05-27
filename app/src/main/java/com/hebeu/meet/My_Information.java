@@ -134,7 +134,7 @@ public class My_Information extends AppCompatActivity {
             String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
             final   User user = JSONUtil.toBean(res, User.class);
 
-            System.out.println(user.toString());
+//            System.out.println(user.toString()); //每次都连带着头像输出一大堆东西 注释了注释了 看着乱死
 
             handler.post(new Runnable() {
                 @Override
