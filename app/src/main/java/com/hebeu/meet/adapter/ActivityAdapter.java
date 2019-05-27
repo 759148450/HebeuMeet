@@ -58,22 +58,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class ActivityAdapter extends ArrayAdapter {
 
 
-    //zyp 修改图标大小 2019-5-22
-    private TextView activityPlace =null;
-    private TextView activityTime =null;
-    private TextView activitySexLimit =null;
-//    -------------------
-    private TextView activityTitle = null;
-    private TextView activityUser2 = null;
-    private TextView activityUser = null;
-    private ImageView sexImage = null;
-
-    private Button button = null;
-    private Handler handler = null;
-
-    private HorizontalScrollView horizontalScrollView = null;
-    private LinearLayout container = null;
-    List<ActivityCreateUser> activityCreateUserList = new ArrayList<>();
+    private List<ActivityCreateUser> activityCreateUserList;
 
     private final int resourceId;
     public ActivityAdapter(Context context, List<ActivityCreateUser> activityCreateUserList){
@@ -83,135 +68,166 @@ public class ActivityAdapter extends ArrayAdapter {
         this.activityCreateUserList = activityCreateUserList;
     }
 
+    private class ViewHolder{
+        //zyp 修改图标大小 2019-5-22
+        private TextView activityPlace =null;
+        private TextView activityTime =null;
+        private TextView activitySexLimit =null;
+        //    -------------------
+        private TextView activityTitle = null;
+        private TextView activityUser2 = null;
+        private TextView activityUser = null;
+        private ImageView sexImage = null;
+
+        private Button button = null;
+        private Handler handler = null;
+
+        private HorizontalScrollView horizontalScrollView = null;
+        private LinearLayout container = null;
+        private Button btn_details = null;
+        private LinearLayout details_ly = null;
+    }
+
+
     @Override
-    public View getView(int position,  View convertView,  ViewGroup parent) {
+    public View getView(int position,  View view,  ViewGroup parent) {
+
+        ViewHolder viewHolder = null;
+
         final ActivityCreateUser activityCreateUser =(ActivityCreateUser) getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceId,null);
 
-        /*Vanilla 5-25*/
-        Button btn_details=view.findViewById(R.id.btn_details);//详情按钮
-        LinearLayout details_ly=view.findViewById(R.id.details_ly);//整个布局
 
-       /*-----------------*/
+        if (null == view){
+            view = LayoutInflater.from(getContext()).inflate(resourceId,null);
 
-        //zyp 设置图标大小2019-5-22 晚
-        //此处李航上面写的content，如要修改，需统一
-         activityPlace = view.findViewById(R.id.activityPlace);
-         activityTime = view.findViewById(R.id.activityTime);
-         activitySexLimit = view.findViewById(R.id.activitySexLimit);
+            viewHolder = new ViewHolder();
 
-         Drawable place = getContext().getResources().getDrawable(R.drawable.place);
-         Drawable time = getContext().getResources().getDrawable(R.drawable.time);
-         Drawable sex = getContext().getResources().getDrawable(R.drawable.sex);
+            viewHolder.btn_details=view.findViewById(R.id.btn_details);//详情按钮
+            viewHolder.details_ly=view.findViewById(R.id.details_ly);//整个布局
+            viewHolder.activityPlace = view.findViewById(R.id.activityPlace);
+            viewHolder.activityTime = view.findViewById(R.id.activityTime);
+            viewHolder.activitySexLimit = view.findViewById(R.id.activitySexLimit);
 
-         place.setBounds(0,0,32,35);
-         time.setBounds(0,0,32,32);
-         sex.setBounds(0,0,32,32);
-         activityPlace.setCompoundDrawables(place,null,null,null);
-         activityTime.setCompoundDrawables(time,null,null,null);
-         activitySexLimit.setCompoundDrawables(sex,null,null,null);
-         //------------over------------------
+            Drawable place = getContext().getResources().getDrawable(R.drawable.place);
+            Drawable time = getContext().getResources().getDrawable(R.drawable.time);
+            Drawable sex = getContext().getResources().getDrawable(R.drawable.sex);
 
-          //数据显示
-          //yuechunpeng
+            place.setBounds(0,0,32,35);
+            time.setBounds(0,0,32,32);
+            sex.setBounds(0,0,32,32);
+            viewHolder.activityPlace.setCompoundDrawables(place,null,null,null);
+            viewHolder.activityTime.setCompoundDrawables(time,null,null,null);
+            viewHolder.activitySexLimit.setCompoundDrawables(sex,null,null,null);
 
-        activityTitle = view.findViewById(R.id.activityTitle);
-        activityUser2 = view.findViewById(R.id.activityUser2);
-        activityUser = view.findViewById(R.id.activityUser);
-        btn_details = view.findViewById(R.id.btn_details);
-        sexImage = view.findViewById(R.id.sex);
+            viewHolder.activityTitle = view.findViewById(R.id.activityTitle);
+            viewHolder.activityUser2 = view.findViewById(R.id.activityUser2);
+            viewHolder.activityUser = view.findViewById(R.id.activityUser);
+            viewHolder.btn_details = view.findViewById(R.id.btn_details);
+            viewHolder.sexImage = view.findViewById(R.id.sex);
 
-        activityTitle.setText(activityCreateUser.getTitle());
-        activityPlace.setText(activityCreateUser.getActivityPlace());
+            viewHolder.activityTitle.setText(activityCreateUser.getTitle());
+            viewHolder.activityPlace.setText(activityCreateUser.getActivityPlace());
 
-        if(activityCreateUser.getActivityDate() != null){
-            activityTime.setText(activityCreateUser.getActivityDate().toString());
+
+            if(activityCreateUser.getActivityDate() != null){
+                viewHolder.activityTime.setText(activityCreateUser.getActivityDate().toString());
+            }else {
+                viewHolder.activityTime.setText("2019-6-1");
+            }
+            //活动性别要求
+            switch (activityCreateUser.getSexLimit()){
+                case 0 :viewHolder.activitySexLimit.setText("男"); break;
+                case 1 :viewHolder.activitySexLimit.setText("女"); break;
+                case 2 :viewHolder.activitySexLimit.setText("不限男女"); break;
+            }
+
+            switch (activityCreateUser.getSex()){
+                case 0:
+                    viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
+                    break;
+                case 1:
+                    viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
+                    break;
+            }
+
+            viewHolder.activityUser2.setText(activityCreateUser.getClassName());
+            viewHolder.activityUser.setText(activityCreateUser.getUserName());
+
+            viewHolder.horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
+            viewHolder.container = (LinearLayout) view.findViewById(R.id.horizontalScrollViewItemContainer);
+            viewHolder.handler = new Handler();
+            MyThread myThread = new MyThread(activityCreateUser.getActivityId(),viewHolder);
+            myThread.start();
+
+            //监听器
+            viewHolder.details_ly.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), Details.class);
+                    Bundle b = new Bundle();
+
+                    b.putInt("activity_id", activityCreateUser.getActivityId());
+                    b.putString("activity_title", activityCreateUser.getTitle());
+                    b.putString("activity_place",activityCreateUser.getActivityPlace());
+                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
+                    b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
+                    b.putString("activity_qq",activityCreateUser.getQq());
+                    b.putString("activity_phone",activityCreateUser.getPhone());
+                    b.putString("activity_content",activityCreateUser.getActivityContent());
+                    b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
+                    b.putString("activity_user_name",activityCreateUser.getUserName());
+                    b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
+                    b.putString("join_state",activityCreateUser.getJoinState());
+                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+                    intent.putExtras(b);
+                    getContext().startActivity(intent);
+                }
+            });
+            viewHolder.btn_details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), Details.class);
+                    Bundle b = new Bundle();
+
+                    b.putInt("activity_id", activityCreateUser.getActivityId());
+                    b.putString("activity_title", activityCreateUser.getTitle());
+                    b.putString("activity_place",activityCreateUser.getActivityPlace());
+                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
+                    b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
+                    b.putString("activity_qq",activityCreateUser.getQq());
+                    b.putString("activity_phone",activityCreateUser.getPhone());
+                    b.putString("activity_content",activityCreateUser.getActivityContent());
+                    b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
+                    b.putString("activity_user_name",activityCreateUser.getUserName());
+                    b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
+                    b.putString("join_state",activityCreateUser.getJoinState());
+                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+                    b.putInt("user_sex",activityCreateUser.getSex());
+                    intent.putExtras(b);
+                    getContext().startActivity(intent);
+
+                }
+            });
+            view.setTag(viewHolder);
+
         }else {
-            activityTime.setText("2019-6-1");
-        }
-        //活动性别要求
-        switch (activityCreateUser.getSexLimit()){
-            case 0 :activitySexLimit.setText("男"); break;
-            case 1 :activitySexLimit.setText("女"); break;
-            case 2 :activitySexLimit.setText("不限男女"); break;
+            viewHolder = (ViewHolder) view.getTag();
         }
 
-        switch (activityCreateUser.getSex()){
-            case 0:
-                sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
-                break;
-            case 1:
-                sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
-                break;
-        }
 
-        activityUser2.setText(activityCreateUser.getClassName());
-        activityUser.setText(activityCreateUser.getUserName());
 
-        horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
-        container = (LinearLayout) view.findViewById(R.id.horizontalScrollViewItemContainer);
-        handler = new Handler();
-        MyThread myThread = new MyThread(activityCreateUser.getActivityId());
-        myThread.start();
 
-        //监听器
-        details_ly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Details.class);
-                Bundle b = new Bundle();
-
-                b.putInt("activity_id", activityCreateUser.getActivityId());
-                b.putString("activity_title", activityCreateUser.getTitle());
-                b.putString("activity_place",activityCreateUser.getActivityPlace());
-                /*b.putString("activity_time",activityCreateUser.);*///时间
-                b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
-                b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
-                b.putString("activity_qq",activityCreateUser.getQq());
-                b.putString("activity_phone",activityCreateUser.getPhone());
-                b.putString("activity_content",activityCreateUser.getActivityContent());
-                b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
-                b.putString("activity_user_name",activityCreateUser.getUserName());
-                b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
-                b.putString("join_state",activityCreateUser.getJoinState());
-                b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
-                intent.putExtras(b);
-                getContext().startActivity(intent);
-            }
-        });
-        btn_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Details.class);
-                Bundle b = new Bundle();
-
-                b.putInt("activity_id", activityCreateUser.getActivityId());
-                b.putString("activity_title", activityCreateUser.getTitle());
-                b.putString("activity_place",activityCreateUser.getActivityPlace());
-                /*b.putString("activity_time",activityCreateUser.);*///时间
-                b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
-                b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
-                b.putString("activity_qq",activityCreateUser.getQq());
-                b.putString("activity_phone",activityCreateUser.getPhone());
-                b.putString("activity_content",activityCreateUser.getActivityContent());
-                b.putString("activity_user_id",activityCreateUser.getUserId());//发布人
-                b.putString("activity_user_name",activityCreateUser.getUserName());
-                b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
-                b.putString("join_state",activityCreateUser.getJoinState());
-                b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
-                b.putInt("user_sex",activityCreateUser.getSex());
-                intent.putExtras(b);
-                getContext().startActivity(intent);
-
-            }
-        });
          return view;
     }
 
     class MyThread extends Thread{
         Integer activityId;
-        public MyThread(Integer activityId){
+        ViewHolder viewHolder;
+        public MyThread(Integer activityId,ViewHolder viewHolder){
             this.activityId = activityId;
+            this.viewHolder = viewHolder;
         }
         @Override
         public void run() {
@@ -232,7 +248,7 @@ public class ActivityAdapter extends ArrayAdapter {
 
 
 
-            handler.post(new Runnable() {
+            viewHolder.handler.post(new Runnable() {
                 @Override
                 public void run() {
 //                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -249,9 +265,9 @@ public class ActivityAdapter extends ArrayAdapter {
                         imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
 //                        imageView.setLayoutParams(layoutParams);
 
-                        container.addView(imageView);
+                        viewHolder.container.addView(imageView);
 //                        container.addView(circleImageView);
-                        container.invalidate();
+                        viewHolder.container.invalidate();
                     }
                 }
             });
@@ -268,6 +284,16 @@ public class ActivityAdapter extends ArrayAdapter {
     @Override
     public int getCount() {
         return activityCreateUserList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null != activityCreateUserList?activityCreateUserList.get(position):null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public Bitmap stringToBitmap(String string) {
