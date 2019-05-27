@@ -1,5 +1,6 @@
 package com.hebeu.meet;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -16,6 +17,10 @@ import android.widget.TextView;
 /*活动详情页
 * Vanilla
 * 5-24
+*
+* lihang
+* 5-27
+* 绑定“查看申请信息”按钮功能
 **/
 
 public class Details extends AppCompatActivity {
@@ -34,15 +39,18 @@ public class Details extends AppCompatActivity {
     private LinearLayout apply_fail = null;
     private LinearLayout create_user = null;
     private LinearLayout apply_join = null;
-
+    private int activityId;
     private ImageView sexImage = null;
     private Handler handler = null;
-   private Button apply_join_btn=null;
+    private Button apply_join_btn=null;
+    private Button show_apply = null;//查看申请信息按钮
+    private ImageView activity_publisher_head = null;//活动发布者头像
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
+        activity_publisher_head = findViewById(R.id.activity_publisher_head);
         activity_title=findViewById(R.id.activity_title);
         activity_place=findViewById(R.id.activity_place);
         activity_time=findViewById(R.id.activity_time);
@@ -61,6 +69,7 @@ public class Details extends AppCompatActivity {
         apply_join = findViewById(R.id.apply_join);
         /*button*/
 //        apply_join_btn=findViewById(R.id.apply_join_btn);
+        show_apply = findViewById(R.id.show_apply);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
 
@@ -93,6 +102,17 @@ public class Details extends AppCompatActivity {
 
         MyThread thread=new MyThread();
         thread.start();
+
+        show_apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {//跳转到申请列表
+                Intent intent = new Intent(Details.this, Others_Apply_Activity.class);
+                Bundle c = new Bundle();
+                c.putInt("activity_id",activityId);
+                intent.putExtras(c);
+                startActivity(intent);
+            }
+        });
     }
 
     class MyThread extends Thread {
@@ -101,6 +121,7 @@ public class Details extends AppCompatActivity {
             /*Vanilla*/
             Bundle b = getIntent().getExtras();
             int activity_id = b.getInt("activity_id");
+            activityId = activity_id;
             final String activity_title1 = b.getString("activity_title");
             final String activity_place1=b.getString("activity_place");
            /* final String activity_time1=b.getString("activity_time");*/

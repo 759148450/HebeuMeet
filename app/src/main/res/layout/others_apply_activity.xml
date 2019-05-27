@@ -10,4 +10,12 @@
         android:divider="@null"
         android:id="@+id/OthersApply"/>
 
+    <!--当前活动无人申请时显示的东西-->
+    <TextView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/othersApplyIsEmpty"
+        android:text="没人申请你这个活动！！哈哈哈哈哈哈哈哈哈！！没想到吧！！哈哈哈！！Surprise！！"
+        android:visibility="invisible"/>
+
 </android.support.constraint.ConstraintLayout>
