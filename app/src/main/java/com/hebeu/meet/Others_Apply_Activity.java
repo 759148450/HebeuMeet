@@ -45,14 +45,12 @@ public class Others_Apply_Activity extends AppCompatActivity {
     private List<ActivityJoinUser> activityJoinUserList = null;
     private List<UserActivityView> userActivityViewList = null;
     private JSONResult jsonResult = null;
-    private TextView Empty = null;
 
    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.others_apply_activity);
         listView = findViewById(R.id.OthersApply);
-        Empty = findViewById(R.id.othersApplyIsEmpty);
         handler = new Handler();
         activityJoinUserList = new ArrayList<>();
         userActivityViewList = new ArrayList<>();
@@ -73,9 +71,7 @@ public class Others_Apply_Activity extends AppCompatActivity {
 
             JSONArray array = JSONUtil.parseArray(res);
             activityJoinUserList = JSONUtil.toList(array, ActivityJoinUser.class);
-            //判断有没有人申请这个活动
                 for(ActivityJoinUser item : activityJoinUserList){
-
                     //显示信息用的
                     UserActivityView userActivityView = new UserActivityView();
                     userActivityView.setUserName(item.getUserName());
@@ -91,15 +87,9 @@ public class Others_Apply_Activity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    if(activityJoinUserList.size()==0){//没人申请，隐藏申请列表，显示无人申请
-                        Empty.setVisibility(View.VISIBLE);
-                        listView.setVisibility(View.INVISIBLE);
-                    }else{
                         Others_Apply_Activity.MyBaseAdapter baseAdapter = new Others_Apply_Activity.MyBaseAdapter();
                         //把数组适配器加载到ListView控件中
                         listView.setAdapter(baseAdapter);
-                    }
-
                 }
             });
         }

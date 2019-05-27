@@ -11,6 +11,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.hebeu.meet.domain.ActivityJoinUser;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import cn.hutool.http.HttpUtil;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONUtil;
 
 
 
@@ -40,17 +50,16 @@ public class Details extends AppCompatActivity {
     private LinearLayout create_user = null;
     private LinearLayout apply_join = null;
     private int activityId;
+    private int length;
     private ImageView sexImage = null;
     private Handler handler = null;
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
-    private ImageView activity_publisher_head = null;//活动发布者头像
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
-        activity_publisher_head = findViewById(R.id.activity_publisher_head);
         activity_title=findViewById(R.id.activity_title);
         activity_place=findViewById(R.id.activity_place);
         activity_time=findViewById(R.id.activity_time);
@@ -106,11 +115,10 @@ public class Details extends AppCompatActivity {
         show_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//跳转到申请列表
-                Intent intent = new Intent(Details.this, Others_Apply_Activity.class);
-                Bundle c = new Bundle();
-                c.putInt("activity_id",activityId);
-                intent.putExtras(c);
-                startActivity(intent);
+                MyThread2 myThread2 = new MyThread2();
+                myThread2.start();
+
+
             }
         });
     }
@@ -229,6 +237,32 @@ public class Details extends AppCompatActivity {
                     }
 
 
+                }
+            });
+        }
+    }
+
+    class MyThread2 extends Thread{
+        public void run(){
+            Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("activityId",activityId);
+            String res =HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
+            JSONArray array = JSONUtil.parseArray(res);
+           length = (JSONUtil.toList(array, ActivityJoinUser.class)).size();//获取申请列表长度
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(length>0){
+                        Intent intent = new Intent(Details.this, Others_Apply_Activity.class);
+                        Bundle c = new Bundle();
+                        c.putInt("activity_id",activityId);
+                        intent.putExtras(c);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast toast = Toast.makeText(Details.this,"暂无人申请",Toast.LENGTH_SHORT);
+                        toast.show();//显示消息
+                    }
                 }
             });
         }
