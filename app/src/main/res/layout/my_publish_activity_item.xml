@@ -90,71 +90,26 @@
             <View android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:layout_height="0.2dp"
-                android:background="#cdcdcd" />
+                android:background="#FFFFFF" />
 
             <!--参与者头像根据数目循环显示-->
-            <LinearLayout
-                android:layout_width="fill_parent"
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="5dp">
+                android:background="#FFFFFF">
 
-                <!--多张图片是测试使用-->
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    app:srcCompat="@drawable/my_img" />
-
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/horizontalScrollViewItemContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
 
             <View android:layout_width="match_parent"
                 android:layout_marginTop="0dp"
                 android:layout_height="0.2dp"
-                android:background="#cdcdcd" />
+                android:background="#FFFFFF" />
 
         </LinearLayout>
 
@@ -243,51 +198,51 @@
         <!--发布活动页面为空状态-->
 
         <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_margin="40dp">-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_margin="40dp">-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/join_empty"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:scaleType="fitXY"-->
-                <!--android:adjustViewBounds="true"-->
-                <!--android:layout_gravity="center"-->
-                <!--app:srcCompat="@drawable/join_empty"-->
-                <!--tools:ignore="MissingConstraints" />-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="暂未发布活动"-->
-                <!--android:gravity="center"-->
-                <!--android:layout_marginTop="40dp"-->
-                <!--android:textSize="18sp"-->
-                <!--android:textStyle="bold"-->
-                <!--android:textColor="@color/hd_message"/>-->
+        <!--<ImageView-->
+        <!--android:id="@+id/join_empty"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:scaleType="fitXY"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:layout_gravity="center"-->
+        <!--app:srcCompat="@drawable/join_empty"-->
+        <!--tools:ignore="MissingConstraints" />-->
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="暂未发布活动"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/hd_message"/>-->
 
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="去创建自己想要的活动吧"-->
-                <!--android:gravity="center"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:textSize="18sp"-->
-                <!--android:textStyle="bold"-->
-                <!--android:textColor="#9F9FAC"/>-->
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="去创建自己想要的活动吧"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="#9F9FAC"/>-->
 
-            <!--<Button-->
-                <!--android:id="@+id/launch_activity"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="60dp"-->
-                <!--android:layout_marginBottom="30dp"-->
-                <!--android:background="@drawable/button_style"-->
-                <!--android:text="创建活动"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="20dp"-->
-                <!--android:textStyle="bold" />-->
+        <!--<Button-->
+        <!--android:id="@+id/launch_activity"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="60dp"-->
+        <!--android:layout_marginBottom="30dp"-->
+        <!--android:background="@drawable/button_style"-->
+        <!--android:text="创建活动"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="20dp"-->
+        <!--android:textStyle="bold" />-->
 
         <!--</LinearLayout>-->
 
