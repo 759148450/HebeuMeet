@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    android:layout_height="match_parent">
+    <!--zyp 2019-5-23  界面  下午-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:background="@color/white">
+
+        <!--活动申请人信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/apply_style"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <com.hebeu.meet.UI.CircleImageView
+                    android:id="@+id/Contact_Publisher_head"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/my_img"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/contact_mc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="活动发起人"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/hd_message" />
+                    <!--zyp添加活动发起人信息，数据需后台获取-->
+                    <TextView
+                        android:id="@+id/contact_bj"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="计算机1604张三"
+                        android:textColor="@color/hd_message"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--zyp添加发起人性别图片，数据需后台获取判断-->
+            <ImageView
+                android:id="@+id/Contact_sex"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="2dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+        </LinearLayout>
+        <View android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="QQ:1212121212"
+                android:textColor="#9F9FAC"
+                android:textSize="20dp"
+                android:id="@+id/contact_qq"/>
+            <TextView
+                android:id="@+id/contact_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="电话:11111111111"
+                android:textSize="20dp"
+                android:textColor="#9F9FAC"/>
+            <TextView
+                android:id="@+id/contact_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="邮箱:12345678901@qq.com"
+                android:textSize="20dp"
+                android:textColor="#9F9FAC"/>
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="”"-->
+                <!--android:gravity="right"-->
+                <!--android:textColor="#9F9FAC"-->
+                <!--android:textSize="30dp"/>-->
+
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_height="0.2dp"
+            android:background="#cdcdcd"
+            android:id="@+id/line2" />
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--<Button-->
+                <!--android:id="@+id/jjsq"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_marginTop="0dp"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:background="@drawable/button_state"-->
+                <!--style="?android:attr/borderlessButtonStyle"-->
+                <!--android:text="拒绝"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textColor="@color/success"/>-->
+            <!--<View-->
+                <!--android:layout_width="0.2dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="#cdcdcd"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/line1"/>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/tysq"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="0dp"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:background="@drawable/button_state"-->
+                <!--style="?android:attr/borderlessButtonStyle"-->
+                <!--android:text="同意"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textColor="@color/fail"/>-->
+
+        </LinearLayout>
+
+        <!--zyp以下样式需要判断状态来显示-->
+        <!--<LinearLayout-->
+            <!--android:id="@+id/apply_success"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_height="50dp">-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/success"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:text="已同意"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textSize="20sp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:textColor="@color/apply_success"/>&ndash;&gt;-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/apply_fail"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_height="50dp">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/failed"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:text="已拒绝"-->
+                <!--android:textSize="20sp"-->
+                <!--android:textColor="@color/apply_fail"/>-->
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+</ScrollView>

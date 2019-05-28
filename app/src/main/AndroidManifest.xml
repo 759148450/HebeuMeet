@@ -46,6 +46,7 @@
         </activity>
         <activity android:name=".Details"></activity>
         <activity android:name=".ApplyJoin"></activity>
+        <activity android:name=".ContactList"></activity>
     </application>
 
 </manifest>

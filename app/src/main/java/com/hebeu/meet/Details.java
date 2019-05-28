@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.hebeu.meet.domain.ActivityJoinUser;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.hutool.http.HttpUtil;
@@ -55,11 +56,13 @@ public class Details extends AppCompatActivity {
     private Handler handler = null;
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
+    private Button show_contact = null;//查看联系方式
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
+        show_contact = findViewById(R.id.show_contact);
         activity_title=findViewById(R.id.activity_title);
         activity_place=findViewById(R.id.activity_place);
         activity_time=findViewById(R.id.activity_time);
@@ -131,6 +134,13 @@ public class Details extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        });
+        show_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyThread3 mythread3 = new MyThread3();
+                mythread3.start();
+            }
         });
     }
 
@@ -257,7 +267,7 @@ public class Details extends AppCompatActivity {
             paramMap.put("activityId",activityId);
             String res =HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
             JSONArray array = JSONUtil.parseArray(res);
-           length = (JSONUtil.toList(array, ActivityJoinUser.class)).size();//获取申请列表长度
+            length = (JSONUtil.toList(array, ActivityJoinUser.class)).size();//获取申请列表长度
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -270,6 +280,37 @@ public class Details extends AppCompatActivity {
                     }
                     else{
                         Toast toast = Toast.makeText(Details.this,"暂无人申请",Toast.LENGTH_SHORT);
+                        toast.show();//显示消息
+                    }
+                }
+            });
+        }
+    }
+
+    class MyThread3 extends Thread{
+        public void run(){
+            Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("activityId",activityId);
+            String res =HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
+            JSONArray array = JSONUtil.parseArray(res);
+            List<ActivityJoinUser> list = JSONUtil.toList(array, ActivityJoinUser.class);
+            for(ActivityJoinUser item : list){
+                if(item.getJoinState().equals("2")){
+                    length++;
+                }
+            }
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(length >0){
+                        Intent intent = new Intent(Details.this, ContactList.class);
+                        Bundle c = new Bundle();
+                        c.putInt("activity_id",activityId);
+                        intent.putExtras(c);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast toast = Toast.makeText(Details.this,"暂无人参加",Toast.LENGTH_SHORT);
                         toast.show();//显示消息
                     }
                 }

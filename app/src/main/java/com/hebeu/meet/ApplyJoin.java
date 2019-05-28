@@ -54,7 +54,7 @@ public class ApplyJoin extends AppCompatActivity {
                     userjoin.setUserId(userId);
                     userjoin.setActivityId(activity_id);
                     userjoin.setWords(String.valueOf(words.getText()));
-                    userjoin.setJoinState("0");
+                    userjoin.setJoinState("1");
 
 
                     Map<String,Object> paramMap = BeanUtil.beanToMap(userjoin);
