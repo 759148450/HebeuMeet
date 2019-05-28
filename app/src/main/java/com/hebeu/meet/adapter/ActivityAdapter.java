@@ -235,8 +235,9 @@ public class ActivityAdapter extends ArrayAdapter {
             Looper.prepare();
             Map<String,Object> paramMap = new HashMap<>();
             paramMap.put("activityId",activityId);
+            paramMap.put("joinState",2);
             System.out.println("activityId : " + activityId);
-            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
+            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityIdAndJoinState",paramMap);
             JSONArray jsonArray = JSONUtil.parseArray(res);
             final List<ActivityJoinUser> activityJoinUserList = JSONUtil.toList(jsonArray,ActivityJoinUser.class);
 
