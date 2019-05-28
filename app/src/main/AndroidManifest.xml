@@ -45,6 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Details"></activity>
+        <activity android:name=".ApplyJoin"></activity>
     </application>
 
 </manifest>

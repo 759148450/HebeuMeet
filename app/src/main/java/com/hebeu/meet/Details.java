@@ -77,7 +77,7 @@ public class Details extends AppCompatActivity {
         apply_fail = findViewById(R.id.apply_fail);
         apply_join = findViewById(R.id.apply_join);
         /*button*/
-//        apply_join_btn=findViewById(R.id.apply_join_btn);
+       apply_join_btn=findViewById(R.id.apply_join_btn);
         show_apply = findViewById(R.id.show_apply);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
@@ -121,6 +121,17 @@ public class Details extends AppCompatActivity {
 
             }
         });
+        apply_join_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = getIntent().getExtras();
+                int activity_id = b.getInt("activity_id");
+                Intent intent = new Intent(Details.this.getApplicationContext(), ApplyJoin.class);
+                intent.putExtra("activity_id",activity_id);
+                startActivity(intent);
+            }
+
+        });
     }
 
     class MyThread extends Thread {
@@ -144,8 +155,6 @@ public class Details extends AppCompatActivity {
             final Integer user_sex=b.getInt("user_sex");
             final String join_state1=b.getString("join_state");
             final String join_id1=b.getString("join_id");
-
-
 
            /* String res = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityById?activityId=");
             final Activity activity = JSONUtil.toBean(res, Activity.class);
