@@ -126,14 +126,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <ImageView
+                <!--<ImageView-->
+                    <!--android:id="@+id/imageView"-->
+                    <!--android:layout_width="43dp"-->
+                    <!--android:layout_height="43dp"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:scaleType="fitXY"-->
+                    <!--android:background="@drawable/my_img"/>-->
+                <com.hebeu.meet.UI.CircleImageView
                     android:id="@+id/imageView"
-                    android:layout_width="43dp"
-                    android:layout_height="43dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_centerVertical="true"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:scaleType="fitXY"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/my_img"/>
 
                 <LinearLayout

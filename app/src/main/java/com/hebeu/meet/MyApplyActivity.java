@@ -69,7 +69,7 @@ public class MyApplyActivity extends AppCompatActivity {
             String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByUserId?userId="+userId);//根据userId从activity-user表中查出关于user的所有信息
             JSONArray array = JSONUtil.parseArray(res);
             userActivityList = JSONUtil.toList(array, ActivityJoinUser.class);
-            System.out.println(userActivityList.toString());
+//            System.out.println(userActivityList.toString());
             int activityId;
             for(ActivityJoinUser item : userActivityList){
                 activityId = item.getActivityId();
@@ -78,7 +78,7 @@ public class MyApplyActivity extends AppCompatActivity {
                 String res2 = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityCreateUserById",paramMap);//根据activityId从activity表中查出关于本条活动的所有信息
                 final ActivityCreateUser activity = JSONUtil.toBean(res2, ActivityCreateUser.class);
 
-                System.out.println("ActivityCreateUser"+activity.toString());
+//                System.out.println("ActivityCreateUser"+activity.toString());
                 UserActivityView userActivityView = new UserActivityView();
 
                 userActivityView.setActivityContent(activity.getActivityContent());//活动内容
@@ -247,19 +247,19 @@ public class MyApplyActivity extends AppCompatActivity {
 //                case "2":u.setJoinState("申请通过");break;
 //            }
 
-            if (u.getJoinState().equals("0")){
+            if (u.getJoinState().equals("1")){
                 //正在申请
 
                 apply_fail.setVisibility(View.GONE);
                 apply_success.setVisibility(View.GONE);
 
-            }else if (u.getJoinState().equals("1")){
+            }else if (u.getJoinState().equals("2")){
                 //申请成功
 
                 apply_fail.setVisibility(View.GONE);
                 applying.setVisibility(View.GONE);
 
-            }else if (u.getJoinState().equals("2")){
+            }else if (u.getJoinState().equals("3")){
                 //申请失败
 
                 applying.setVisibility(View.GONE);

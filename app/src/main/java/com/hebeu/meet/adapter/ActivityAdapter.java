@@ -86,6 +86,8 @@ public class ActivityAdapter extends ArrayAdapter {
         private LinearLayout container = null;
         private Button btn_details = null;
         private LinearLayout details_ly = null;
+
+        private CircleImageView imageView = null;
     }
 
 
@@ -128,6 +130,8 @@ public class ActivityAdapter extends ArrayAdapter {
             viewHolder.activityTitle.setText(activityCreateUser.getTitle());
             viewHolder.activityPlace.setText(activityCreateUser.getActivityPlace());
 
+            viewHolder.imageView = (CircleImageView)view.findViewById(R.id.imageView);
+
 
             if(activityCreateUser.getActivityDate() != null){
                 viewHolder.activityTime.setText(activityCreateUser.getActivityDate().toString());
@@ -140,7 +144,14 @@ public class ActivityAdapter extends ArrayAdapter {
                 case 1 :viewHolder.activitySexLimit.setText("女"); break;
                 case 2 :viewHolder.activitySexLimit.setText("不限男女"); break;
             }
+            //设置发布人的默认头像
+            viewHolder.imageView.setImageDrawable(getContext().getResources().getDrawable(R.drawable.my_img));
+            //若用户头像信息不为空，则设置为用户自定义头像
+            if(activityCreateUser.getHead() != null){
+                viewHolder.imageView.setImageBitmap(stringToBitmap(activityCreateUser.getHead()));
+            }
 
+            //显示发布人的性别
             switch (activityCreateUser.getSex()){
                 case 0:
                     viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
