@@ -108,23 +108,6 @@
                 android:text="电话:11111111111"
                 android:textSize="20dp"
                 android:textColor="#9F9FAC"/>
-            <TextView
-                android:id="@+id/contact_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:text="邮箱:12345678901@qq.com"
-                android:textSize="20dp"
-                android:textColor="#9F9FAC"/>
-
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="”"-->
-                <!--android:gravity="right"-->
-                <!--android:textColor="#9F9FAC"-->
-                <!--android:textSize="30dp"/>-->
 
         </LinearLayout>
 
@@ -136,76 +119,37 @@
 
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
-            <!--<Button-->
-                <!--android:id="@+id/jjsq"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_marginTop="0dp"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="@drawable/button_state"-->
-                <!--style="?android:attr/borderlessButtonStyle"-->
-                <!--android:text="拒绝"-->
-                <!--android:textSize="20sp"-->
-                <!--android:textColor="@color/success"/>-->
-            <!--<View-->
-                <!--android:layout_width="0.2dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:background="#cdcdcd"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:id="@+id/line1"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="“"
+                android:textColor="#9F9FAC"
+                android:textSize="30dp"/>
+            <TextView
+                android:id="@+id/contact_words"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:text="备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注"
+                android:textSize="20dp"
+                android:textColor="#9F9FAC"/>
 
-            <!--<Button-->
-                <!--android:id="@+id/tysq"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="0dp"-->
-                <!--android:layout_margin="5dp"-->
-                <!--android:background="@drawable/button_state"-->
-                <!--style="?android:attr/borderlessButtonStyle"-->
-                <!--android:text="同意"-->
-                <!--android:textSize="20sp"-->
-                <!--android:textColor="@color/fail"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="”"
+                android:gravity="right"
+                android:textColor="#9F9FAC"
+                android:textSize="30dp"/>
 
         </LinearLayout>
-
-        <!--zyp以下样式需要判断状态来显示-->
-        <!--<LinearLayout-->
-            <!--android:id="@+id/apply_success"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_height="50dp">-->
-
-            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/success"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:gravity="center_horizontal"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:text="已同意"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:textSize="20sp"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:textColor="@color/apply_success"/>&ndash;&gt;-->
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/apply_fail"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_height="50dp">-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/failed"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center_horizontal"-->
-                <!--android:text="已拒绝"-->
-                <!--android:textSize="20sp"-->
-                <!--android:textColor="@color/apply_fail"/>-->
-        <!--</LinearLayout>-->
 
     </LinearLayout>
 

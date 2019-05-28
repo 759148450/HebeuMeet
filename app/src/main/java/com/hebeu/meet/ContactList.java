@@ -103,22 +103,22 @@ public class ContactList extends AppCompatActivity {
             ImageView Contact_sex;
             TextView Contact_mc;
             TextView Contact_bj;
-            TextView Contact_email;
+            TextView Contact_words;
 
             Contact_qq = view.findViewById(R.id.contact_qq);
             Contact_bj = view.findViewById(R.id.contact_bj);
-            Contact_email = view.findViewById(R.id.contact_email);
             Contact_phone = view.findViewById(R.id.contact_phone);
             Contact_Publisher_head = view.findViewById(R.id.Contact_Publisher_head);
             Contact_sex = view.findViewById(R.id.Contact_sex);
             Contact_mc = view.findViewById(R.id.contact_mc);
+            Contact_words = view.findViewById(R.id.contact_words);
 
             Contact_bj.setText(u.getClassName());
             Contact_qq.setText("QQ："+u.getQq());
-            Contact_email.setText("邮箱："+u.getEmail());
             Contact_phone.setText("电话："+u.getPhone());
-            Contact_Publisher_head.setImageBitmap(stringToBitmap(u.getHead()));
-            switch (u.getSex())
+            Contact_words.setText(u.getWords());
+            Contact_Publisher_head.setImageBitmap(stringToBitmap(u.getHead()));//设置头像
+            switch (u.getSex())//设置性别图片
             {
                 case 0: Contact_sex.setImageResource(R.drawable.man);break;
                 case 1:Contact_sex.setImageResource(R.drawable.woman);break;
