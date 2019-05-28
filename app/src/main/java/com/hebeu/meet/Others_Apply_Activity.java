@@ -151,10 +151,14 @@ public class Others_Apply_Activity extends AppCompatActivity {
             ImageView PublisherHead = view.findViewById(R.id.Publisher_head);
             final Button btn_accpte = view.findViewById(R.id.tysq);
             final Button btn_refuse = view.findViewById(R.id.jjsq);
-            final TextView ress = view.findViewById(R.id.othersRes);
+            final TextView successed = view.findViewById(R.id.success);
+            final TextView failed = view.findViewById(R.id.failed);
             ImageView SexImage = view.findViewById(R.id.sex);
             final View line1 = view.findViewById(R.id.line1);
             final View line2 = view.findViewById(R.id.line2);
+            final LinearLayout apply_state = view.findViewById(R.id.apply_state);//zyp-2019-5-28
+            final LinearLayout apply_success = view.findViewById(R.id.apply_success);//zyp-2019-5-28
+            final LinearLayout apply_fail = view.findViewById(R.id.apply_fail);//zyp-2019-5-28
 
 
             //绑定发布人头像
@@ -162,34 +166,26 @@ public class Others_Apply_Activity extends AppCompatActivity {
             //绑定性别图片
             if(u.getSex() == 0){
                 SexImage.setImageResource(R.drawable.man);
-                SexImage.setLayoutParams(new LinearLayout.LayoutParams(200,
-                        200));//控制图表大小
             }else{
                 SexImage.setImageResource(R.drawable.woman);
-                SexImage.setLayoutParams(new LinearLayout.LayoutParams(200,
-                        200));
             }
 
             name.setText("姓名："+u.getUserName());
             classname.setText("专业班级："+u.getClassName());
             describe.setText("备注："+u.getWords());
-            //加载申请状态
-            if(u.getJoinState().equals("2")){
-                ress.setText("已同意");
-                ress.setVisibility(View.VISIBLE);
-                btn_accpte.setVisibility(View.INVISIBLE);
-                btn_refuse.setVisibility(View.INVISIBLE);
-                line1.setVisibility(View.INVISIBLE);
-                line2.setVisibility(View.INVISIBLE);
-
+            //未审核--zyp
+            if(u.getJoinState().equals("1")){
+                apply_success.setVisibility(View.GONE);
+                apply_fail.setVisibility(View.GONE);
             }
-            if(u.getJoinState().equals("3")){
-                ress.setText("已拒绝");
-                ress.setVisibility(View.VISIBLE);
-                btn_accpte.setVisibility(View.INVISIBLE);
-                btn_refuse.setVisibility(View.INVISIBLE);
-                line1.setVisibility(View.INVISIBLE);
-                line2.setVisibility(View.INVISIBLE);
+            //加载申请状态
+            else if(u.getJoinState().equals("2")){
+                apply_state.setVisibility(View.GONE);//zyp
+                apply_fail.setVisibility(View.GONE);
+            }
+            else if(u.getJoinState().equals("3")){
+                apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
+                apply_success.setVisibility(View.GONE);
             }
 
             //同意按钮
@@ -200,12 +196,9 @@ public class Others_Apply_Activity extends AppCompatActivity {
                    myThread2.start();
                     if ((jsonResult.getCode() == 0)){
                         System.out.println("运⾏行行成功");
-                        ress.setText("已同意");
-                        ress.setVisibility(View.VISIBLE);
-                        btn_accpte.setVisibility(View.INVISIBLE);
-                        btn_refuse.setVisibility(View.INVISIBLE);
-                        line1.setVisibility(View.INVISIBLE);
-                        line2.setVisibility(View.INVISIBLE);
+                        apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
+                        successed.setVisibility(View.INVISIBLE);
+                        apply_success.setVisibility(View.INVISIBLE);
                     } else{
                         System.out.println("运⾏行行失败");   }
                 }
@@ -219,12 +212,9 @@ public class Others_Apply_Activity extends AppCompatActivity {
                     myThread2.start();
                     if ((jsonResult.getCode() == 0)){
                         System.out.println("运⾏行行成功");
-                        ress.setText("已拒绝");
-                        ress.setVisibility(View.VISIBLE);
-                        btn_accpte.setVisibility(View.INVISIBLE);
-                        btn_refuse.setVisibility(View.INVISIBLE);
-                        line1.setVisibility(View.INVISIBLE);
-                        line2.setVisibility(View.INVISIBLE);
+                        apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
+                        failed.setVisibility(View.INVISIBLE);
+                        apply_fail.setVisibility(View.INVISIBLE);
                     } else{
                         System.out.println("运⾏行行失败");   }
                 }

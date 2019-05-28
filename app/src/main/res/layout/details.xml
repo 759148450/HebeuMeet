@@ -325,6 +325,7 @@
             android:id="@+id/applying"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="70dp"
             android:layout_marginBottom="0dp"
             android:gravity="center"
             android:background="@color/title">
@@ -343,6 +344,7 @@
         <LinearLayout
             android:id="@+id/apply_success"
             android:layout_width="match_parent"
+            android:layout_marginTop="70dp"
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_marginBottom="0dp"
@@ -362,6 +364,7 @@
         <LinearLayout
             android:id="@+id/apply_fail"
             android:layout_width="match_parent"
+            android:layout_marginTop="70dp"
             android:layout_height="60dp"
             android:layout_marginBottom="0dp"
             android:gravity="center"
@@ -381,6 +384,7 @@
         <LinearLayout
             android:id="@+id/apply_join"
             android:layout_width="match_parent"
+            android:layout_marginTop="70dp"
             android:layout_height="60dp"
             android:layout_marginBottom="0dp"
             android:gravity="center"
