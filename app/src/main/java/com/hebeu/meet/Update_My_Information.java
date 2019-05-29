@@ -184,7 +184,11 @@ public class Update_My_Information extends AppCompatActivity {
                     String userId=sharedPre.getString("userId", "");
                     update_user.setUserId(userId);
                     update_user.setUserName(String.valueOf(user_name.getText()));
-                    update_user.setSex(Integer.parseInt(String.valueOf(user_sex.getText())));
+                    if(String.valueOf(user_sex.getText()).equals("男")){
+                        update_user.setSex(0);
+                    }else{
+                        update_user.setSex(1);
+                    }
                     update_user.setCollege(String.valueOf(user_college.getText()));
                     update_user.setClassName(String.valueOf(user_classname.getText()));
                     update_user.setQq(String.valueOf(user_qq.getText()));
@@ -276,7 +280,13 @@ public class Update_My_Information extends AppCompatActivity {
                 public void run() {
                     user_id.setText(user.getUserId());
                     user_name.setText(user.getUserName());
-                    user_sex.setText(user.getSex().toString());
+                    if(user.getSex()==0){
+                        user_sex.setText("男");
+                    }
+                    else{
+                        user_sex.setText("女");
+                    }
+
                     user_college.setText(user.getCollege());
                     user_classname.setText(user.getClassName());
                     user_qq.setText(user.getQq());

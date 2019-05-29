@@ -88,16 +88,12 @@ public class ApplyJoin extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(ApplyJoin.this, HomeActivity.class);
+                                startActivity(intent);
                                 System.out.println("您点击了【首页】");
                             }
                         });
-                normalDialog.setNegativeButton("活动详情",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                System.out.println("您点击了 【活动详情】");
-                            }
-                        });
+
                 // 显示
                 normalDialog.show();
             }

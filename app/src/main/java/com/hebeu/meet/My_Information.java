@@ -114,6 +114,7 @@ public class My_Information extends AppCompatActivity {
         //----------------------------
     }
     class MyThread extends Thread {
+        public   User user=new User();
         public void run() {
             user_id = findViewById(R.id.user_id);
             user_name = findViewById(R.id.user_name);
@@ -132,7 +133,7 @@ public class My_Information extends AppCompatActivity {
 
             /*---------------------------------------------------------------------------------*/
             String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+userId);
-            final   User user = JSONUtil.toBean(res, User.class);
+            user = JSONUtil.toBean(res, User.class);
 
 //            System.out.println(user.toString()); //每次都连带着头像输出一大堆东西 注释了注释了 看着乱死
 
@@ -141,7 +142,13 @@ public class My_Information extends AppCompatActivity {
                 public void run() {
                     user_id.setText(user.getUserId());
                     user_name.setText(user.getUserName());
-                    user_sex.setText(user.getSex().toString());
+
+                    if(user.getSex()==0){
+                        user_sex.setText("男");
+                    }
+                    else{
+                        user_sex.setText("女");
+                    }
                     user_college.setText(user.getCollege());
                     user_classname.setText(user.getClassName());
                     user_qq.setText(user.getQq());
