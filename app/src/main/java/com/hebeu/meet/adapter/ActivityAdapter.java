@@ -146,8 +146,11 @@ public class ActivityAdapter extends ArrayAdapter {
             }
             //设置发布人的默认头像
             viewHolder.imageView.setImageDrawable(getContext().getResources().getDrawable(R.drawable.my_img));
+            System.out.println("下面输出id");;
+            System.out.println(activityCreateUser.getActivityId());
             //若用户头像信息不为空，则设置为用户自定义头像
             if(activityCreateUser.getHead() != null){
+                System.out.println("activityId为"+activityCreateUser.getActivityId());
                 viewHolder.imageView.setImageBitmap(stringToBitmap(activityCreateUser.getHead()));
             }
 

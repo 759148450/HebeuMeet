@@ -2,6 +2,8 @@ package com.hebeu.meet;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,6 +30,10 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+
+import static com.hebeu.meet.tools.ImageHandler.bitmapToString;
+import static com.hebeu.meet.tools.ImageHandler.compressScale;
+
 /*
  * 注册
  * Vanilla
@@ -49,7 +55,14 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        /*隐藏标题栏
+         * */
         super.onCreate(savedInstanceState);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);//remove title bar  即隐藏标题栏
+//        getSupportActionBar().hide();
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//remove notification bar  即全屏
+
+
 
         setContentView(R.layout.register);
         handler = new Handler();
@@ -113,6 +126,11 @@ public class Register extends AppCompatActivity {
                     new_user.setQq(String.valueOf(user_qq.getEditableText()));
                     new_user.setPhone(String.valueOf(user_phone.getEditableText()));
                     new_user.setEmail(String.valueOf(user_email.getEditableText()));
+                    Bitmap bmp= BitmapFactory.decodeResource(getResources(), R.drawable.my_img);
+                    Bitmap bms =  compressScale(bmp);//压缩
+                    new_user.setHead(bitmapToString(bms));
+                    System.out.println("个人信息");
+                    System.out.println(new_user.toString());
                     Map<String,Object> paramMap = BeanUtil.beanToMap(new_user);
                     String res = "";
                     JSONResult jsonResult;

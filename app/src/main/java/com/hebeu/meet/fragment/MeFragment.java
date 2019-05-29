@@ -169,7 +169,7 @@ public class MeFragment extends Fragment {
                 Intent intent = new Intent(getActivity().getApplicationContext(), EmptyActivity.class);
                 startActivity(intent);
             }else {
-                Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), My_Publish_Activity.class);
                 startActivity(intent);
             }
         }
