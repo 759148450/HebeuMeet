@@ -137,14 +137,7 @@ public class MeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        /*Vanilla 5-22*/
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), Register.class);
-                startActivity(intent);
-            }
-        });
+
         /*Vanilla 5-21*/
         my_information.setOnClickListener(new View.OnClickListener() {
             @Override

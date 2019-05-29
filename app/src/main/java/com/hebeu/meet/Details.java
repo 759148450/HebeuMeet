@@ -29,13 +29,13 @@ import cn.hutool.json.JSONUtil;
 
 
 /*活动详情页
-* Vanilla
-* 5-24
-*
-* lihang
-* 5-27
-* 绑定“查看申请信息”按钮功能
-**/
+ * Vanilla
+ * 5-24
+ *
+ * lihang
+ * 5-27
+ * 绑定“查看申请信息”按钮功能
+ **/
 
 public class Details extends AppCompatActivity {
     private TextView activity_title=null;
@@ -83,7 +83,7 @@ public class Details extends AppCompatActivity {
         apply_fail = findViewById(R.id.apply_fail);
         apply_join = findViewById(R.id.apply_join);
         /*button*/
-       apply_join_btn=findViewById(R.id.apply_join_btn);
+        apply_join_btn=findViewById(R.id.apply_join_btn);
         show_apply = findViewById(R.id.show_apply);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
@@ -156,12 +156,12 @@ public class Details extends AppCompatActivity {
             /*获取登录的用户信息*/
             SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
             final String userId=sharedPre.getString("userId", "");
-           final Bundle b = getIntent().getExtras();
+            final Bundle b = getIntent().getExtras();
             final int activity_id = b.getInt("activity_id");
             activityId = activity_id;
             final String activity_title1 = b.getString("activity_title");
             final String activity_place1=b.getString("activity_place");
-           /* final String activity_time1=b.getString("activity_time");*/
+            /* final String activity_time1=b.getString("activity_time");*/
             final String activity_sexLimit1=b.getString("activity_sexLimit");
             final String activity_PeopleLimit1=b.getString("activity_PeopleLimit");
             final String activity_qq1=b.getString("activity_qq");
@@ -182,7 +182,7 @@ public class Details extends AppCompatActivity {
             try {
                 final String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/getUserActivityByActivityIdAndUserId",paramMap);
 //                System.out.println("res"+res.toString());
-               user_activity= JSONUtil.toBean(res, UserActivity.class);
+                user_activity= JSONUtil.toBean(res, UserActivity.class);
 //                System.out.println(user_activity.toString());
             }catch (Exception e){
                 System.out.println("空");
@@ -199,8 +199,10 @@ public class Details extends AppCompatActivity {
 //                    activity_time1
                     if(activity_sexLimit1.equals("0")){
                         activity_sexLimit.setText("活动性别限制：男");
-                    }else{
+                    }else if(activity_sexLimit1.equals("1")){
                         activity_sexLimit.setText("活动性别限制：女");
+                    }else{
+                        activity_sexLimit.setText("不限男女");
                     }
 
                     switch (user_sex){
@@ -250,8 +252,8 @@ public class Details extends AppCompatActivity {
 
                             } else if (user_activity.getJoinState().equals("2")) {
                                 //申请成功
-                                  activity_qq.setText(activity_qq1);
-                                  activity_phone.setText(activity_phone1);
+                                activity_qq.setText(activity_qq1);
+                                activity_phone.setText(activity_phone1);
                                 create_user.setVisibility(View.GONE);
                                 apply_fail.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);

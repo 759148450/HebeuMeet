@@ -98,22 +98,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/my_button_state"
-                android:drawableLeft="@drawable/join"
-                android:drawablePadding="20dip"
-                android:gravity="center_vertical"
-                android:padding="10dp"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="注册"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
 
         </LinearLayout>
 

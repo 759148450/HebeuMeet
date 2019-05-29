@@ -11,7 +11,7 @@ import cn.qqtheme.framework.picker.OptionPicker;
 
 public class Util {
 
-//    年月日
+    //    年月日
     static void setYearDate(final Activity mContext, final DateListener dateListener) {
         DatePicker picker = new DatePicker(mContext);
 //        DateTimePicker picker = new DateTimePicker(mContext);//具体到时分，这样报错
@@ -65,7 +65,7 @@ public class Util {
     //    选择类型
     static void setTypeName(final Activity mContext, final TypeListener typeListener) {
         OptionPicker picker = new OptionPicker(mContext, new String[]{
-                "0", "1", "2","3","4","5"
+                "约吃饭", "约跑步","约逛街","约学习","约游戏","约其他"
         });
         picker.setOffset(2);
         picker.setSelectedIndex(1);//默认选中项
@@ -101,7 +101,7 @@ public class Util {
     //选择性别
     static void setSexName(final Activity mContext, final SexListener sexListener) {
         OptionPicker picker = new OptionPicker(mContext, new String[]{
-                "0", "1","2"
+                "男", "女","不限"
         });
         picker.setOffset(2);
         picker.setSelectedIndex(1);

@@ -11,7 +11,7 @@ import android.widget.Button;
 /**
  * 个人资料-空项目页面
  */
-public class EmptyActivity extends Activity {
+public class EmptyActivity extends AppCompatActivity {
 
     private Button launch_activity = null;
     @Override
@@ -24,7 +24,7 @@ public class EmptyActivity extends Activity {
         launch_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), .class);
 //                startActivity(intent);
             }
         });

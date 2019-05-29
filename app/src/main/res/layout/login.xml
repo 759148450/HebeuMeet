@@ -102,6 +102,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btn_forget_password"
                     android:layout_width="56dp"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"

@@ -16,16 +16,31 @@
             android:name=".HomeActivity"
             android:windowSoftInputMode="adjustPan">
         </activity>
-        <activity android:name=".My_Information"></activity>
-        <activity android:name=".Update_My_Information"></activity>
+        <activity
+            android:name=".My_Information"
+            android:label="@string/my_information">
+
+        </activity>
+        <activity
+            android:name=".Update_My_Information"
+            android:label="@string/update_my_information"
+            android:parentActivityName=".My_Information">
+
+        </activity>
         <activity
             android:name=".Register"
             android:windowSoftInputMode="adjustPan"
             android:theme="@style/myNotitle">
         </activity>
-        <activity android:name=".My_Publish_Activity"></activity>
+        <activity
+            android:name=".My_Publish_Activity"
+            android:label="@string/my_publish_activity">
+        </activity>
         <activity android:name=".Others_Apply_Activity"></activity>
-        <activity android:name=".MyApplyActivity"></activity>
+        <activity android:name=".MyApplyActivity"
+            android:label="@string/my_apply_activity">
+
+        </activity>
         <activity android:name=".Login"
             android:theme="@style/myNotitle">
             <intent-filter>
@@ -34,11 +49,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Details"></activity>
+        <activity
+            android:name=".Details"
+            android:label="@string/details">
+
+        </activity>
         <activity android:name=".ApplyJoin"></activity>
-        <activity android:name=".EmptyActivity"></activity>
+
+        <activity
+            android:name=".EmptyActivity"
+            android:label="@string/my_publish_activity"></activity>
 
         <activity android:name=".ContactList"></activity>
+        <activity
+            android:name=".Forget_Password"
+            android:label="@string/forgrtpwd"
+            android:parentActivityName=".Login">
+        </activity>
     </application>
 
 </manifest>

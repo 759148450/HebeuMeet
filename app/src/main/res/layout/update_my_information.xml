@@ -19,12 +19,6 @@
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/update_user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="修改个人信息"
-                android:textSize="18sp" />
 
             <!--头像-->
             <LinearLayout

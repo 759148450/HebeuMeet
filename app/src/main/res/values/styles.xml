@@ -17,6 +17,7 @@
         <item name="android:windowContentOverlay">@null</item>//是否有遮盖
     </style>
 
+
     <!-- tab标题-->
     <style name="tab_head" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
