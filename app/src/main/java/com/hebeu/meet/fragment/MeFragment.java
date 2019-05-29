@@ -1,5 +1,6 @@
 package com.hebeu.meet.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hebeu.meet.EmptyActivity;
 import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.My_Information;
 import com.hebeu.meet.My_Publish_Activity;
@@ -52,6 +54,9 @@ public class MeFragment extends Fragment {
     /*读取的文件的字段SharedPreferences */
     private String username;
 
+
+    private String userId;
+
     public MeFragment() {
     }
     /*自动刷新*/
@@ -69,6 +74,9 @@ public class MeFragment extends Fragment {
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
+        userId=sharedPre.getString("userId","");
+        username=sharedPre.getString("username", "");
 
         return inflater.inflate(R.layout.fragment_me, container, false);
 
@@ -108,16 +116,17 @@ public class MeFragment extends Fragment {
         //------------------------------------
         /*获取用户信息*/
         user_name=getActivity().findViewById(R.id.user_name);
-        SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
-        username=sharedPre.getString("username", "");
-        System.out.println("username"+username);
+
         user_name.setText(username);
 
         button_toMyPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), My_Publish_Activity.class);
-                startActivity(intent);
+                System.out.println("点击了进入个人发布按钮");
+                ToMyPublishThread toMyPublishThread = new ToMyPublishThread();
+                toMyPublishThread.start();
+//                Intent intent = new Intent(getActivity().getApplicationContext(), My_Publish_Activity.class);
+//                startActivity(intent);
             }
         });
 
@@ -147,13 +156,31 @@ public class MeFragment extends Fragment {
 
         });
     }
+    private class ToMyPublishThread extends Thread{
+        @Override
+        public void run() {
+            Map<String,Object> paramMap = new HashMap<>();
 
+            paramMap.put("userId",userId);
+            String result = HttpUtil.get("112.74.194.121:8889/activity/getActivityCountByUserId",paramMap);
+            Long count = Long.parseLong(result);
+            System.out.println("数量为："+count);
+            if (0 == count){
+                Intent intent = new Intent(getActivity().getApplicationContext(), EmptyActivity.class);
+                startActivity(intent);
+            }else {
+                Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
+                startActivity(intent);
+            }
+        }
+    }
     private class MyTread extends Thread{
         public void run(){
 
-            String userId = "163";
+
             Map<String,Object> paramMap = new HashMap<>();
             paramMap.put("userId",userId);
+            System.out.println(userId);
             String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById",paramMap);
             final User user = JSONUtil.toBean(res,User.class);
 
