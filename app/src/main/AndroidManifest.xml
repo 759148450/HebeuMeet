@@ -30,7 +30,8 @@
         <activity
             android:name=".Register"
             android:windowSoftInputMode="adjustPan"
-            android:theme="@style/myNotitle">
+            android:label="@string/register"
+            android:parentActivityName=".Login">
         </activity>
         <activity
             android:name=".My_Publish_Activity"
@@ -54,7 +55,9 @@
             android:label="@string/details">
 
         </activity>
-        <activity android:name=".ApplyJoin"></activity>
+        <activity
+            android:name=".ApplyJoin"
+            android:label="@string/apply_join"></activity>
 
         <activity
             android:name=".EmptyActivity"
