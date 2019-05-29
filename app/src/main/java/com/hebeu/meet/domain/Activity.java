@@ -1,8 +1,5 @@
 package com.hebeu.meet.domain;
 
-import java.util.Arrays;
-import java.util.Date;
-
 public class Activity {
     private Integer activityId;
 
@@ -16,17 +13,17 @@ public class Activity {
 
     private Integer peopleLimit;
 
-    private Date activityDate;
+    private String activityDate;
 
     private String activityContent;
 
-    private Date createDate;
+    private String createDate;
 
     private String applyState;
 
     private String activityPlace;
 
-    private byte[] img;
+    private String img;
 
     public Integer getActivityId() {
         return activityId;
@@ -76,12 +73,12 @@ public class Activity {
         this.peopleLimit = peopleLimit;
     }
 
-    public Date getActivityDate() {
+    public String getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
-        this.activityDate = activityDate;
+    public void setActivityDate(String activityDate) {
+        this.activityDate = activityDate == null ? null : activityDate.trim();
     }
 
     public String getActivityContent() {
@@ -92,12 +89,12 @@ public class Activity {
         this.activityContent = activityContent == null ? null : activityContent.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate == null ? null : createDate.trim();
     }
 
     public String getApplyState() {
@@ -116,12 +113,12 @@ public class Activity {
         this.activityPlace = activityPlace == null ? null : activityPlace.trim();
     }
 
-    public byte[] getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(byte[] img) {
-        this.img = img;
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
     }
 
     @Override
@@ -133,12 +130,12 @@ public class Activity {
                 ", typeId=" + typeId +
                 ", sexLimit=" + sexLimit +
                 ", peopleLimit=" + peopleLimit +
-                ", activityDate=" + activityDate +
+                ", activityDate='" + activityDate + '\'' +
                 ", activityContent='" + activityContent + '\'' +
-                ", createDate=" + createDate +
+                ", createDate='" + createDate + '\'' +
                 ", applyState='" + applyState + '\'' +
                 ", activityPlace='" + activityPlace + '\'' +
-                ", img=" + Arrays.toString(img) +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

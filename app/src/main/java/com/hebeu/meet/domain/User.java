@@ -1,7 +1,5 @@
 package com.hebeu.meet.domain;
 
-import java.util.Date;
-
 public class User {
     private String userId;
 
@@ -25,7 +23,7 @@ public class User {
 
     private String email;
 
-    private Date createDate;
+    private String createDate;
 
     public String getUserId() {
         return userId;
@@ -115,12 +113,12 @@ public class User {
         this.email = email == null ? null : email.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate == null ? null : createDate.trim();
     }
 
     @Override
@@ -137,7 +135,7 @@ public class User {
                 ", qq='" + qq + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", createDate=" + createDate +
+                ", createDate='" + createDate + '\'' +
                 '}';
     }
 }

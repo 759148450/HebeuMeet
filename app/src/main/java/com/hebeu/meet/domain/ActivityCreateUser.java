@@ -1,14 +1,9 @@
 package com.hebeu.meet.domain;
 
-import java.util.Arrays;
-import java.util.Date;
-
 public class ActivityCreateUser {
     private Integer activityId;
 
     private String userId;
-
-
 
     private String title;
 
@@ -18,15 +13,17 @@ public class ActivityCreateUser {
 
     private Integer peopleLimit;
 
-    private Date activityDate;
+    private String activityDate;
 
     private String activityContent;
 
-    private Date createDate;
+    private String createDate;
 
     private String applyState;
 
     private String activityPlace;
+
+    private String img;
 
     private String userName;
 
@@ -52,8 +49,6 @@ public class ActivityCreateUser {
     private String joinState;
 
     private String words;
-
-    private byte[] img;
 
     public Integer getActivityId() {
         return activityId;
@@ -103,12 +98,12 @@ public class ActivityCreateUser {
         this.peopleLimit = peopleLimit;
     }
 
-    public Date getActivityDate() {
+    public String getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
-        this.activityDate = activityDate;
+    public void setActivityDate(String activityDate) {
+        this.activityDate = activityDate == null ? null : activityDate.trim();
     }
 
     public String getActivityContent() {
@@ -119,12 +114,12 @@ public class ActivityCreateUser {
         this.activityContent = activityContent == null ? null : activityContent.trim();
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate == null ? null : createDate.trim();
     }
 
     public String getApplyState() {
@@ -141,6 +136,14 @@ public class ActivityCreateUser {
 
     public void setActivityPlace(String activityPlace) {
         this.activityPlace = activityPlace == null ? null : activityPlace.trim();
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
     }
 
     public String getUserName() {
@@ -215,14 +218,6 @@ public class ActivityCreateUser {
         this.email = email == null ? null : email.trim();
     }
 
-    public byte[] getImg() {
-        return img;
-    }
-
-    public void setImg(byte[] img) {
-        this.img = img;
-    }
-
     @Override
     public String toString() {
         return "ActivityCreateUser{" +
@@ -232,11 +227,12 @@ public class ActivityCreateUser {
                 ", typeId=" + typeId +
                 ", sexLimit=" + sexLimit +
                 ", peopleLimit=" + peopleLimit +
-                ", activityDate=" + activityDate +
+                ", activityDate='" + activityDate + '\'' +
                 ", activityContent='" + activityContent + '\'' +
-                ", createDate=" + createDate +
+                ", createDate='" + createDate + '\'' +
                 ", applyState='" + applyState + '\'' +
                 ", activityPlace='" + activityPlace + '\'' +
+                ", img='" + img + '\'' +
                 ", userName='" + userName + '\'' +
                 ", head='" + head + '\'' +
                 ", sex=" + sex +
@@ -246,9 +242,9 @@ public class ActivityCreateUser {
                 ", qq='" + qq + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", img=" + Arrays.toString(img) +
                 '}';
     }
+
 
     public void setJoin_id(String join_id) {
         this.join_id = join_id;
