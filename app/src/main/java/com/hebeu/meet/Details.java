@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hebeu.meet.domain.ActivityJoinUser;
+import com.hebeu.meet.domain.UserActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,6 +58,7 @@ public class Details extends AppCompatActivity {
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
     private Button show_contact = null;//查看联系方式
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,11 +147,16 @@ public class Details extends AppCompatActivity {
     }
 
     class MyThread extends Thread {
+
+        public UserActivity user_activity=null;
         public void run() {
 
             /*Vanilla*/
-            Bundle b = getIntent().getExtras();
-            int activity_id = b.getInt("activity_id");
+            /*获取登录的用户信息*/
+            SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
+            final String userId=sharedPre.getString("userId", "");
+           final Bundle b = getIntent().getExtras();
+            final int activity_id = b.getInt("activity_id");
             activityId = activity_id;
             final String activity_title1 = b.getString("activity_title");
             final String activity_place1=b.getString("activity_place");
@@ -165,11 +172,23 @@ public class Details extends AppCompatActivity {
             final Integer user_sex=b.getInt("user_sex");
             final String join_state1=b.getString("join_state");
             final String join_id1=b.getString("join_id");
+            Map<String,Object> paramMap = new HashMap<>();
+            paramMap.put("activityId",activity_id);
+            paramMap.put("userId",userId);
+            System.out.println("activityId"+activity_id);
+            System.out.println("userID"+userId);
 
-           /* String res = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityById?activityId=");
-            final Activity activity = JSONUtil.toBean(res, Activity.class);
+            try {
+                final String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/getUserActivityByActivityIdAndUserId",paramMap);
+                System.out.println("res"+res.toString());
+               user_activity= JSONUtil.toBean(res, UserActivity.class);
+                System.out.println(user_activity.toString());
+            }catch (Exception e){
+                System.out.println("空");
+            }
 
-            System.out.println(activity.toString());*/
+
+
 
             handler.post(new Runnable() {
                 @Override
@@ -199,9 +218,7 @@ public class Details extends AppCompatActivity {
                     activity_user_name.setText(activity_user_name1);
                     activity_user_class.setText(activity_user_class1);
 
-                    /*获取登录的用户信息*/
-                    SharedPreferences sharedPre = getSharedPreferences("config", MODE_PRIVATE);
-                    String userId=sharedPre.getString("userId", "");
+
 
                     /*判断是否为活动发布者*/
                     System.out.println("活动发布者id"+activity_user_id1);
@@ -218,18 +235,19 @@ public class Details extends AppCompatActivity {
 
                     }
                     else {
-                        if (join_id1!=null&&join_id1.equals(userId)) {
+
+                        if (user_activity!=null) {
 
 //                            判断申请者的状态
                             System.out.println("");
-                            if (join_state1.equals("0")) {
+                            if (user_activity.getJoinState().equals("1")) {
                                 //正在申请
                                 create_user.setVisibility(View.GONE);
                                 apply_fail.setVisibility(View.GONE);
                                 apply_success.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
 
-                            } else if (join_state1.equals("1")) {
+                            } else if (user_activity.getJoinState().equals("2")) {
                                 //申请成功
                                   activity_qq.setText(activity_qq1);
                                   activity_phone.setText(activity_phone1);
@@ -239,7 +257,7 @@ public class Details extends AppCompatActivity {
                                 apply_join.setVisibility(View.GONE);
 
 
-                            } else  if(join_state1.equals("2")){
+                            } else  if(user_activity.getJoinState().equals("3")){
                                 //申请失败
                                 create_user.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
