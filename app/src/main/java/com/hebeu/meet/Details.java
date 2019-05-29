@@ -199,8 +199,10 @@ public class Details extends AppCompatActivity {
 //                    activity_time1
                     if(activity_sexLimit1.equals("0")){
                         activity_sexLimit.setText("活动性别限制：男");
-                    }else{
+                    }else if(activity_sexLimit1.equals("1")){
                         activity_sexLimit.setText("活动性别限制：女");
+                    }else{
+                        activity_sexLimit.setText("不限男女");
                     }
 
                     switch (user_sex){
