@@ -9,6 +9,14 @@
         <item name="actionBarSize">48dip</item>
     </style>
 
+    <!--不显示标题-->
+    <style name="myNotitle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>//无标题
+        <item name="android:windowActionBar">false</item>//无ActionBar
+        <!--<item name="android:windowFullscreen">true</item>//全屏即无通知栏-->
+        <item name="android:windowContentOverlay">@null</item>//是否有遮盖
+    </style>
+
     <!-- tab标题-->
     <style name="tab_head" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>

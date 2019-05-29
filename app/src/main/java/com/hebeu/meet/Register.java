@@ -11,6 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +70,7 @@ public class Register extends AppCompatActivity {
 //        user_email=findViewById(R.id.user_email_mess);
         btn_register=findViewById(R.id.btn_register);
         System.out.println("register.................................");
-        Button imagemale=findViewById(R.id.imagemale);
+        RadioButton imagemale=findViewById(R.id.imagemale);
         imagemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +78,7 @@ public class Register extends AppCompatActivity {
                 System.out.println(user_sex);
             }
         });
-        Button imagefalme=findViewById(R.id.imagefamle);
+        RadioButton imagefalme=findViewById(R.id.imagefamle);
         imagefalme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

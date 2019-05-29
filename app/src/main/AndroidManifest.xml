@@ -15,29 +15,19 @@
         <activity
             android:name=".HomeActivity"
             android:windowSoftInputMode="adjustPan">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".My_Information"></activity>
         <activity android:name=".Update_My_Information"></activity>
-        <activity android:name=".Register">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+        <activity
+            android:name=".Register"
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/myNotitle">
         </activity>
         <activity android:name=".My_Publish_Activity"></activity>
         <activity android:name=".Others_Apply_Activity"></activity>
         <activity android:name=".MyApplyActivity"></activity>
-        <activity android:name=".Login">
+        <activity android:name=".Login"
+            android:theme="@style/myNotitle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
