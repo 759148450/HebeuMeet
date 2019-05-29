@@ -20,7 +20,7 @@ public class ImageHandler {
         //将Bitmap转换成字符串
         String string=null;
         ByteArrayOutputStream bStream=new ByteArrayOutputStream();
-        System.out.println("111111111111"+bitmap.getHeight());
+//        System.out.println("111111111111"+bitmap.getHeight());
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,bStream);//质量压缩50%，但是不好使啊
         byte[] bytes=bStream.toByteArray();
         string= Base64.encodeToString(bytes,Base64.DEFAULT);

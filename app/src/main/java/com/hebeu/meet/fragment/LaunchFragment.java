@@ -3,6 +3,7 @@ package com.hebeu.meet.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hebeu.meet.Details;
+import com.hebeu.meet.HomeActivity;
+import com.hebeu.meet.Login;
+import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.R;
 import com.hebeu.meet.domain.Activity;
 import com.hebeu.meet.domain.JSONResult;
@@ -34,7 +39,7 @@ import cn.hutool.json.JSONUtil;
  * 2019-5-19
  */
 public class LaunchFragment extends Fragment {
-
+    private Activity activity = null;
     private TextView launch_message = null;
     private TextView title_message = null;
     //活动名称
@@ -75,6 +80,7 @@ public class LaunchFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         //活动名称
         title = getActivity().findViewById(R.id.title);;
@@ -160,20 +166,21 @@ public class LaunchFragment extends Fragment {
                     newActivity.setActivityContent(String.valueOf(add_content.getText()));
                     newActivity.setApplyState("1");
                     newActivity.setActivityPlace(String.valueOf(activity_place.getText()));
-
-                    Map<String,Object> paramMap = BeanUtil.beanToMap(newActivity);
-                    String res = HttpUtil.post("http://112.74.194.121:8889/activity/insertActivity",paramMap);
-                    final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
-
-                    System.out.println(jsonResult);
                     Looper.prepare();
+                    try {
+                        Map<String,Object> paramMap = BeanUtil.beanToMap(newActivity);
+                        String res = HttpUtil.post("http://112.74.194.121:8889/activity/insertActivity",paramMap);
+                        activity = JSONUtil.toBean(res,Activity.class);
 
-                    if (jsonResult.getCode() == 0){
-                        //弹出对话框
-                        showDialog();
-                    }else {
+                        if (activity==null){
+                            Toast.makeText(getActivity(),"活动添加失败",Toast.LENGTH_SHORT).show();
+                        }else {
+                            showDialog();
+                        }
+                    }catch (Exception e){
                         Toast.makeText(getActivity(),"活动添加失败",Toast.LENGTH_SHORT).show();
                     }
+
 
 
                     Looper.loop();
@@ -192,12 +199,43 @@ public class LaunchFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 System.out.println("您点击了【首页】");
+                                Intent intent = new Intent(getContext(), HomeActivity.class);
+                                startActivity(intent);
                             }
                         });
                 normalDialog.setNegativeButton("活动详情",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(getContext(), Details.class);
+                                Bundle b = new Bundle();
+
+                                b.putInt("activity_id", activity.getActivityId());
+                                b.putString("activity_title", activity.getTitle());
+                                b.putString("activity_place",activity.getActivityPlace());
+                                /*b.putString("activity_time",userActivityViewList.get(position).);*///时间
+                                b.putString("activity_sexLimit",activity.getSexLimit().toString());
+                                b.putString("activity_PeopleLimit",activity.getPeopleLimit().toString());
+//                                b.putString("activity_qq",userActivityViewList.get(position).getQq());
+//                                b.putString("activity_phone",userActivityViewList.get(position).getPhone());
+//                                b.putString("activity_content",userActivityViewList.get(position).getActivityContent());
+//                                b.putString("activity_user_id",userActivityViewList.get(position).getUserActivityId().toString());
+//                                b.putString("activity_user_name",userActivityViewList.get(position).getUserName());
+//                                b.putString("activity_user_class",userActivityViewList.get(position).getClassName());//发布者专业班级
+//
+
+                                b.putString("activity_qq","qq");
+                                b.putString("activity_phone","phone");
+                                b.putString("activity_content","content");
+                                b.putString("activity_user_id","123123");
+                                b.putString("activity_user_name","qwe");
+                                b.putString("activity_user_class","qwe");//发布者专业班级
+//                                b.putString("join_state",userActivityViewList.get(position).getJoinState());
+//                                b.putString("join_id", userActivityViewList.get(position).getJoin_id());//参加者id
+                                intent.putExtras(b);
+                                intent.putExtras(b);
+                                getContext().startActivity(intent);
                                 System.out.println("您点击了 【活动详情】");
                             }
                         });
