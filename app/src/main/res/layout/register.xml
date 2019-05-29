@@ -2,13 +2,11 @@
 <!--注册界面-->
 <!--这里的布局是放置 1 个 ImageView 控件，用于显示用户头像；3 个 EditText 控件，用于输入用户名、密码、再次输入密码；1 个 Button 控件作为注册按钮-->
 <!--修改 activity_register.xml 为 LinearLayout 布局-->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    android:fadingEdge="vertical">
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -17,6 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login_img" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,8 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -104,6 +108,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:background="@null"
+                    android:inputType="textPassword"
                     android:gravity="center_vertical"
                     android:hint="请输入密码"
                     android:singleLine="true"
@@ -276,6 +281,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.2dp"
                 android:background="#cdcdcd" />
+            <!--邮箱-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮箱:"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/user_email_mess"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:hint="请输入邮箱"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#cdcdcd"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="#cdcdcd" />
         </LinearLayout>
 
         <LinearLayout
@@ -335,6 +370,6 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+    </ScrollView>
 
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,14 +49,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        /*隐藏标题栏
-         * */
         super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);//remove title bar  即隐藏标题栏
-//        getSupportActionBar().hide();
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//remove notification bar  即全屏
-
-
 
         setContentView(R.layout.register);
         handler = new Handler();
@@ -67,8 +63,13 @@ public class Register extends AppCompatActivity {
         user_classname=findViewById(R.id.user_classname_mess);
         user_qq=findViewById(R.id.user_qq_mess);
         user_phone=findViewById(R.id.user_phone_mess);
-//        user_email=findViewById(R.id.user_email_mess);
+        user_email=findViewById(R.id.user_email_mess);
         btn_register=findViewById(R.id.btn_register);
+        //-------设置输入类型、正则判定zyp
+        user_id.setInputType(InputType.TYPE_CLASS_NUMBER);
+        user_phone.setInputType(InputType.TYPE_CLASS_PHONE);
+        user_email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        //-------end--------------
         System.out.println("register.................................");
         RadioButton imagemale=findViewById(R.id.imagemale);
         imagemale.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +112,7 @@ public class Register extends AppCompatActivity {
                     new_user.setClassName(String.valueOf(user_classname.getEditableText()));
                     new_user.setQq(String.valueOf(user_qq.getEditableText()));
                     new_user.setPhone(String.valueOf(user_phone.getEditableText()));
-//                    new_user.setEmail(String.valueOf(user_email.getEditableText()));
+                    new_user.setEmail(String.valueOf(user_email.getEditableText()));
                     Map<String,Object> paramMap = BeanUtil.beanToMap(new_user);
                     String res = "";
                     JSONResult jsonResult;
