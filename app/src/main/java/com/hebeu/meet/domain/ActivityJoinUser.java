@@ -1,6 +1,8 @@
 package com.hebeu.meet.domain;
 
-public class ActivityJoinUser {
+import java.io.Serializable;
+
+public class ActivityJoinUser implements Serializable {
     private Integer id;
 
     private Integer activityId;

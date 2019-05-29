@@ -1,29 +1,17 @@
 package com.hebeu.meet;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.hebeu.meet.domain.ActivityJoinUser;
-import com.hebeu.meet.domain.UserActivityView;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONUtil;
+import java.util.ArrayList;
 
 import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
 
@@ -34,38 +22,20 @@ import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
  */
 public class ContactList extends AppCompatActivity {
 
-    private List<ActivityJoinUser>  activityJoinUserList = null;
-    private Handler handler = null;
+    private ArrayList<ActivityJoinUser>  activityJoinUserList = null;
     private ListView listView = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("空的？");
         setContentView(R.layout.contact_list);
         listView = findViewById(R.id.Contact_list);
-        handler = new Handler();
-        MyTread myTread = new MyTread();
-        myTread.start();
-    }
 
-    private class MyTread extends Thread{
-        public void run() {
-            Bundle b = getIntent().getExtras();
-            Map<String,Object> paramMap = new HashMap<>();
-            paramMap.put("activityId",b.getInt("activity_id"));
-            paramMap.put("joinState","2");
-            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityIdAndJoinState",paramMap);
-            JSONArray array = JSONUtil.parseArray(res);
-            activityJoinUserList = JSONUtil.toList(array, ActivityJoinUser.class);
+        activityJoinUserList = (ArrayList<ActivityJoinUser>) getIntent().getSerializableExtra("list2");
 
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
-                listView.setAdapter(myBaseAdapter);
-            }
-        });
-        }
+        MyBaseAdapter myBaseAdapter = new MyBaseAdapter();
+        listView.setAdapter(myBaseAdapter);
     }
 
     class MyBaseAdapter extends BaseAdapter {

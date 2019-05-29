@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.UserActivity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,9 +53,8 @@ public class Details extends AppCompatActivity {
     private LinearLayout apply_fail = null;
     private LinearLayout create_user = null;
     private LinearLayout apply_join = null;
-    private int activityId;
-    private int length;
     private ImageView sexImage = null;
+    private int activityId;
     private Handler handler = null;
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
@@ -180,9 +181,9 @@ public class Details extends AppCompatActivity {
 
             try {
                 final String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/getUserActivityByActivityIdAndUserId",paramMap);
-                System.out.println("res"+res.toString());
+//                System.out.println("res"+res.toString());
                user_activity= JSONUtil.toBean(res, UserActivity.class);
-                System.out.println(user_activity.toString());
+//                System.out.println(user_activity.toString());
             }catch (Exception e){
                 System.out.println("空");
             }
@@ -285,15 +286,14 @@ public class Details extends AppCompatActivity {
             paramMap.put("activityId",activityId);
             String res =HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
             JSONArray array = JSONUtil.parseArray(res);
-            length = (JSONUtil.toList(array, ActivityJoinUser.class)).size();//获取申请列表长度
+            final ArrayList<ActivityJoinUser>  activityJoinUserList = (ArrayList<ActivityJoinUser>) JSONUtil.toList(array, ActivityJoinUser.class);//获取申请列表长度
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    if(length>0){
-                        Intent intent = new Intent(Details.this, Others_Apply_Activity.class);
-                        Bundle c = new Bundle();
-                        c.putInt("activity_id",activityId);
-                        intent.putExtras(c);
+                    if(activityJoinUserList.size()>0){
+                        Intent intent = new Intent();
+                        intent.setClass(Details.this, Others_Apply_Activity.class);
+                        intent.putExtra("list",(Serializable)activityJoinUserList);
                         startActivity(intent);
                     }
                     else{
@@ -311,20 +311,21 @@ public class Details extends AppCompatActivity {
             paramMap.put("activityId",activityId);
             String res =HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
             JSONArray array = JSONUtil.parseArray(res);
-            List<ActivityJoinUser> list = JSONUtil.toList(array, ActivityJoinUser.class);
+            final ArrayList<ActivityJoinUser> list = (ArrayList<ActivityJoinUser>) JSONUtil.toList(array, ActivityJoinUser.class);
+            int length = 0;
             for(ActivityJoinUser item : list){
                 if(item.getJoinState().equals("2")){
                     length++;
                 }
             }
+            final int finalLength = length;
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    if(length >0){
-                        Intent intent = new Intent(Details.this, ContactList.class);
-                        Bundle c = new Bundle();
-                        c.putInt("activity_id",activityId);
-                        intent.putExtras(c);
+                    if(finalLength >0){
+                        Intent intent = new Intent();
+                        intent.setClass(Details.this, ContactList.class);
+                        intent.putExtra("list2", list);
                         startActivity(intent);
                     }
                     else{

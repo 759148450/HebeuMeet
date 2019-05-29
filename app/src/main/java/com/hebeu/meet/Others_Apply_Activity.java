@@ -1,8 +1,6 @@
 package com.hebeu.meet;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,24 +12,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.hebeu.meet.domain.Activity;
 import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.JSONResult;
-import com.hebeu.meet.domain.User;
 import com.hebeu.meet.domain.UserActivity;
-import com.hebeu.meet.domain.UserActivityView;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
-
 import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
 
 /**
@@ -40,10 +29,8 @@ import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
  * 李航
  */
 public class Others_Apply_Activity extends AppCompatActivity {
-    private Handler handler = null;
     private ListView listView = null;
     private List<ActivityJoinUser> activityJoinUserList = null;
-    private List<UserActivityView> userActivityViewList = null;
     private JSONResult jsonResult = null;
 
    @Override
@@ -51,61 +38,25 @@ public class Others_Apply_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.others_apply_activity);
         listView = findViewById(R.id.OthersApply);
-        handler = new Handler();
-        activityJoinUserList = new ArrayList<>();
-        userActivityViewList = new ArrayList<>();
+        activityJoinUserList = (ArrayList<ActivityJoinUser>) getIntent().getSerializableExtra("list");
         jsonResult = new JSONResult();
-        MyThread myThread = new MyThread();
-        myThread.start();
+        Others_Apply_Activity.MyBaseAdapter myBaseAdapter = new Others_Apply_Activity.MyBaseAdapter();
+        listView.setAdapter(myBaseAdapter);
 
     }
 
-    class MyThread extends Thread {
-        public void run() {
-            Bundle c = getIntent().getExtras();
-            int activityId = c.getInt("activity_id");
-            Map<String,Object> paramMap = new HashMap<>();
-            paramMap.put("activityId",activityId);
-            //根据activityId从activity-user表中查出关于本活动的信息
-            String res = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityId",paramMap);
-
-            JSONArray array = JSONUtil.parseArray(res);
-            activityJoinUserList = JSONUtil.toList(array, ActivityJoinUser.class);
-                for(ActivityJoinUser item : activityJoinUserList){
-                    //显示信息用的
-                    UserActivityView userActivityView = new UserActivityView();
-                    userActivityView.setUserName(item.getUserName());
-                    userActivityView.setClassName(item.getClassName());
-                    userActivityView.setWords(item.getWords());
-                    userActivityView.setUserId(item.getUserId());
-                    userActivityView.setUserActivityId(item.getId());
-                    userActivityView.setJoinState(item.getJoinState());
-                    userActivityView.setHead(item.getHead());
-                    userActivityView.setSex(item.getSex());
-                    userActivityViewList.add(userActivityView);
-                }
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                        Others_Apply_Activity.MyBaseAdapter baseAdapter = new Others_Apply_Activity.MyBaseAdapter();
-                        //把数组适配器加载到ListView控件中
-                        listView.setAdapter(baseAdapter);
-                }
-            });
-        }
-    }
     class MyThread2 extends Thread{
-       private UserActivityView u ;
+       private ActivityJoinUser u ;
        private String flag ;
 
-       MyThread2(String flag,UserActivityView u){
+       MyThread2(String flag,ActivityJoinUser u){
             this.flag = flag;
             this.u = u;
        }
 
         public void run() {
             UserActivity userActivity = new UserActivity();
-            userActivity.setId(u.getUserActivityId());
+            userActivity.setId(u.getId());
             userActivity.setJoinState(flag);
             Map<String,Object> paramMap = BeanUtil.beanToMap(userActivity);
 
@@ -125,7 +76,7 @@ public class Others_Apply_Activity extends AppCompatActivity {
         //获取当前items项的大小，也可以看成是数据源的大小
         @Override
         public int getCount() {
-            return userActivityViewList.size();
+            return activityJoinUserList.size();
         }
         //根据item的下标获取到View对象
         @Override
@@ -144,7 +95,7 @@ public class Others_Apply_Activity extends AppCompatActivity {
             View view;
             LayoutInflater inflater = Others_Apply_Activity.this.getLayoutInflater();
             view = inflater.inflate(R.layout.others_apply_activity_item, null);
-            final UserActivityView u = userActivityViewList.get(position);//通过回调这个方法传过来的position参数获取到指定数据源中的对象
+            final ActivityJoinUser u = activityJoinUserList.get(position);//通过回调这个方法传过来的position参数获取到指定数据源中的对象
             final TextView name = view.findViewById(R.id.mc);
             TextView classname = view.findViewById(R.id.bj);
             TextView describe = view.findViewById(R.id.bz);
@@ -154,8 +105,6 @@ public class Others_Apply_Activity extends AppCompatActivity {
             final TextView successed = view.findViewById(R.id.success);
             final TextView failed = view.findViewById(R.id.failed);
             ImageView SexImage = view.findViewById(R.id.sex);
-            final View line1 = view.findViewById(R.id.line1);
-            final View line2 = view.findViewById(R.id.line2);
             final LinearLayout apply_state = view.findViewById(R.id.apply_state);//zyp-2019-5-28
             final LinearLayout apply_success = view.findViewById(R.id.apply_success);//zyp-2019-5-28
             final LinearLayout apply_fail = view.findViewById(R.id.apply_fail);//zyp-2019-5-28
