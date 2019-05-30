@@ -64,6 +64,7 @@
             android:label="@string/my_publish_activity"></activity>
 
         <activity android:name=".ContactList"></activity>
+        <activity android:name=".MyApplyEmpty"></activity>
         <activity
             android:name=".Forget_Password"
             android:label="@string/forgrtpwd"

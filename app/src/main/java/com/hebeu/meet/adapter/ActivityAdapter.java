@@ -214,7 +214,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putString("activity_user_name",activityCreateUser.getUserName());
                     b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
                     b.putString("join_state",activityCreateUser.getJoinState());
-                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+//                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
                     intent.putExtras(b);
                     getContext().startActivity(intent);
                 }
@@ -238,7 +238,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putString("activity_user_name",activityCreateUser.getUserName());
                     b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
                     b.putString("join_state",activityCreateUser.getJoinState());
-                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
+//                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
                     b.putInt("user_sex",activityCreateUser.getSex());
                     intent.putExtras(b);
                     getContext().startActivity(intent);

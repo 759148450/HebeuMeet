@@ -16,17 +16,24 @@ import android.widget.TextView;
 
 import com.hebeu.meet.EmptyActivity;
 import com.hebeu.meet.MyApplyActivity;
+import com.hebeu.meet.MyApplyEmpty;
 import com.hebeu.meet.My_Information;
 import com.hebeu.meet.My_Publish_Activity;
 import com.hebeu.meet.R;
 import com.hebeu.meet.Register;
+import com.hebeu.meet.domain.ActivityCreateUser;
 import com.hebeu.meet.domain.User;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.hutool.http.HttpUtil;
+import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
+import android.content.SharedPreferences;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
@@ -53,7 +60,7 @@ public class MeFragment extends Fragment {
     private Handler handler = null;
     /*读取的文件的字段SharedPreferences */
     private String username;
-
+    private List<ActivityCreateUser> activityCreateUserList = null;
 
     private String userId;
 
@@ -73,7 +80,7 @@ public class MeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        activityCreateUserList = new ArrayList<>();
         SharedPreferences sharedPre = getActivity().getSharedPreferences("config", MODE_PRIVATE);
         userId=sharedPre.getString("userId","");
         username=sharedPre.getString("username", "");
@@ -129,12 +136,12 @@ public class MeFragment extends Fragment {
 //                startActivity(intent);
             }
         });
-
+        //跳到我参加的页面
         button_toMyApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
-                startActivity(intent);
+                ToMyApplyThread toMyApplyThread = new ToMyApplyThread();
+                toMyApplyThread.start();
             }
         });
 
@@ -175,6 +182,7 @@ public class MeFragment extends Fragment {
             paramMap.put("userId",userId);
             System.out.println(userId);
             String res = HttpUtil.get("http://112.74.194.121:8889/user/getUserById",paramMap);
+            System.out.println(res);
             final User user = JSONUtil.toBean(res,User.class);
 
             handler.post(new Runnable() {
@@ -185,6 +193,22 @@ public class MeFragment extends Fragment {
             });
         }
 
+    }
+    private class ToMyApplyThread extends Thread{
+        public void run(){
+            String res = HttpUtil.get("http://112.74.194.121:8889/activity/getActivityCreateUserByJoinUserId?joinUserId="+userId);//根据userId从activity-user表中查出关于user的所有信息
+            JSONArray array = JSONUtil.parseArray(res);
+            activityCreateUserList = JSONUtil.toList(array, ActivityCreateUser.class);
+
+                if(activityCreateUserList.size()>0){
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyActivity.class);
+                    intent.putExtra("list3", (Serializable) activityCreateUserList);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MyApplyEmpty.class);
+                    startActivity(intent);
+            }
+        }
     }
 
 }

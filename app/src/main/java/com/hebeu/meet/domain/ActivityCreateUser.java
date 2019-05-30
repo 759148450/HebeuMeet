@@ -1,6 +1,8 @@
 package com.hebeu.meet.domain;
 
-public class ActivityCreateUser {
+import java.io.Serializable;
+
+public class ActivityCreateUser implements Serializable {
     private Integer activityId;
 
     private String userId;
@@ -42,11 +44,27 @@ public class ActivityCreateUser {
     private String phone;
 
     private String email;
-
-    /*Vanilla5-25*/
-    private String join_id;
-
+//
+//    /*Vanilla5-25*/
+//    private String join_id;
+//
     private String joinState;
+
+    public String getJoinState() {
+        return joinState;
+    }
+
+    public void setJoinState(String joinState) {
+        this.joinState = joinState;
+    }
+
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
+    }
 
     private String words;
 
@@ -246,27 +264,27 @@ public class ActivityCreateUser {
     }
 
 
-    public void setJoin_id(String join_id) {
-        this.join_id = join_id;
-    }
-
-    public String getJoin_id() {
-        return join_id;
-    }
-
-    public String getJoinState() {
-        return joinState;
-    }
-
-    public void setJoinState(String joinState) {
-        this.joinState = joinState;
-    }
-
-    public String getWords() {
-        return words;
-    }
-
-    public void setWords(String words) {
-        this.words = words;
-    }
+//    public void setJoin_id(String join_id) {
+//        this.join_id = join_id;
+//    }
+//
+//    public String getJoin_id() {
+//        return join_id;
+//    }
+//
+//    public String getJoinState() {
+//        return joinState;
+//    }
+//
+//    public void setJoinState(String joinState) {
+//        this.joinState = joinState;
+//    }
+//
+//    public String getWords() {
+//        return words;
+//    }
+//
+//    public void setWords(String words) {
+//        this.words = words;
+//    }
 }

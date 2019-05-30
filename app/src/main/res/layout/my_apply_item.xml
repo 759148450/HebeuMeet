@@ -328,34 +328,7 @@
 
         <!--         end                        -->
 
-        <!--某个状态下活动为空-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="40dp">
-
-            <ImageView
-                android:id="@+id/join_empty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/join_empty"
-                tools:ignore="MissingConstraints" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="暂未申请活动"
-                android:gravity="center"
-                android:layout_marginTop="40dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/hd_message"/>
-
-        </LinearLayout>
 
 
     </LinearLayout>
