@@ -214,6 +214,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putString("activity_user_name",activityCreateUser.getUserName());
                     b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
                     b.putString("join_state",activityCreateUser.getJoinState());
+                    b.putString("activity_user_head",activityCreateUser.getHead());
 //                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
                     intent.putExtras(b);
                     getContext().startActivity(intent);
@@ -238,6 +239,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putString("activity_user_name",activityCreateUser.getUserName());
                     b.putString("activity_user_class",activityCreateUser.getClassName());//发布者专业班级
                     b.putString("join_state",activityCreateUser.getJoinState());
+                    b.putString("activity_user_head",activityCreateUser.getHead());
 //                    b.putString("join_id", activityCreateUser.getJoin_id());//参加者id
                     b.putInt("user_sex",activityCreateUser.getSex());
                     intent.putExtras(b);
@@ -275,31 +277,16 @@ public class ActivityAdapter extends ArrayAdapter {
 
             System.out.println("成功申请者数量为"+activityJoinUserList.size());
 
-            Integer myImgids[] = new Integer[]{R.drawable.man,R.drawable.woman,R.drawable.button_login,R.drawable.button_state,R.drawable.details_style,R.drawable.edittextshape};
-            final ArrayList<Integer> data = new ArrayList<>();
-            Collections.addAll(data,myImgids);
-
-
-
             viewHolder.handler.post(new Runnable() {
                 @Override
                 public void run() {
-//                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-//                            ViewGroup.LayoutParams.WRAP_CONTENT);
-//                    layoutParams.gravity = Gravity.CENTER;
-//                    layoutParams.setMargins(20, 10, 20, 10);
 
                     for(ActivityJoinUser activityJoinUser:activityJoinUserList){
-//                        CircleImageView circleImageView = new CircleImageView(getContext());
-//                        circleImageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
-//                        circleImageView.setLayoutParams(layoutParams);
 
                         ImageView imageView = new ImageView(getContext());
                         imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
-//                        imageView.setLayoutParams(layoutParams);
 
                         viewHolder.container.addView(imageView);
-//                        container.addView(circleImageView);
                         viewHolder.container.invalidate();
                     }
                 }

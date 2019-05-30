@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hebeu.meet.UI.CircleImageView;
 import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.UserActivity;
 
@@ -25,6 +27,8 @@ import java.util.Map;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONUtil;
+
+import static com.hebeu.meet.tools.ImageHandler.stringToBitmap;
 
 
 
@@ -60,6 +64,10 @@ public class Details extends AppCompatActivity {
     private Button show_apply = null;//查看申请信息按钮
     private Button show_contact = null;//查看联系方式
 
+    private HorizontalScrollView horizontalScrollView = null;
+    private LinearLayout container = null;
+    private CircleImageView imageView = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +95,14 @@ public class Details extends AppCompatActivity {
         show_apply = findViewById(R.id.show_apply);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
+
+        imageView = (CircleImageView) findViewById(R.id.imageView);
+
+        horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
+        container = (LinearLayout) findViewById(R.id.horizontalScrollViewItemContainer);
+
+
+
 
         //-------------zyp-设置图标大小----------------------
         Drawable place = getResources().getDrawable(R.drawable.place);
@@ -170,6 +186,7 @@ public class Details extends AppCompatActivity {
             final String activity_user_id1=b.getString("activity_user_id");
             final String activity_user_name1=b.getString("activity_user_name");
             final String activity_user_class1=b.getString("activity_user_class");
+            final String activity_user_head=b.getString("activity_user_head");
             final Integer user_sex=b.getInt("user_sex");
             final String join_state1=b.getString("join_state");
             final String join_id1=b.getString("join_id");
@@ -189,11 +206,47 @@ public class Details extends AppCompatActivity {
             }
 
 
+            try {
+                System.out.println("当前活动id = " + activityId);
+                Map<String,Object> paramMap1 = new HashMap<>();
+                paramMap1.put("activityId",activityId);
+                paramMap1.put("joinState","2");
+                String res1 = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityIdAndJoinState",paramMap1);
 
+                JSONArray jsonArray = JSONUtil.parseArray(res1);
+                final List<ActivityJoinUser> activityJoinUserList = JSONUtil.toList(jsonArray,ActivityJoinUser.class);
+
+                System.out.println("成功申请者数量为"+activityJoinUserList.size());
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    for(ActivityJoinUser activityJoinUser:activityJoinUserList){
+
+                        ImageView imageView = new ImageView(Details.this.getApplicationContext());
+                        imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
+
+                        container.addView(imageView);
+                        container.invalidate();
+                    }
+                    }
+                });
+
+            }catch (Exception e){
+                System.out.println("查询申请者失败");
+            }
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+
+                    //若用户头像信息不为空，则设置为用户自定义头像
+                    if(activity_user_head != null){
+                        imageView.setImageBitmap(stringToBitmap(activity_user_head));
+                    }else {
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.my_img));
+                    }
                     activity_title.setText(activity_title1);
                     activity_place.setText(activity_place1);
                    activity_time.setText(activity_time1);
