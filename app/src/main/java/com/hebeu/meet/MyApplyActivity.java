@@ -98,7 +98,7 @@ public class MyApplyActivity extends AppCompatActivity {
                     b.putInt("activity_id", activityCreateUserList.get(position).getActivityId());
                     b.putString("activity_title", activityCreateUserList.get(position).getTitle());
                     b.putString("activity_place",activityCreateUserList.get(position).getActivityPlace());
-                    /*b.putString("activity_time",userActivityViewList.get(position).);*///时间
+                    b.putString("activity_time",activityCreateUserList.get(position).getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUserList.get(position).getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUserList.get(position).getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUserList.get(position).getQq());
@@ -124,7 +124,7 @@ public class MyApplyActivity extends AppCompatActivity {
                     b.putInt("activity_id", activityCreateUserList.get(position).getActivityId());
                     b.putString("activity_title", activityCreateUserList.get(position).getTitle());
                     b.putString("activity_place",activityCreateUserList.get(position).getActivityPlace());
-                    /*b.putString("activity_time",userActivityViewList.get(position).);*///时间
+                    b.putString("activity_time",activityCreateUserList.get(position).getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUserList.get(position).getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUserList.get(position).getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUserList.get(position).getQq());

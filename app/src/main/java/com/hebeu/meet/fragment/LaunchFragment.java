@@ -207,7 +207,7 @@ public class LaunchFragment extends Fragment {
                     }else if(sex.equals("不限")){
                         newActivity.setSexLimit(2);
                     }
-                    newActivity.setActivityDate(String.valueOf(activity_date.getText()));
+                    newActivity.setActivityDate(String.valueOf(activity_date.getText())+"-"+activity_datetime.getText());
                     newActivity.setPeopleLimit(Integer.parseInt(String.valueOf(people_limit.getText())));
                     newActivity.setActivityContent(String.valueOf(add_content.getText()));
                     newActivity.setApplyState("1");
@@ -217,7 +217,7 @@ public class LaunchFragment extends Fragment {
                         Map<String,Object> paramMap = BeanUtil.beanToMap(newActivity);
                         String res = HttpUtil.post("http://112.74.194.121:8889/activity/insertActivity",paramMap);
                         activity = JSONUtil.toBean(res,Activity.class);
-
+                        System.out.println("newactivity"+activity.toString());
                         if (activity==null){
                             Toast.makeText(getActivity(),"活动添加失败",Toast.LENGTH_SHORT).show();
                         }else {
@@ -257,7 +257,7 @@ public class LaunchFragment extends Fragment {
                                 b.putInt("activity_id", activity.getActivityId());
                                 b.putString("activity_title", activity.getTitle());
                                 b.putString("activity_place",activity.getActivityPlace());
-                                /*b.putString("activity_time",userActivityViewList.get(position).);*///时间
+                                b.putString("activity_time",activity.getActivityDate());
                                 b.putString("activity_sexLimit",activity.getSexLimit().toString());
                                 b.putString("activity_PeopleLimit",activity.getPeopleLimit().toString());
                                 SharedPreferences sharedPre = getActivity().getSharedPreferences("config", Context.MODE_PRIVATE);

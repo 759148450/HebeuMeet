@@ -161,7 +161,7 @@ public class Details extends AppCompatActivity {
             activityId = activity_id;
             final String activity_title1 = b.getString("activity_title");
             final String activity_place1=b.getString("activity_place");
-            /* final String activity_time1=b.getString("activity_time");*/
+            final String activity_time1=b.getString("activity_time");
             final String activity_sexLimit1=b.getString("activity_sexLimit");
             final String activity_PeopleLimit1=b.getString("activity_PeopleLimit");
             final String activity_qq1=b.getString("activity_qq");
@@ -196,7 +196,7 @@ public class Details extends AppCompatActivity {
                 public void run() {
                     activity_title.setText(activity_title1);
                     activity_place.setText(activity_place1);
-//                    activity_time1
+                   activity_time.setText(activity_time1);
                     if(activity_sexLimit1.equals("0")){
                         activity_sexLimit.setText("活动性别限制：男");
                     }else if(activity_sexLimit1.equals("1")){

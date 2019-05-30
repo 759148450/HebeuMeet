@@ -204,7 +204,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -228,7 +228,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -355,7 +355,7 @@ public class ActivityAdapter extends ArrayAdapter {
         /**
          * 首先绘制圆形
          */
-        canvas.drawCircle(50, 50, 50, paint);
+        canvas.drawCircle(45, 45, 45, paint);
         /**
          * 使用SRC_IN
          */
