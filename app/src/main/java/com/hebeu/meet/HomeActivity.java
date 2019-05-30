@@ -1,5 +1,6 @@
 package com.hebeu.meet;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -53,6 +54,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //actionbar中去除阴影--zyp-2019-5-30
+        if(Build.VERSION.SDK_INT>=21){
+            getSupportActionBar().setElevation(0); }
+        // ----end-----
 
         ButterKnife.bind(this);
 
