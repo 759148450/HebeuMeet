@@ -10,7 +10,9 @@ import android.os.Handler;
 
 import android.os.Looper;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
         handler = new Handler();
         System.out.println("login>>>>>");
+
         user_id=findViewById(R.id.user_id);
         user_password=findViewById(R.id.user_password);
         btn_login=findViewById(R.id.btn_login);
@@ -53,19 +56,29 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyThread thread = new MyThread();
-                thread.start();
+                if(user_id.getText().toString().trim().equals("")||user_password.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Login.this)
+                            .setTitle("警告").setMessage("密码和学号不能为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
+               else{
+                    MyThread thread = new MyThread();
+                    thread.start();
+                }
             }
             class MyThread extends Thread{
                 @Override
                 public void run() {
+                    Looper.prepare();
+
 
                     System.out.println(123333333);
                     System.out.println(String.valueOf(user_id.getText()));
                     String my_user_id=String.valueOf(user_id.getText());
                     String my_user_password=String.valueOf(user_password.getText());
 
-                    Looper.prepare();
+
 
                     System.out.println("try");
                     Map<String,Object> paramMap = new HashMap<>();

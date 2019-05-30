@@ -38,6 +38,12 @@ public class ApplyJoin extends AppCompatActivity {
         btn_send_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(words.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(ApplyJoin.this)
+                            .setTitle("警告").setMessage("留言不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
                 MyThread thread=new MyThread();
                 thread.start();
             }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -121,8 +122,52 @@ public class Register extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyThread thread = new MyThread();
-                thread.start();
+                if(user_id.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("学号不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_password.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("密码不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_name.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("用户名不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_classname.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("班级不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_college.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("学院不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_phone.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("电话不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_qq.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("qq不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(user_email.getText().toString().trim().equals("")){
+                    new AlertDialog.Builder(Register.this)
+                            .setTitle("警告").setMessage("邮箱不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
+               else {
+
+                    MyThread thread = new MyThread();
+                    thread.start();
+                }
             }
 
             class MyThread extends Thread{
@@ -185,6 +230,17 @@ public class Register extends AppCompatActivity {
 
         });
     }
+  public Boolean Warning(TextView tv){
+      if(tv.getText().toString().trim().equals("")){
+          new AlertDialog.Builder(Register.this)
+                  .setTitle("警告").setMessage("输入框不可为空，请重新输入！！！")
+                  .setPositiveButton("确定", null).show();
+          return true;
+      }
+      else{
+          return false;
+      }
+  }
 
 }
 

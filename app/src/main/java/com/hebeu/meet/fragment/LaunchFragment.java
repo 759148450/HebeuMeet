@@ -23,6 +23,7 @@ import com.hebeu.meet.HomeActivity;
 import com.hebeu.meet.Login;
 import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.R;
+import com.hebeu.meet.Register;
 import com.hebeu.meet.domain.Activity;
 import com.hebeu.meet.domain.JSONResult;
 
@@ -167,9 +168,51 @@ public class LaunchFragment extends Fragment {
         launch_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MyThread thread=new MyThread();
-                thread.start();
+                if(title.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("标题不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(type_id.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("类型不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(sex_limit.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("性别限制不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(people_limit.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("人数限制不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(activity_date.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("活动日期不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(activity_datetime.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("活动时间不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(activity_place.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("活动地点不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }if(add_content.getText().toString().trim().equals("")){
+                    new android.support.v7.app.AlertDialog.Builder(getActivity())
+                            .setTitle("警告").setMessage("活动内容不可为空，请重新输入！！！")
+                            .setPositiveButton("确定", null).show();
+                    return;
+                }
+                else {
+                    MyThread thread = new MyThread();
+                    thread.start();
+                }
             }
 
             class MyThread extends Thread{
