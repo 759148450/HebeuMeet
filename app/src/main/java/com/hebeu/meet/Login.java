@@ -71,24 +71,29 @@ public class Login extends AppCompatActivity {
                     Map<String,Object> paramMap = new HashMap<>();
                     paramMap.put("userId",my_user_id);
                     paramMap.put("password",my_user_password);
-                    String res = HttpUtil.post("http://112.74.194.121:8889/user/login",paramMap);
-                    System.out.println("res"+res);
-                    final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
-                    System.out.println("jsonResult.getCode()"+jsonResult.getCode());
-                    if (jsonResult.getCode() == 0){
-                        String res_id = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+my_user_id);
-                        final User user = JSONUtil.toBean(res_id, User.class);
-                        System.out.println("User"+user.toString());
-                        saveLoginInfo(Login.this, user);
-                        Toast.makeText(Login.this,"登录成功！",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this.getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
-//                            startActivity(intent);
+                    try{
+                        String res = HttpUtil.post("http://112.74.194.121:8889/user/login",paramMap);
+                        System.out.println("res"+res);
+                        final JSONResult jsonResult = JSONUtil.toBean(res,JSONResult.class);
+                        System.out.println("jsonResult.getCode()"+jsonResult.getCode());
+                        if (jsonResult.getCode() == 0){
+                            String res_id = HttpUtil.get("http://112.74.194.121:8889/user/getUserById?userId="+my_user_id);
+                            final User user = JSONUtil.toBean(res_id, User.class);
+                            System.out.println("User"+user.toString());
+                            saveLoginInfo(Login.this, user);
+                            Toast.makeText(Login.this,"登录成功！",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Login.this.getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(Login.this,jsonResult.getMsg(),Toast.LENGTH_SHORT).show();
+    //                            Intent intent = new Intent(Login.this.getApplicationContext(), Login.class);
+    //                            startActivity(intent);
+                        }
+                        System.out.println("jsonResult"+jsonResult);
+                    }catch (Exception e){
+                        Toast.makeText(Login.this,"登录失败！",Toast.LENGTH_SHORT).show();
                     }
-                    System.out.println("jsonResult"+jsonResult);
+
 
                     Looper.loop();
 

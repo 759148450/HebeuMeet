@@ -95,8 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawableLeft="@drawable/details_qq"
-                android:text="qq"
                 android:drawablePadding="5dip"
+                android:text="申请成功后显示"
                 android:textColor="@color/hd_message"
                 android:textSize="15sp"
                 tools:ignore="MissingConstraints" />
@@ -108,7 +108,7 @@
                 android:layout_marginTop="5dp"
                 android:drawableLeft="@drawable/phone"
                 android:drawablePadding="5dip"
-                android:text="手机"
+                android:text="申请成功后显示"
                 android:textColor="@color/hd_message"
                 android:textSize="15sp"
                 tools:ignore="MissingConstraints" />
@@ -130,7 +130,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:drawablePadding="5dip"
-                android:text="哈哈哈哈"
                 android:textColor="#9F9FAC"
                 android:textSize="14sp"
                 tools:ignore="MissingConstraints" />

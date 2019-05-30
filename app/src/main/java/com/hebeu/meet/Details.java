@@ -251,14 +251,13 @@ public class Details extends AppCompatActivity {
                                 apply_join.setVisibility(View.GONE);
 
                             } else if (user_activity.getJoinState().equals("2")) {
-                                //申请成功
+                                //申请成功显示qq和phone
                                 activity_qq.setText(activity_qq1);
                                 activity_phone.setText(activity_phone1);
                                 create_user.setVisibility(View.GONE);
                                 apply_fail.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
-
 
                             } else  if(user_activity.getJoinState().equals("3")){
                                 //申请失败
