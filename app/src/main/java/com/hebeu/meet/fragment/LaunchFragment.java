@@ -283,6 +283,8 @@ public class LaunchFragment extends Fragment {
 //                                b.putString("activity_user_class","qwe");//发布者专业班级
 //                                b.putString("join_state",userActivityViewList.get(position).getJoinState());
 //                                b.putString("join_id", userActivityViewList.get(position).getJoin_id());//参加者id
+
+//                                b.putString("activity_user_head",activityCreateUser.getHead());
 //                                intent.putExtras(b);
                                 intent.putExtras(b);
                                 getContext().startActivity(intent);
