@@ -95,11 +95,9 @@ public class ActivityAdapter extends ArrayAdapter {
     public View getView(int position,  View view,  ViewGroup parent) {
 
         ViewHolder viewHolder = null;
-
         final ActivityCreateUser activityCreateUser =(ActivityCreateUser) getItem(position);
 
 
-        if (null == view){
             view = LayoutInflater.from(getContext()).inflate(resourceId,null);
 
             viewHolder = new ViewHolder();
@@ -132,44 +130,67 @@ public class ActivityAdapter extends ArrayAdapter {
 
             viewHolder.imageView = (CircleImageView)view.findViewById(R.id.imageView);
 
+            viewHolder.horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
+            viewHolder.container = (LinearLayout) view.findViewById(R.id.horizontalScrollViewItemContainer);
+            viewHolder.handler = new Handler();
 
-            if(activityCreateUser.getActivityDate() != null){
-                viewHolder.activityTime.setText(activityCreateUser.getActivityDate().toString());
+            //设置值-------------
+
+            if (activityCreateUser.getActivityDate() != null){
+                viewHolder.activityTime.setText(activityCreateUser.getActivityDate());
             }else {
-                viewHolder.activityTime.setText("2019-6-1");
+                viewHolder.activityTime.setText("2000-01-01");
             }
+
+
             //活动性别要求
-            switch (activityCreateUser.getSexLimit()){
-                case 0 :viewHolder.activitySexLimit.setText("男"); break;
-                case 1 :viewHolder.activitySexLimit.setText("女"); break;
-                case 2 :viewHolder.activitySexLimit.setText("不限男女"); break;
+            if (activityCreateUser.getSexLimit() != null){
+                switch (activityCreateUser.getSexLimit()){
+                    case 0 :viewHolder.activitySexLimit.setText("男"); break;
+                    case 1 :viewHolder.activitySexLimit.setText("女"); break;
+                    case 2 :viewHolder.activitySexLimit.setText("不限男女"); break;
+                }
+            }else {
+                viewHolder.activitySexLimit.setText("男");
             }
             //设置发布人的默认头像
-            viewHolder.imageView.setImageDrawable(getContext().getResources().getDrawable(R.drawable.my_img));
-            System.out.println("下面输出id");;
-            System.out.println(activityCreateUser.getActivityId());
+            System.out.println("当前加载标题为 = "+activityCreateUser.getTitle());
+            System.out.println("下面输出id = "+ activityCreateUser.getActivityId());
             //若用户头像信息不为空，则设置为用户自定义头像
             if(activityCreateUser.getHead() != null){
                 System.out.println("activityId为"+activityCreateUser.getActivityId());
                 viewHolder.imageView.setImageBitmap(stringToBitmap(activityCreateUser.getHead()));
+            }else {
+                viewHolder.imageView.setImageDrawable(getContext().getResources().getDrawable(R.drawable.my_img));
             }
 
             //显示发布人的性别
-            switch (activityCreateUser.getSex()){
-                case 0:
-                    viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
-                    break;
-                case 1:
-                    viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
-                    break;
+            if (activityCreateUser.getSex() != null) {
+                switch (activityCreateUser.getSex()){
+                    case 0:
+                        viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.man));
+                        break;
+                    case 1:
+                        viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
+                        break;
+                }
+            }else {
+                viewHolder.sexImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.woman));
             }
 
-            viewHolder.activityUser2.setText(activityCreateUser.getClassName());
-            viewHolder.activityUser.setText(activityCreateUser.getUserName());
+            if (activityCreateUser.getClassName() != null){
+                viewHolder.activityUser2.setText(activityCreateUser.getClassName());
+            }else {
+                viewHolder.activityUser2.setText("计算机1604");
+            }
+            if (activityCreateUser.getUserName() != null){
+                viewHolder.activityUser.setText(activityCreateUser.getUserName());
+            }else {
+                viewHolder.activityUser.setText("野猪佩奇");
+            }
 
-            viewHolder.horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
-            viewHolder.container = (LinearLayout) view.findViewById(R.id.horizontalScrollViewItemContainer);
-            viewHolder.handler = new Handler();
+
+
             MyThread myThread = new MyThread(activityCreateUser.getActivityId(),viewHolder);
             myThread.start();
 
@@ -226,9 +247,6 @@ public class ActivityAdapter extends ArrayAdapter {
             });
             view.setTag(viewHolder);
 
-        }else {
-            viewHolder = (ViewHolder) view.getTag();
-        }
 
 
 
@@ -255,7 +273,7 @@ public class ActivityAdapter extends ArrayAdapter {
             JSONArray jsonArray = JSONUtil.parseArray(res);
             final List<ActivityJoinUser> activityJoinUserList = JSONUtil.toList(jsonArray,ActivityJoinUser.class);
 
-            System.out.println("数据大小为"+activityJoinUserList.size());
+            System.out.println("成功申请者数量为"+activityJoinUserList.size());
 
             Integer myImgids[] = new Integer[]{R.drawable.man,R.drawable.woman,R.drawable.button_login,R.drawable.button_state,R.drawable.details_style,R.drawable.edittextshape};
             final ArrayList<Integer> data = new ArrayList<>();
