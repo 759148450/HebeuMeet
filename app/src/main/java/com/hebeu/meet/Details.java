@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.hebeu.meet.UI.CircleImageView;
 import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.UserActivity;
+import com.hebeu.meet.tools.ImageHandler;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -95,8 +96,7 @@ public class Details extends AppCompatActivity {
         show_apply = findViewById(R.id.show_apply);
         handler = new Handler();
         sexImage = findViewById(R.id.sex);
-
-        imageView = (CircleImageView) findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView);
 
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         container = (LinearLayout) findViewById(R.id.horizontalScrollViewItemContainer);
@@ -243,7 +243,7 @@ public class Details extends AppCompatActivity {
 
                     //若用户头像信息不为空，则设置为用户自定义头像
                     if(activity_user_head != null){
-                        imageView.setImageBitmap(stringToBitmap(activity_user_head));
+                        imageView.setImageBitmap(ImageHandler.stringToBitmap(activity_user_head));
                     }else {
                         imageView.setImageDrawable(getResources().getDrawable(R.drawable.my_img));
                     }

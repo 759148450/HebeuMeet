@@ -1,53 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="50dp">
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    android:layout_height="match_parent">
 
-    <!--发布活动页面为空状态-->
-
-    <ImageView
-        android:id="@+id/join_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="230dp"
-        android:scaleType="centerCrop"
-        android:background="@drawable/join_empty" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="暂未发布活动"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/hd_message"/>
+        android:orientation="vertical"
+        android:layout_margin="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="去创建自己想要的活动吧"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#9F9FAC"/>
+        <!--发布活动页面为空状态-->
 
-    <Button
-        android:id="@+id/launch_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_style"
-        android:text="创建活动"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="40dp">
 
+            <ImageView
+                android:id="@+id/join_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/join_empty"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="暂未发布活动"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/hd_message"/>
 
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="去创建自己想要的活动吧"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#9F9FAC"/>
+
+            <Button
+                android:id="@+id/launch_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_style"
+                android:text="创建活动"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
