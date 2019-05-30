@@ -8,6 +8,7 @@ import com.hebeu.meet.R;
 
 import cn.qqtheme.framework.picker.DatePicker;
 import cn.qqtheme.framework.picker.OptionPicker;
+import cn.qqtheme.framework.picker.TimePicker;
 
 public class Util {
 
@@ -55,6 +56,52 @@ public class Util {
             @Override
             public void onDatePicked(String year, String month, String day) {
                 dateListener.setYearDate(year, month, day);
+            }
+        });
+        picker.show();
+
+    }
+
+    //时分
+
+    static void setDateTime(final Activity mContext, final DateTimeListener dateTimeListener) {
+        TimePicker picker = new TimePicker(mContext);
+
+        //获取当前时间
+        Time time = new Time();
+        time.setToNow();
+        int hour = time.hour;
+        int minute = time.minute;
+        //设置样式
+        picker.setLabel("时", "分");
+        //设置取消按钮文字颜色
+        picker.setCancelTextColor(ContextCompat.getColor(mContext, R.color.gray_text));
+        //设置取消按钮文字
+        picker.setCancelText("取消");
+        //设置取消按钮文字大小
+        picker.setCancelTextSize(18);
+        //设置顶部标题栏下划线颜色
+        picker.setTopLineColor(ContextCompat.getColor(mContext, R.color.white));
+        // 设置顶部标题栏颜色
+        picker.setTopBackgroundColor(ContextCompat.getColor(mContext, R.color.title));
+        //设置分割线颜色
+        picker.setDividerColor(ContextCompat.getColor(mContext, R.color.line_gray));
+        //设置确定按钮文字颜色
+        picker.setSubmitTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        //设置确定按钮文字
+        picker.setSubmitText("确定");
+        picker.setTextColor(ContextCompat.getColor(mContext, R.color.black));
+        picker.setSubmitTextSize(18);
+        //------------------ end---------------
+        //设置默认显示时间
+        picker.setSelectedItem(hour+8, minute);
+        //加入动画
+        picker.setAnimationStyle(R.style.Animation_CustomPopup);
+        //回传数据
+        picker.setOnTimePickListener(new TimePicker.OnTimePickListener() {
+            @Override
+            public void onTimePicked(String hour, String minute) {
+                dateTimeListener.setDateTime(hour , minute);
             }
         });
         picker.show();

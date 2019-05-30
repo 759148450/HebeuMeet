@@ -50,8 +50,10 @@ public class LaunchFragment extends Fragment {
     private TextView sex_limit = null;
     //限制人数
     private EditText people_limit = null;
-    //活动时间
+    //活动时间年月日
     private TextView activity_date = null;
+    //活动时间时分--zyp 2019-5-30
+    private TextView activity_datetime = null;
     //活动地点
     private EditText activity_place = null;
     //活动内容
@@ -63,6 +65,7 @@ public class LaunchFragment extends Fragment {
     ;
     // 时间、类型、性别选择按钮
     private ImageView date_Btn;
+    private ImageView datetime_Btn;
     private ImageView type_Btn;
     private ImageView sex_Btn;
 
@@ -94,6 +97,8 @@ public class LaunchFragment extends Fragment {
         people_limit = getActivity().findViewById(R.id.people_limit);;
         //活动时间
         activity_date = getActivity().findViewById(R.id.activity_date);;
+         // 活动时间  时分
+        activity_datetime = getActivity().findViewById(R.id.activity_datetime);
         //活动地点
         activity_place = getActivity().findViewById(R.id.activityPlace);;
         //活动内容
@@ -104,6 +109,7 @@ public class LaunchFragment extends Fragment {
         //-------zyp 选择时间picker---2019-5-25-----------
 
         date_Btn = getActivity().findViewById(R.id.date_btn);
+        datetime_Btn = getActivity().findViewById(R.id.datetime_btn);
         type_Btn = getActivity().findViewById(R.id.type_btn);
         sex_Btn = getActivity().findViewById(R.id.sex_btn);
         //---------年月日------------
@@ -114,6 +120,18 @@ public class LaunchFragment extends Fragment {
                     @Override
                     public void setYearDate(String year, String month, String day) {
                         activity_date.setText(year + "-" + month + "-" + day );
+                    }
+                });
+            }
+        });
+        //时分
+        datetime_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.setDateTime(getActivity(), new DateTimeListener() {
+                    @Override
+                    public void setDateTime(String hour, String minute) {
+                        activity_datetime.setText(hour + ":" + minute);
                     }
                 });
             }

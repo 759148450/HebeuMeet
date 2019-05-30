@@ -179,45 +179,112 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/date_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="活动时间"
-            android:textColor="#9F9FAC"
-            android:textSize="14sp"/>
-
-        <!--时间选择-->
+            <!--日期时间选择-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/launch_text">
-            <TextView
-                android:id="@+id/activity_date"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:inputType="text"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="17sp">
-            </TextView>
+            android:layout_marginTop="10dp">
 
-            <ImageView
-                android:id="@+id/date_btn"
-                android:layout_width="20dp"
-                android:layout_gravity="center"
-                android:layout_height="20dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/date" />
+            <!--日期-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="活动时间"
+                    android:textColor="#9F9FAC"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/launch_text">
+                    <TextView
+                        android:id="@+id/activity_date"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="17sp">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/date_btn"
+                        android:layout_width="20dp"
+                        android:layout_gravity="center"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/date" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--时间-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/datetime_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=""
+                    android:textColor="#9F9FAC"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/launch_text">
+                    <TextView
+                        android:id="@+id/activity_datetime"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="17sp">
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/datetime_btn"
+                        android:layout_width="20dp"
+                        android:layout_gravity="center"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@drawable/datetime" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
+
+        <!--活动地点-->
 
         <TextView
             android:id="@+id/place_message"
