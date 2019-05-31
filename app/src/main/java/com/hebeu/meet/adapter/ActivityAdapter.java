@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -205,7 +206,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
+                    /*b.putString("activity_time",activityCreateUser.);*///时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -230,7 +231,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
+                    /*b.putString("activity_time",activityCreateUser.);*///时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -333,14 +334,29 @@ public class ActivityAdapter extends ArrayAdapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return createCircleImage(bitmap);
+        return createCircleImage(ChangeSize(bitmap));
     }
+    //缩放图片大小
+    public Bitmap ChangeSize(Bitmap bitmap){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        // 设置想要的大小
+        int newWidth = 140;
+        int newHeight = 140;
+        // 计算缩放比例
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
+
 
     public Bitmap createCircleImage(Bitmap source)
     {
         final Paint paint = new Paint();
         paint.setAntiAlias(true);
-        Bitmap target = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        Bitmap target = Bitmap.createBitmap(160, 160, Bitmap.Config.ARGB_8888);
         /**
          * 产生一个同样大小的画布
          */
@@ -348,7 +364,8 @@ public class ActivityAdapter extends ArrayAdapter {
         /**
          * 首先绘制圆形
          */
-        canvas.drawCircle(50, 50, 50, paint);
+       int radius =  source.getWidth()>source.getHeight()?source.getHeight()/2:source.getWidth()/2;
+        canvas.drawCircle(source.getWidth()/2, source.getHeight()/2, radius, paint);//圆心的横坐标，纵坐标，圆的半径
         /**
          * 使用SRC_IN
          */

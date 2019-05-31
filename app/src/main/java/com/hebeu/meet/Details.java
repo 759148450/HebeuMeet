@@ -3,7 +3,9 @@ package com.hebeu.meet;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -11,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -70,11 +73,11 @@ public class Details extends AppCompatActivity {
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
     private Button show_contact = null;//查看联系方式
-
+    private ImageView Details_Publisher_head=null;
     private HorizontalScrollView horizontalScrollView = null;
     private LinearLayout container = null;
     private CircleImageView imageView = null;
-
+    List<ActivityJoinUser> activityJoinUserList=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +214,6 @@ public class Details extends AppCompatActivity {
                 System.out.println("空");
             }
 
-
             try {
                 System.out.println("当前活动id = " + activityId);
                 Map<String,Object> paramMap1 = new HashMap<>();
@@ -220,27 +222,8 @@ public class Details extends AppCompatActivity {
                 String res1 = HttpUtil.get("http://112.74.194.121:8889/userActivity/selectActivityJoinUserByActivityIdAndJoinState",paramMap1);
 
                 JSONArray jsonArray = JSONUtil.parseArray(res1);
-                final List<ActivityJoinUser> activityJoinUserList = JSONUtil.toList(jsonArray,ActivityJoinUser.class);
-
+                activityJoinUserList = JSONUtil.toList(jsonArray,ActivityJoinUser.class);
                 System.out.println("成功申请者数量为"+activityJoinUserList.size());
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    for(ActivityJoinUser activityJoinUser:activityJoinUserList){
-
-                        ImageView imageView = new ImageView(Details.this.getApplicationContext());
-                        Bitmap bitmap = stringToBitmap(activityJoinUser.getHead());
-                        Bitmap bitmap1 = createCircleImage(bitmap);
-                        imageView.setImageBitmap(bitmap1);
-
-                        container.addView(imageView);
-                        container.invalidate();
-                    }
-                    }
-                });
-
             }catch (Exception e){
                 System.out.println("查询申请者失败");
             }
@@ -248,7 +231,6 @@ public class Details extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-
                     //若用户头像信息不为空，则设置为用户自定义头像
                     if(activity_user_head != null){
                         imageView.setImageBitmap(ImageHandler.stringToBitmap(activity_user_head));
@@ -265,7 +247,6 @@ public class Details extends AppCompatActivity {
                     }else{
                         activity_sexLimit.setText("不限男女");
                     }
-
                     switch (user_sex){
                         case 0:
                             sexImage.setImageDrawable(getResources().getDrawable(R.drawable.man));
@@ -274,15 +255,10 @@ public class Details extends AppCompatActivity {
                             sexImage.setImageDrawable(getResources().getDrawable(R.drawable.woman));
                             break;
                     }
-
                     activity_PeopleLimit.setText(activity_PeopleLimit1);
-
-
                     activity_content.setText(activity_content1);
                     activity_user_name.setText(activity_user_name1);
                     activity_user_class.setText(activity_user_class1);
-
-
 
                     /*判断是否为活动发布者*/
                     System.out.println("活动发布者id"+activity_user_id1);
@@ -296,12 +272,9 @@ public class Details extends AppCompatActivity {
                         apply_success.setVisibility(View.GONE);
                         apply_fail.setVisibility(View.GONE);
                         apply_join.setVisibility(View.GONE);
-
                     }
                     else {
-
                         if (user_activity!=null) {
-
 //                            判断申请者的状态
                             System.out.println("");
                             if (user_activity.getJoinState().equals("1")) {
@@ -310,7 +283,6 @@ public class Details extends AppCompatActivity {
                                 apply_fail.setVisibility(View.GONE);
                                 apply_success.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
-
                             } else if (user_activity.getJoinState().equals("2")) {
                                 //申请成功显示qq和phone
                                 activity_qq.setText(activity_qq1);
@@ -319,14 +291,12 @@ public class Details extends AppCompatActivity {
                                 apply_fail.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
-
                             } else  if(user_activity.getJoinState().equals("3")){
                                 //申请失败
                                 create_user.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
                                 apply_success.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
-
                             }
                         } else {
                             create_user.setVisibility(View.GONE);
@@ -335,8 +305,13 @@ public class Details extends AppCompatActivity {
                             apply_fail.setVisibility(View.GONE);
                         }
                     }
-
-
+                    //加载参加者头像
+                    for(ActivityJoinUser activityJoinUser:activityJoinUserList){
+                        ImageView imageView = new ImageView(Details.this.getApplicationContext());
+                        imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
+                        container.addView(imageView);
+                        container.invalidate();
+                    }
                 }
             });
         }
@@ -398,11 +373,39 @@ public class Details extends AppCompatActivity {
             });
         }
     }
+
+    public Bitmap stringToBitmap(String string) {
+        // 将字符串转换成Bitmap类型
+        Bitmap bitmap = null;
+        try {
+            byte[] bitmapArray;
+            bitmapArray = Base64.decode(string, Base64.DEFAULT);
+            bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0,
+                    bitmapArray.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return createCircleImage(ChangeSize(bitmap));
+    }
+    //缩放图片大小
+    public Bitmap ChangeSize(Bitmap bitmap){
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        // 设置想要的大小
+        int newWidth = 140;
+        int newHeight = 140;
+        // 计算缩放比例
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+    }
     public Bitmap createCircleImage(Bitmap source)
     {
         final Paint paint = new Paint();
         paint.setAntiAlias(true);
-        Bitmap target = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        Bitmap target = Bitmap.createBitmap(160, 160, Bitmap.Config.ARGB_8888);
         /**
          * 产生一个同样大小的画布
          */
@@ -410,7 +413,8 @@ public class Details extends AppCompatActivity {
         /**
          * 首先绘制圆形
          */
-        canvas.drawCircle(50, 50, 50, paint);
+        int radius =  source.getWidth()>source.getHeight()?source.getHeight()/2:source.getWidth()/2;
+        canvas.drawCircle(source.getWidth()/2, source.getHeight()/2, radius, paint);//圆心的横坐标，纵坐标，圆的半径
         /**
          * 使用SRC_IN
          */
