@@ -2,6 +2,11 @@ package com.hebeu.meet;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +26,7 @@ import com.hebeu.meet.tools.ImageHandler;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -225,7 +231,9 @@ public class Details extends AppCompatActivity {
                     for(ActivityJoinUser activityJoinUser:activityJoinUserList){
 
                         ImageView imageView = new ImageView(Details.this.getApplicationContext());
-                        imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
+                        Bitmap bitmap = stringToBitmap(activityJoinUser.getHead());
+                        Bitmap bitmap1 = createCircleImage(bitmap);
+                        imageView.setImageBitmap(bitmap1);
 
                         container.addView(imageView);
                         container.invalidate();
@@ -389,5 +397,28 @@ public class Details extends AppCompatActivity {
                 }
             });
         }
+    }
+    public Bitmap createCircleImage(Bitmap source)
+    {
+        final Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        Bitmap target = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        /**
+         * 产生一个同样大小的画布
+         */
+        Canvas canvas = new Canvas(target);
+        /**
+         * 首先绘制圆形
+         */
+        canvas.drawCircle(50, 50, 50, paint);
+        /**
+         * 使用SRC_IN
+         */
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        /**
+         * 绘制图片
+         */
+        canvas.drawBitmap(source, 0, 0, paint);
+        return target;
     }
 }

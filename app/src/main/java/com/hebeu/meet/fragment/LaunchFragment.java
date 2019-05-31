@@ -25,6 +25,7 @@ import com.hebeu.meet.MyApplyActivity;
 import com.hebeu.meet.R;
 import com.hebeu.meet.Register;
 import com.hebeu.meet.domain.Activity;
+import com.hebeu.meet.domain.ActivityCreateUser;
 import com.hebeu.meet.domain.JSONResult;
 
 import java.util.Map;
@@ -40,7 +41,7 @@ import cn.hutool.json.JSONUtil;
  * 2019-5-19
  */
 public class LaunchFragment extends Fragment {
-    private Activity activity = null;
+    private ActivityCreateUser activity = null;
     private TextView launch_message = null;
     private TextView title_message = null;
     //活动名称
@@ -229,18 +230,19 @@ public class LaunchFragment extends Fragment {
                     newActivity.setUserId(userId);
                     newActivity.setTitle(String.valueOf(title.getText()));
                     System.out.println("type"+type );
+
                     if(type.equals("约吃饭")){
                         newActivity.setTypeId(1);
                     } else if(type.equals("约跑步")){
-                        newActivity.setTypeId(2);
-                    } else if(type.equals("约逛街")){
                         newActivity.setTypeId(3);
-                    } else if(type.equals("约学习")){
+                    } else if(type.equals("约逛街")){
                         newActivity.setTypeId(4);
+                    } else if(type.equals("约学习")){
+                        newActivity.setTypeId(2);
                     } else if(type.equals("约游戏")){
                         newActivity.setTypeId(5);
                     }else if(type.equals("约其他")){
-                        newActivity.setTypeId(0);
+                        newActivity.setTypeId(6);
                     }
                     System.out.println("sex"+sex );
                     if(sex.equals("男")){
@@ -259,7 +261,7 @@ public class LaunchFragment extends Fragment {
                     try {
                         Map<String,Object> paramMap = BeanUtil.beanToMap(newActivity);
                         String res = HttpUtil.post("http://112.74.194.121:8889/activity/insertActivity",paramMap);
-                        activity = JSONUtil.toBean(res,Activity.class);
+                        activity = JSONUtil.toBean(res, ActivityCreateUser.class);
                         System.out.println("newactivity"+activity.toString());
                         if (activity==null){
                             Toast.makeText(getActivity(),"活动添加失败",Toast.LENGTH_SHORT).show();
@@ -316,19 +318,11 @@ public class LaunchFragment extends Fragment {
                                 b.putString("activity_user_id",userId);
                                 b.putString("activity_user_name",username);
                                 b.putString("activity_user_class",classname);//发布者专业班级
-//
 
-//                                b.putString("activity_qq","qq");
-//                                b.putString("activity_phone","phone");
-//                                b.putString("activity_content","content");
-//                                b.putString("activity_user_id",userId);
-//                                b.putString("activity_user_name","qwe");
-//                                b.putString("activity_user_class","qwe");//发布者专业班级
+                                b.putString("activity_user_head",activity.getHead());
 //                                b.putString("join_state",userActivityViewList.get(position).getJoinState());
 //                                b.putString("join_id", userActivityViewList.get(position).getJoin_id());//参加者id
 
-//                                b.putString("activity_user_head",activityCreateUser.getHead());
-//                                intent.putExtras(b);
                                 intent.putExtras(b);
                                 getContext().startActivity(intent);
                                 System.out.println("您点击了 【活动详情】");

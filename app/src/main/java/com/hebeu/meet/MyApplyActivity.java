@@ -13,7 +13,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.hebeu.meet.UI.CircleImageView;
 import com.hebeu.meet.domain.ActivityCreateUser;
+import com.hebeu.meet.tools.ImageHandler;
+
 import java.util.List;
 
 /**
@@ -77,9 +81,8 @@ public class MyApplyActivity extends AppCompatActivity {
             TextView title = view.findViewById(R.id.acTitle);
             TextView words = view.findViewById(R.id.acWords);
 
-//            TextView status = view.findViewById(R.id.applyStatus);
-//            TextView status2 = view.findViewById(R.id.applyStatus2);
-//            TextView status3 = view.findViewById(R.id.applyStatus3);
+            CircleImageView imageView = (CircleImageView)view.findViewById(R.id.imageView);
+
 
             LinearLayout applying = view.findViewById(R.id.applying);
             LinearLayout apply_success = view.findViewById(R.id.apply_success);
@@ -108,6 +111,7 @@ public class MyApplyActivity extends AppCompatActivity {
                     b.putString("activity_user_name",activityCreateUserList.get(position).getUserName());
                     b.putString("activity_user_class",activityCreateUserList.get(position).getClassName());//发布者专业班级
                     b.putString("join_state", activityCreateUserList.get(position).getJoinState());
+                    b.putString("activity_user_head",activityCreateUserList.get(position).getHead());
 //                    b.putString("join_id", activityCreateUserList.get(position).getJoin_id());//参加者id
 
                     intent.putExtras(b);
@@ -134,6 +138,7 @@ public class MyApplyActivity extends AppCompatActivity {
                     b.putString("activity_user_name",activityCreateUserList.get(position).getUserName());
                     b.putString("activity_user_class",activityCreateUserList.get(position).getClassName());//发布者专业班级
                     b.putString("join_state",activityCreateUserList.get(position).getJoinState());
+                    b.putString("activity_user_head",activityCreateUserList.get(position).getHead());
 //                    b.putString("join_id", activityCreateUserList.get(position).getJoin_id());//参加者id
                     intent.putExtras(b);
                     startActivity(intent);
@@ -141,6 +146,7 @@ public class MyApplyActivity extends AppCompatActivity {
             });
             /*-----end 5-25-----*/
             title.setText("活动标题："+u.getTitle());
+            time.setText("活动时间" + u.getActivityDate());
             Plimit.setText("活动人数限制："+u.getPeopleLimit().toString());
             if(u.getSexLimit().equals("0")){
                 Slimit.setText("活动性别限制：男");
@@ -164,16 +170,7 @@ public class MyApplyActivity extends AppCompatActivity {
                 }
             }
             state.setText("活动进展："+u.getApplyState());
-//            DateFormat bf = new SimpleDateFormat("yyyy-MM-dd E a HH:mm:ss");//创建格式化工具
-//            String format = bf.format(u.getActivityDate());//格式化 bf.format(date);
-//            time.setText(format);
             words.setText("留言： "+u.getWords());
-//            switch (u.getJoinState()){
-//                case "1":u.setJoinState("正在申请");break;
-//                case "3":u.setJoinState("拒绝申请");break;
-//                case "2":u.setJoinState("申请通过");break;
-//            }
-
             if (u.getJoinState().equals("1")){
                 //正在申请
 
@@ -192,6 +189,13 @@ public class MyApplyActivity extends AppCompatActivity {
                 applying.setVisibility(View.GONE);
                 apply_success.setVisibility(View.GONE);
 
+            }
+
+            if(u.getHead() != null){
+                System.out.println("activityId为"+u.getActivityId());
+                imageView.setImageBitmap(ImageHandler.stringToBitmap(u.getHead()));
+            }else {
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.my_img));
             }
 
             // zyp 设置图标大小  2019-5-23上午----------------

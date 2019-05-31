@@ -287,22 +287,12 @@ public class ActivityAdapter extends ArrayAdapter {
             viewHolder.handler.post(new Runnable() {
                 @Override
                 public void run() {
-//                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-//                            ViewGroup.LayoutParams.WRAP_CONTENT);
-//                    layoutParams.gravity = Gravity.CENTER;
-//                    layoutParams.setMargins(20, 10, 20, 10);
 
                     for(ActivityJoinUser activityJoinUser:activityJoinUserList){
-//                        CircleImageView circleImageView = new CircleImageView(getContext());
-//                        circleImageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
-//                        circleImageView.setLayoutParams(layoutParams);
 
                         ImageView imageView = new ImageView(getContext());
                         imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
-//                        imageView.setLayoutParams(layoutParams);
-
                         viewHolder.container.addView(imageView);
-//                        container.addView(circleImageView);
                         viewHolder.container.invalidate();
                     }
                 }
