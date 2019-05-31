@@ -63,6 +63,7 @@ public class Forget_Password extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 handler = new Handler();
                 MyThread thread = new MyThread();
                 thread.start();

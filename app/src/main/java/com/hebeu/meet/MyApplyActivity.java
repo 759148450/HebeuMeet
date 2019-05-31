@@ -114,7 +114,6 @@ public class MyApplyActivity extends AppCompatActivity {
                     b.putString("join_state", activityCreateUserList.get(position).getJoinState());
                     b.putString("activity_user_head",activityCreateUserList.get(position).getHead());
 //                    b.putString("join_id", activityCreateUserList.get(position).getJoin_id());//参加者id
-
                     intent.putExtras(b);
                     startActivity(intent);
 

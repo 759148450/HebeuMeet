@@ -215,7 +215,6 @@
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginBottom="15dp"
                     android:background="@drawable/my_img"/>
 
                 <LinearLayout

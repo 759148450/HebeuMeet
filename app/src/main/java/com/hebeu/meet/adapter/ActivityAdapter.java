@@ -65,7 +65,6 @@ public class ActivityAdapter extends ArrayAdapter {
     private final int resourceId;
     public ActivityAdapter(Context context, List<ActivityCreateUser> activityCreateUserList){
         super(context,R.layout.my_publish_activity_item,activityCreateUserList);
-
         this.resourceId = R.layout.my_publish_activity_item;
         this.activityCreateUserList = activityCreateUserList;
     }
@@ -99,9 +98,7 @@ public class ActivityAdapter extends ArrayAdapter {
         ViewHolder viewHolder = null;
         final ActivityCreateUser activityCreateUser =(ActivityCreateUser) getItem(position);
 
-
             view = LayoutInflater.from(getContext()).inflate(resourceId,null);
-
             viewHolder = new ViewHolder();
 
             viewHolder.btn_details=view.findViewById(R.id.btn_details);//详情按钮
@@ -202,11 +199,10 @@ public class ActivityAdapter extends ArrayAdapter {
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), Details.class);
                     Bundle b = new Bundle();
-
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -231,7 +227,7 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putInt("activity_id", activityCreateUser.getActivityId());
                     b.putString("activity_title", activityCreateUser.getTitle());
                     b.putString("activity_place",activityCreateUser.getActivityPlace());
-                    /*b.putString("activity_time",activityCreateUser.);*///时间
+                    b.putString("activity_time",activityCreateUser.getActivityDate());//时间
                     b.putString("activity_sexLimit",activityCreateUser.getSexLimit().toString());
                     b.putString("activity_PeopleLimit",activityCreateUser.getPeopleLimit().toString());
                     b.putString("activity_qq",activityCreateUser.getQq());
@@ -250,10 +246,6 @@ public class ActivityAdapter extends ArrayAdapter {
                 }
             });
             view.setTag(viewHolder);
-
-
-
-
 
          return view;
     }
