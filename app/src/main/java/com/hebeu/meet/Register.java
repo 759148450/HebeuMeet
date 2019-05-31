@@ -2,6 +2,8 @@ package com.hebeu.meet;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,6 +28,10 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
+
+import static com.hebeu.meet.tools.ImageHandler.bitmapToString;
+import static com.hebeu.meet.tools.ImageHandler.compressScale;
+
 /*
  * 注册
  * Vanilla
@@ -190,6 +196,9 @@ public class Register extends AppCompatActivity {
                     new_user.setQq(String.valueOf(user_qq.getEditableText()));
                     new_user.setPhone(String.valueOf(user_phone.getEditableText()));
                     new_user.setEmail(String.valueOf(user_email.getEditableText()));
+                    Bitmap bmp= BitmapFactory.decodeResource(getResources(), R.drawable.my_img);
+                    Bitmap bms =  compressScale(bmp);//压缩
+                    new_user.setHead(bitmapToString(bms));
                     System.out.println(user_key.getText()+"激活码");
                     String code=user_key.getEditableText().toString();
                     Map<String,Object> paramMap = BeanUtil.beanToMap(new_user);
