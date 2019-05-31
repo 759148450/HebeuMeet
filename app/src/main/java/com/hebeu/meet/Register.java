@@ -48,6 +48,7 @@ public class Register extends AppCompatActivity {
     private EditText user_phone =null;
     private EditText user_email =null;
     private EditText user_password=null;
+    private EditText email_key=null;
     private Button btn_register = null;
     private Handler handler = null;
     private String email,res1,key;
@@ -72,14 +73,13 @@ public class Register extends AppCompatActivity {
         user_qq=findViewById(R.id.user_qq_mess);
         user_email=findViewById(R.id.user_email_mess);
         btn_register=findViewById(R.id.btn_register);
-        user_key=findViewById(R.id.email_key);
-
+        email_key=findViewById(R.id.email_key);
         System.out.println("register.................................");
         Button imagemale=findViewById(R.id.imagemale);
         imagemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user_sex=1;
+                user_sex=0;
                 System.out.println(user_sex);
             }
         });
@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
         imagefalme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user_sex=2;
+                user_sex=1;
                 System.out.println(user_sex);
             }
         });
@@ -95,6 +95,7 @@ public class Register extends AppCompatActivity {
         btn_email_key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(Register.this,"验证码已发送至您的邮箱，请注意查收！",Toast.LENGTH_SHORT).show();
                 System.out.println("邮箱点击事件发生，先获取验证码");
                 handler = new Handler();
                 MyThread_email thread_pwd = new MyThread_email();
@@ -117,6 +118,8 @@ public class Register extends AppCompatActivity {
                         Looper.loop();
                         return;
                     }catch (Exception e){
+
+
                         res1 = HttpUtil.get("http://112.74.194.121:8889/email/sendMail", paramMap);
                         System.out.println(res1);
                     }
@@ -129,44 +132,32 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(user_id.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("学号不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"学号不能为空！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(user_password.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("密码不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"密码不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_name.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("用户名不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"用户名不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_classname.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("班级不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"班级不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_college.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("学院不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"学院不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_phone.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("电话不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"电话不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_qq.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("qq不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"qq不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(user_email.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Register.this)
-                            .setTitle("警告").setMessage("邮箱不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Register.this,"邮箱不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+                    return;
+                }if(email_key.getText().toString().trim().equals("")){
+                    Toast.makeText(Register.this,"验证码不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }
                else {
@@ -239,17 +230,8 @@ public class Register extends AppCompatActivity {
 
         });
     }
-  public Boolean Warning(TextView tv){
-      if(tv.getText().toString().trim().equals("")){
-          new AlertDialog.Builder(Register.this)
-                  .setTitle("警告").setMessage("输入框不可为空，请重新输入！！！")
-                  .setPositiveButton("确定", null).show();
-          return true;
-      }
-      else{
-          return false;
-      }
-  }
+
+
 
 }
 

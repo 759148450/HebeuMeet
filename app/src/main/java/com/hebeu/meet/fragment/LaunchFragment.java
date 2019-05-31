@@ -170,44 +170,35 @@ public class LaunchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(title.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("标题不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"标题不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
+
                 }if(type_id.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("类型不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"类型不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }if(sex_limit.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("性别限制不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"性别限制不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(people_limit.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("人数限制不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"人数限制不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(activity_date.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("活动日期不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"活动日期不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(activity_datetime.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("活动时间不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"活动时间不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(activity_place.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("活动地点不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"活动地点不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }if(add_content.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(getActivity())
-                            .setTitle("警告").setMessage("活动内容不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(getActivity(),"活动内容不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
+
                     return;
                 }
                 else {

@@ -39,9 +39,7 @@ public class ApplyJoin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(words.getText().toString().trim().equals("")){
-                    new android.support.v7.app.AlertDialog.Builder(ApplyJoin.this)
-                            .setTitle("警告").setMessage("留言不可为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(ApplyJoin.this,"留言不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 MyThread thread=new MyThread();
@@ -61,8 +59,6 @@ public class ApplyJoin extends AppCompatActivity {
                     userjoin.setActivityId(activity_id);
                     userjoin.setWords(String.valueOf(words.getText()));
                     userjoin.setJoinState("1");
-
-
                     Map<String,Object> paramMap = BeanUtil.beanToMap(userjoin);
                     String res = HttpUtil.post("http://112.74.194.121:8889/userActivity/insertUserActivity",paramMap);
 
@@ -77,8 +73,6 @@ public class ApplyJoin extends AppCompatActivity {
                     }else {
                         Toast.makeText(ApplyJoin.this,"发送申请失败",Toast.LENGTH_SHORT).show();
                     }
-
-
                     Looper.loop();
 
                 }

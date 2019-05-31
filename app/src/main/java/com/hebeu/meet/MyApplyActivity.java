@@ -73,14 +73,15 @@ public class MyApplyActivity extends AppCompatActivity {
 
             ActivityCreateUser u = activityCreateUserList.get(position);//通过回调这个方法传过来的position参数获取到指定数据源中的对象
 
-            TextView Plimit = view.findViewById(R.id.acPeopleLimit);
+//            TextView Plimit = view.findViewById(R.id.acPeopleLimit);
             TextView Slimit = view.findViewById(R.id.acSexLimit);
             TextView place = view.findViewById(R.id.acPlace);
             TextView state = view.findViewById(R.id.acState);
             TextView time = view.findViewById(R.id.acTime);
             TextView title = view.findViewById(R.id.acTitle);
             TextView words = view.findViewById(R.id.acWords);
-
+            TextView activityUser=view.findViewById(R.id.activityUser);
+//            TextView join_plimite=view.findViewById(R.id.join_plimite);//百分比
             CircleImageView imageView = (CircleImageView)view.findViewById(R.id.imageView);
 
 
@@ -145,15 +146,16 @@ public class MyApplyActivity extends AppCompatActivity {
                 }
             });
             /*-----end 5-25-----*/
-            title.setText("活动标题："+u.getTitle());
-            time.setText("活动时间" + u.getActivityDate());
-            Plimit.setText("活动人数限制："+u.getPeopleLimit().toString());
+            title.setText(u.getTitle());
+            time.setText( u.getActivityDate());
+//            Plimit.setText(u.getPeopleLimit().toString());
+            activityUser.setText(u.getUserName());
             if(u.getSexLimit().equals("0")){
-                Slimit.setText("活动性别限制：男");
+                Slimit.setText("男");
             }else{
-                Slimit.setText("活动性别限制：女");
+                Slimit.setText("女");
             }
-            place.setText("活动地点："+u.getActivityPlace());
+            place.setText(u.getActivityPlace());
 
 
 
@@ -169,8 +171,8 @@ public class MyApplyActivity extends AppCompatActivity {
                     u.setApplyState("活动取消");break;
                 }
             }
-            state.setText("活动进展："+u.getApplyState());
-            words.setText("留言： "+u.getWords());
+            state.setText(u.getApplyState());
+            words.setText(u.getWords());
             if (u.getJoinState().equals("1")){
                 //正在申请
 
@@ -197,7 +199,6 @@ public class MyApplyActivity extends AppCompatActivity {
             }else {
                 imageView.setImageDrawable(getResources().getDrawable(R.drawable.my_img));
             }
-
             // zyp 设置图标大小  2019-5-23上午----------------
 
             Drawable place_img = getResources().getDrawable(R.drawable.place);

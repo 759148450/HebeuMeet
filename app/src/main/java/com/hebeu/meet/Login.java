@@ -57,9 +57,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(user_id.getText().toString().trim().equals("")||user_password.getText().toString().trim().equals("")){
-                    new AlertDialog.Builder(Login.this)
-                            .setTitle("警告").setMessage("密码和学号不能为空，请重新输入！！！")
-                            .setPositiveButton("确定", null).show();
+                    Toast.makeText(Login.this,"学号和密码不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }
                else{

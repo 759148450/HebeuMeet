@@ -137,13 +137,6 @@
                 android:textSize="15sp"
                 android:textColor="@color/hd_message" />
 
-            <TextView
-                android:id="@+id/acPeopleLimit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/hd_message" />
         </LinearLayout>
 
         <!--参与者头像  以下开始数据为假数据-->
@@ -152,6 +145,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/join_plimite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <View android:layout_width="match_parent"
                 android:layout_marginTop="5dp"

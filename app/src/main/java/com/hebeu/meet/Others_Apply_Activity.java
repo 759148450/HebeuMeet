@@ -1,6 +1,8 @@
 package com.hebeu.meet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.hebeu.meet.domain.ActivityJoinUser;
 import com.hebeu.meet.domain.JSONResult;
 import com.hebeu.meet.domain.UserActivity;
@@ -32,11 +36,12 @@ public class Others_Apply_Activity extends AppCompatActivity {
     private ListView listView = null;
     private List<ActivityJoinUser> activityJoinUserList = null;
     private JSONResult jsonResult = null;
-
    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.others_apply_activity);
+//        super.onResume();
         listView = findViewById(R.id.OthersApply);
         activityJoinUserList = (ArrayList<ActivityJoinUser>) getIntent().getSerializableExtra("list");
         jsonResult = new JSONResult();
@@ -59,7 +64,6 @@ public class Others_Apply_Activity extends AppCompatActivity {
             userActivity.setId(u.getId());
             userActivity.setJoinState(flag);
             Map<String,Object> paramMap = BeanUtil.beanToMap(userActivity);
-
             String res = HttpUtil.post("http://112.74.194.121:8889/userActivity/updateUserActivity",paramMap);
             jsonResult = JSONUtil.toBean(res,JSONResult.class);
 
@@ -148,6 +152,9 @@ public class Others_Apply_Activity extends AppCompatActivity {
                         apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
                         successed.setVisibility(View.INVISIBLE);
                         apply_success.setVisibility(View.INVISIBLE);
+                        successed.setText("已同意");
+                        Toast.makeText(Others_Apply_Activity.this,"恭喜你，发布人同意了！！！",Toast.LENGTH_SHORT).show();
+                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
                 }
@@ -164,13 +171,21 @@ public class Others_Apply_Activity extends AppCompatActivity {
                         apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
                         failed.setVisibility(View.INVISIBLE);
                         apply_fail.setVisibility(View.INVISIBLE);
+                        failed.setText("已拒绝");
+                        Toast.makeText(Others_Apply_Activity.this,"发布人拒绝了您的请求！！！",Toast.LENGTH_SHORT).show();
+                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
+
                 }
             });
 
             return view;
         }
-
     }
+    private void refresh() {
+        Intent intent = new Intent(Others_Apply_Activity.this, Others_Apply_Activity.class);
+        startActivity(intent);
+    }
+
 }
