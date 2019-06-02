@@ -76,10 +76,10 @@ public class MyApplyActivity extends AppCompatActivity {
 //            TextView Plimit = view.findViewById(R.id.acPeopleLimit);
             TextView Slimit = view.findViewById(R.id.acSexLimit);
             TextView place = view.findViewById(R.id.acPlace);
-            TextView state = view.findViewById(R.id.acState);
+//            TextView state = view.findViewById(R.id.acState);
             TextView time = view.findViewById(R.id.acTime);
             TextView title = view.findViewById(R.id.acTitle);
-            TextView words = view.findViewById(R.id.acWords);
+//            TextView words = view.findViewById(R.id.acWords);
             TextView activityUser=view.findViewById(R.id.activityUser);
 //            TextView join_plimite=view.findViewById(R.id.join_plimite);//百分比
             CircleImageView imageView = (CircleImageView)view.findViewById(R.id.imageView);
@@ -170,8 +170,8 @@ public class MyApplyActivity extends AppCompatActivity {
                     u.setApplyState("活动取消");break;
                 }
             }
-            state.setText(u.getApplyState());
-            words.setText(u.getWords());
+//            state.setText(u.getApplyState());
+//            words.setText(u.getWords());
             if (u.getJoinState().equals("1")){
                 //正在申请
 

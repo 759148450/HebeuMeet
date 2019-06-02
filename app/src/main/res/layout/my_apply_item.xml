@@ -249,15 +249,15 @@
         <!--以下三条数据不应该出现在这个页面，暂时放最后-->
 
         <!--活动进展-->
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/acState"/>
-        <!--留言-->
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/acWords"/>
+        <!--<TextView-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/acState"/>-->
+        <!--&lt;!&ndash;留言&ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:id="@+id/acWords"/>-->
         <!--<TextView-->
         <!--android:layout_height="match_parent"-->
         <!--android:layout_width="match_parent"-->
