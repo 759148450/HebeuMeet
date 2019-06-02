@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="已加入"
+                    android:text="0"
                     android:textColor="@color/apply_success"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -398,7 +398,25 @@
                 android:text="申请参加" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ly_full"
+            android:layout_width="match_parent"
+            android:layout_marginTop="70dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center"
+            android:background="@color/title">
 
+            <TextView
+                android:id="@+id/full"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="人已满"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 

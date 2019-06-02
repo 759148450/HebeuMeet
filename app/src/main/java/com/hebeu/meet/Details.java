@@ -67,12 +67,15 @@ public class Details extends AppCompatActivity {
     private LinearLayout apply_fail = null;
     private LinearLayout create_user = null;
     private LinearLayout apply_join = null;
+    private LinearLayout ly_full = null;
     private ImageView sexImage = null;
     private int activityId;
     private Handler handler = null;
     private Button apply_join_btn=null;
     private Button show_apply = null;//查看申请信息按钮
     private Button show_contact = null;//查看联系方式
+    private TextView activity_PeopleNum=null;//已加入同学
+
     private ImageView Details_Publisher_head=null;
     private HorizontalScrollView horizontalScrollView = null;
     private LinearLayout container = null;
@@ -94,12 +97,14 @@ public class Details extends AppCompatActivity {
         activity_content=findViewById(R.id.activity_content);
         activity_user_name=findViewById(R.id.activity_user_name);
         activity_user_class=findViewById(R.id.activity_user_class);
+        activity_PeopleNum=findViewById(R.id.activity_PeopleNum);//已加入同学
         /*LinearLayout*/
         create_user=findViewById(R.id.create_user);
         applying = findViewById(R.id.applying);
         apply_success = findViewById(R.id.apply_success);
         apply_fail = findViewById(R.id.apply_fail);
         apply_join = findViewById(R.id.apply_join);
+        ly_full=findViewById(R.id.ly_full);
         /*button*/
         apply_join_btn=findViewById(R.id.apply_join_btn);
         show_apply = findViewById(R.id.show_apply);
@@ -237,6 +242,7 @@ public class Details extends AppCompatActivity {
                     }else {
                         imageView.setImageDrawable(getResources().getDrawable(R.drawable.my_img));
                     }
+                    activity_PeopleNum.setText(String.valueOf(activityJoinUserList.size()));//已参加人数
                     activity_title.setText(activity_title1);
                     activity_place.setText(activity_place1);
                    activity_time.setText(activity_time1);
@@ -272,6 +278,7 @@ public class Details extends AppCompatActivity {
                         apply_success.setVisibility(View.GONE);
                         apply_fail.setVisibility(View.GONE);
                         apply_join.setVisibility(View.GONE);
+                        ly_full.setVisibility(View.GONE);
                     }
                     else {
                         if (user_activity!=null) {
@@ -283,6 +290,7 @@ public class Details extends AppCompatActivity {
                                 apply_fail.setVisibility(View.GONE);
                                 apply_success.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
+                                ly_full.setVisibility(View.GONE);
                             } else if (user_activity.getJoinState().equals("2")) {
                                 //申请成功显示qq和phone
                                 activity_qq.setText(activity_qq1);
@@ -291,18 +299,32 @@ public class Details extends AppCompatActivity {
                                 apply_fail.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
+                                ly_full.setVisibility(View.GONE);
                             } else  if(user_activity.getJoinState().equals("3")){
                                 //申请失败
                                 create_user.setVisibility(View.GONE);
                                 applying.setVisibility(View.GONE);
                                 apply_success.setVisibility(View.GONE);
                                 apply_join.setVisibility(View.GONE);
+                                ly_full.setVisibility(View.GONE);
                             }
                         } else {
-                            create_user.setVisibility(View.GONE);
-                            applying.setVisibility(View.GONE);
-                            apply_success.setVisibility(View.GONE);
-                            apply_fail.setVisibility(View.GONE);
+                            //是否人已满判断
+                            if(activity_PeopleLimit1.equals(String.valueOf(activityJoinUserList.size()))){
+                                create_user.setVisibility(View.GONE);
+                                applying.setVisibility(View.GONE);
+                                apply_success.setVisibility(View.GONE);
+                                apply_fail.setVisibility(View.GONE);
+                                apply_join.setVisibility(View.GONE);
+
+                            }else{
+                                create_user.setVisibility(View.GONE);
+                                applying.setVisibility(View.GONE);
+                                apply_success.setVisibility(View.GONE);
+                                apply_fail.setVisibility(View.GONE);
+                                ly_full.setVisibility(View.GONE);
+                            }
+
                         }
                     }
                     //加载参加者头像

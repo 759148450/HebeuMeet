@@ -79,7 +79,8 @@ public class ActivityAdapter extends ArrayAdapter {
         private TextView activityUser2 = null;
         private TextView activityUser = null;
         private ImageView sexImage = null;
-
+        private TextView activity_PeopleNum=null;//已加入同学
+        private TextView activity_PeopleLimit=null;//人数限制
         private Button button = null;
         private Handler handler = null;
 
@@ -126,6 +127,9 @@ public class ActivityAdapter extends ArrayAdapter {
 
             viewHolder.activityTitle.setText(activityCreateUser.getTitle());
             viewHolder.activityPlace.setText(activityCreateUser.getActivityPlace());
+            viewHolder.activity_PeopleNum=view.findViewById(R.id.activity_PeopleNum);//已加入同学
+            viewHolder.activity_PeopleLimit=view.findViewById(R.id.activity_PeopleLimit);//人数限制
+
 
             viewHolder.imageView = (CircleImageView)view.findViewById(R.id.imageView);
 
@@ -187,11 +191,17 @@ public class ActivityAdapter extends ArrayAdapter {
             }else {
                 viewHolder.activityUser.setText("野猪佩奇");
             }
+            if(activityCreateUser.getPeopleLimit()!=null){
+                viewHolder.activity_PeopleLimit.setText(String.valueOf(activityCreateUser.getPeopleLimit()));
+            }else {
+                viewHolder.activity_PeopleLimit.setText("无限制");
+            }
 
 
 
             MyThread myThread = new MyThread(activityCreateUser.getActivityId(),viewHolder);
             myThread.start();
+
 
             //监听器
             viewHolder.details_ly.setOnClickListener(new View.OnClickListener() {
@@ -252,11 +262,14 @@ public class ActivityAdapter extends ArrayAdapter {
 
     class MyThread extends Thread{
         Integer activityId;
-        ViewHolder viewHolder;
+        ViewHolder viewHolder; public Integer   join_count;
         public MyThread(Integer activityId,ViewHolder viewHolder){
             this.activityId = activityId;
             this.viewHolder = viewHolder;
         }
+
+
+
         @Override
         public void run() {
 
@@ -287,6 +300,11 @@ public class ActivityAdapter extends ArrayAdapter {
                         imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
                         viewHolder.container.addView(imageView);
                         viewHolder.container.invalidate();
+                    }
+                    if(activityJoinUserList.size()!=0) {
+                        viewHolder.activity_PeopleNum.setText(String.valueOf(activityJoinUserList.size()));
+                    }else{
+                        viewHolder.activity_PeopleNum.setText("0");
                     }
                 }
             });
