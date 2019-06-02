@@ -117,21 +117,21 @@ public class Details extends AppCompatActivity {
         Drawable place = getResources().getDrawable(R.drawable.place);
         Drawable time = getResources().getDrawable(R.drawable.time);
         Drawable sex = getResources().getDrawable(R.drawable.sex);
-        Drawable personnum = getResources().getDrawable(R.drawable.personnum);
+//        Drawable personnum = getResources().getDrawable(R.drawable.personnum);
         Drawable details_qq = getResources().getDrawable(R.drawable.details_qq);
         Drawable phone = getResources().getDrawable(R.drawable.phone);
 
         place.setBounds(0,0,32,35);
         time.setBounds(0,0,32,32);
         sex.setBounds(0,0,32,32);
-        personnum.setBounds(0,0,32,32);
+//        personnum.setBounds(0,0,32,32);
         details_qq.setBounds(0,0,32,32);
         phone.setBounds(0,0,32,32);
 
         activity_place.setCompoundDrawables(place,null,null,null);
         activity_time.setCompoundDrawables(time,null,null,null);
         activity_sexLimit.setCompoundDrawables(sex,null,null,null);
-        activity_PeopleLimit.setCompoundDrawables(personnum,null,null,null);
+//        activity_PeopleLimit.setCompoundDrawables(personnum,null,null,null);
         activity_qq.setCompoundDrawables(details_qq,null,null,null);
         activity_phone.setCompoundDrawables(phone,null,null,null);
 
