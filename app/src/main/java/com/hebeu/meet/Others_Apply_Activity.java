@@ -150,11 +150,11 @@ public class Others_Apply_Activity extends AppCompatActivity {
                     if ((jsonResult.getCode() == 0)){
                         System.out.println("运⾏行行成功");
                         apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
-                        successed.setVisibility(View.INVISIBLE);
-                        apply_success.setVisibility(View.INVISIBLE);
+                        successed.setVisibility(View.VISIBLE);
+                        apply_success.setVisibility(View.VISIBLE);
                         successed.setText("已同意");
                         Toast.makeText(Others_Apply_Activity.this,"恭喜你，发布人同意了！！！",Toast.LENGTH_SHORT).show();
-                        refresh();
+//                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
                 }
@@ -169,11 +169,11 @@ public class Others_Apply_Activity extends AppCompatActivity {
                     if ((jsonResult.getCode() == 0)){
                         System.out.println("运⾏行行成功");
                         apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
-                        failed.setVisibility(View.INVISIBLE);
-                        apply_fail.setVisibility(View.INVISIBLE);
+                        failed.setVisibility(View.VISIBLE);
+                        apply_fail.setVisibility(View.VISIBLE);
                         failed.setText("已拒绝");
                         Toast.makeText(Others_Apply_Activity.this,"发布人拒绝了您的请求！！！",Toast.LENGTH_SHORT).show();
-                        refresh();
+//                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
 
@@ -183,9 +183,9 @@ public class Others_Apply_Activity extends AppCompatActivity {
             return view;
         }
     }
-    private void refresh() {
-        Intent intent = new Intent(Others_Apply_Activity.this, Others_Apply_Activity.class);
-        startActivity(intent);
-    }
+//    private void refresh() {
+//        Intent intent = new Intent(Others_Apply_Activity.this, Others_Apply_Activity.class);
+//        startActivity(intent);
+//    }
 
 }
