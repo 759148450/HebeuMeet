@@ -38,9 +38,7 @@ public class Login extends AppCompatActivity {
     private TextView user_password=null;
     private Button btn_login=null;
     private Handler handler = null;
-    /*读取的文件的字段SharedPreferences */
-    private String userId;
-    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -75,7 +73,6 @@ public class Login extends AppCompatActivity {
                     System.out.println(String.valueOf(user_id.getText()));
                     String my_user_id=String.valueOf(user_id.getText());
                     String my_user_password=String.valueOf(user_password.getText());
-
 
 
                     System.out.println("try");

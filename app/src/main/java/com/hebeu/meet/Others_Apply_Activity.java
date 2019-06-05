@@ -36,7 +36,7 @@ public class Others_Apply_Activity extends AppCompatActivity {
     private ListView listView = null;
     private List<ActivityJoinUser> activityJoinUserList = null;
     private JSONResult jsonResult = null;
-   @Override
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -51,13 +51,13 @@ public class Others_Apply_Activity extends AppCompatActivity {
     }
 
     class MyThread2 extends Thread{
-       private ActivityJoinUser u ;
-       private String flag ;
+        private ActivityJoinUser u ;
+        private String flag ;
 
-       MyThread2(String flag,ActivityJoinUser u){
+        MyThread2(String flag,ActivityJoinUser u){
             this.flag = flag;
             this.u = u;
-       }
+        }
 
         public void run() {
             UserActivity userActivity = new UserActivity();
@@ -145,15 +145,15 @@ public class Others_Apply_Activity extends AppCompatActivity {
             btn_accpte.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   MyThread2 myThread2 = new MyThread2("2",u);
-                   myThread2.start();
+                    MyThread2 myThread2 = new MyThread2("2",u);
+                    myThread2.start();
                     if ((jsonResult.getCode() == 0)){
                         System.out.println("运⾏行行成功");
                         apply_state.setVisibility(View.GONE);//zyp 不显示未决策状态
                         successed.setVisibility(View.VISIBLE);
                         apply_success.setVisibility(View.VISIBLE);
                         successed.setText("已同意");
-                        Toast.makeText(Others_Apply_Activity.this,"恭喜你，发布人同意了！！！",Toast.LENGTH_SHORT).show();
+
 //                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
@@ -172,20 +172,14 @@ public class Others_Apply_Activity extends AppCompatActivity {
                         failed.setVisibility(View.VISIBLE);
                         apply_fail.setVisibility(View.VISIBLE);
                         failed.setText("已拒绝");
-                        Toast.makeText(Others_Apply_Activity.this,"发布人拒绝了您的请求！！！",Toast.LENGTH_SHORT).show();
-//                        refresh();
                     } else{
                         System.out.println("运⾏行行失败");   }
 
                 }
             });
-
             return view;
         }
     }
-//    private void refresh() {
-//        Intent intent = new Intent(Others_Apply_Activity.this, Others_Apply_Activity.class);
-//        startActivity(intent);
-//    }
+
 
 }

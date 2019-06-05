@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ import cn.hutool.json.JSONUtil;
 public class MsgContentFragment extends Fragment {
     @BindView(R.id.listView)
     ListView listView;
+    private ProgressBar progressBarLarge=null;
 
     private String name;
 
@@ -50,11 +52,14 @@ public class MsgContentFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         Bundle bundle = getArguments();
         name = bundle.getString("name");
         if (name == null) {
             name = "参数非法";
         }
+
     }
 
     @Override
@@ -62,14 +67,15 @@ public class MsgContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_msg_content, container, false);
         ButterKnife.bind(this, view);
+        progressBarLarge=view.findViewById(R.id.progressBarLarge);
         handler = new Handler();
         MyThread thread=new MyThread();
         thread.start();
 
-
         return view;
     }
     class MyThread extends Thread{
+
         @Override
         public void run() {
 
@@ -108,8 +114,10 @@ public class MsgContentFragment extends Fragment {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+                    progressBarLarge.setVisibility(View.INVISIBLE);
                     ActivityAdapter activityAdapter = new ActivityAdapter(getActivity(), activityCreateUserList);
                     listView.setAdapter(activityAdapter);
+
                 }
             });
 

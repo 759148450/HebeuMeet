@@ -57,7 +57,7 @@ public class Register extends AppCompatActivity {
         handler = new Handler();
         System.out.println("register>>>>>");
         user_id=findViewById(R.id.user_id);
-        System.out.println(user_id+"00000000");
+
         user_password=findViewById(R.id.user_password_mess);
         user_name=findViewById(R.id.user_name_mess);
 //        user_sex=findViewById(R.id.user_sex);

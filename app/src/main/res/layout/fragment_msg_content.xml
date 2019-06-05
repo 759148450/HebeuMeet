@@ -7,11 +7,12 @@
 
 
     <ProgressBar
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:indeterminateDrawable="@drawable/loading"
-        android:id="@+id/progressBarLarge"/>
+        android:id="@+id/progressBarLarge" />
 
     <ListView
         android:id="@+id/listView"

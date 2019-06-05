@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.hebeu.meet.UI.CircleImageView;
@@ -28,13 +29,16 @@ import java.util.List;
 public class MyApplyActivity extends AppCompatActivity {
 
     private ListView listView = null;
+    private ProgressBar progressBarLarge=null;
     private List<ActivityCreateUser> activityCreateUserList = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_apply);
         listView = findViewById(R.id.myApplyList);
+        progressBarLarge=findViewById(R.id.progressBarLarge);
         activityCreateUserList = (List<ActivityCreateUser>) getIntent().getSerializableExtra("list3");
+        progressBarLarge.setVisibility(View.INVISIBLE);
         MyApplyActivity.MyBaseAdapter baseAdapter = new MyApplyActivity.MyBaseAdapter();
         //把数组适配器加载到ListView控件中
         listView.setAdapter(baseAdapter);
