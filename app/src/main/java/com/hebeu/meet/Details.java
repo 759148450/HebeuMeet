@@ -365,6 +365,7 @@ public class Details extends AppCompatActivity {
     }
 
     class MyThread3 extends Thread{
+        public ArrayList<ActivityJoinUser>  activityJoinUserList2 = new ArrayList<ActivityJoinUser>();
         public void run(){
             Map<String,Object> paramMap = new HashMap<>();
             paramMap.put("activityId",activityId);
@@ -375,6 +376,7 @@ public class Details extends AppCompatActivity {
             for(ActivityJoinUser item : list){
                 if(item.getJoinState().equals("2")){
                     length++;
+                    activityJoinUserList2.add(item);
                 }
             }
             final int finalLength = length;
@@ -384,7 +386,7 @@ public class Details extends AppCompatActivity {
                     if(finalLength >0){
                         Intent intent = new Intent();
                         intent.setClass(Details.this, ContactList.class);
-                        intent.putExtra("list2", list);
+                        intent.putExtra("list2", activityJoinUserList2);
                         startActivity(intent);
                     }
                     else{

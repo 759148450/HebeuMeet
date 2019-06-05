@@ -67,7 +67,7 @@ public class Register extends AppCompatActivity {
         user_qq=findViewById(R.id.user_qq_mess);
         user_email=findViewById(R.id.user_email_mess);
         btn_register=findViewById(R.id.btn_register);
-        email_key=findViewById(R.id.email_key);
+        user_key=findViewById(R.id.email_key);
 
         System.out.println("register.................................");
         Button imagemale=findViewById(R.id.imagemale);
@@ -164,7 +164,7 @@ public class Register extends AppCompatActivity {
 
                     Toast.makeText(Register.this,"邮箱不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
-                }if(email_key.getText().toString().trim().equals("")){
+                }if(user_key.getText().toString().trim().equals("")){
                     Toast.makeText(Register.this,"验证码不可为空，请重新输入！！！",Toast.LENGTH_SHORT).show();
                     return;
                 }
