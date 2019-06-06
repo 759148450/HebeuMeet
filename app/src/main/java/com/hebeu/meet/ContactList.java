@@ -28,7 +28,6 @@ public class ContactList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("空的？");
         setContentView(R.layout.contact_list);
         listView = findViewById(R.id.Contact_list);
 

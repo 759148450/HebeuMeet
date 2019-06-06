@@ -243,7 +243,7 @@ public class LaunchFragment extends Fragment {
                     }else if(sex.equals("不限")){
                         newActivity.setSexLimit(2);
                     }
-                    newActivity.setActivityDate(String.valueOf(activity_date.getText())+"-"+activity_datetime.getText());
+                    newActivity.setActivityDate(String.valueOf(activity_date.getText())+" "+activity_datetime.getText() + ":00");
                     newActivity.setPeopleLimit(Integer.parseInt(String.valueOf(people_limit.getText())));
                     newActivity.setActivityContent(String.valueOf(add_content.getText()));
                     newActivity.setApplyState("1");
