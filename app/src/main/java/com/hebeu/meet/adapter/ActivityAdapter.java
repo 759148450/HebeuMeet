@@ -253,7 +253,6 @@ public class ActivityAdapter extends ArrayAdapter {
                     b.putString("activity_user_head",activityCreateUser.getHead());
                     intent.putExtras(b);
                     getContext().startActivity(intent);
-
                 }
             });
             view.setTag(viewHolder);
@@ -295,23 +294,20 @@ public class ActivityAdapter extends ArrayAdapter {
                 @Override
                 public void run() {
 
-                    for(ActivityJoinUser activityJoinUser:activityJoinUserList){
 
-                        ImageView imageView = new ImageView(getContext());
-                        imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
-                        viewHolder.container.addView(imageView);
-                        viewHolder.container.invalidate();
-                    }
                     if(activityJoinUserList.size()!=0) {
                         viewHolder.activity_PeopleNum.setText(String.valueOf(activityJoinUserList.size()));
+                        for(ActivityJoinUser activityJoinUser:activityJoinUserList){
+                            ImageView imageView = new ImageView(getContext());
+                                imageView.setImageBitmap(stringToBitmap(activityJoinUser.getHead()));
+                                viewHolder.container.addView(imageView);
+                                viewHolder.container.invalidate();
+                        }
                     }else{
                         viewHolder.activity_PeopleNum.setText("0");
                     }
                 }
             });
-
-
-
             Looper.loop();
 
         }
